@@ -1,64 +1,58 @@
 <html>
 <head>
-	<style>
-	body {
-		background-image: url(http://www.zingerbug.com/Backgrounds/background_images/turquoise_paisley_pattern_background_seamless.jpg);
-	}
-	h1 {
-		color: white;
-		font-family: "Helvetica Neue", Helvetica;
-		font-weight: 100;
-		font-size: 100px;
-		margin: 0;
-	}
-	p {
-		color: DDD;
-		font-family: "Helvetica Neue", Helvetica;
-				margin: 0 auto;
-
-
-	}
-	.content {
-		background-color: rgba(0,0,0,.8);
-		padding: 20px;
-		width: 600px;
-		margin: 50px auto;
-		text-align: center;
-	}
-	.image {
-		background-color: rgba(255,255,255,.3);
-		padding: 25px;
-		width: 400px;
-		margin: 50px auto;
-		text-align: center;
-
-	}
-	</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<link rel="stylesheet" href="index.css">
 </head>
 <body>
 	<div class="content">
-		<h1>Maxwell Hunter</h1>
-
-		<p>
-			<i>Web Developer</i>
-		</p>
-		<br/>
-		<p>
-			Python/Flask Developer. Sticker Designer Extraordinaire. 
-		<br/>
-		Social Media Wizard and Advertising Expert.
-		</p>
-			<div class="image">
-				<a href="https://github.com/mhunterak/" target="_blank">
-				<p>GitHub</p>
-				<br/>
-				<img src="1451538566_github-square-social-media.png">
-				</a>
-			</div>
+		<h1>H<span style='font-size:255px;'>v</span>K</h1>
+		<h2>Social Media &#8226 Web Dev &#8226 Design</h2>
 		<div class="image">
-			<img src="http://i.imgur.com/q3e87zR.gif">
+			<h2>Contact Us</h2>
+			<form method='POST' action=''>
+				<input 
+					class="input" 
+					id="email" 
+					name="email" 
+					type="text" 
+					placeholder="Please enter your email address" 
+				/>
+
+
+				<span class="notifier">Please enter a valid email.</span>
+<script type="text/javascript" charset="utf-8">
+$("form span").hide();
+</script>
+				<input 
+					class="input" 
+					id="phone" 
+					name="phone" 
+					type="text" 
+					placeholder="Please enter your phone number"
+				/>
+				<span class="notifier">Please enter a valid Phone Number.</span>
+<script type="text/javascript" charset="utf-8">
+$("form span").hide();
+</script>
+
+				<textarea 
+					class="input" 
+					id="details" 
+					name="details" 
+					placeholder="Please tell us more about your project" rows="5" 
+				></textarea>
+			    <input 
+			    	type=submit
+			    	class="button-primary" 
+			    	value="Send"
+				/>
+			</form>
 		</div>
 	</div>
+	<nav>
+
+	</nav>
+<script type="text/javascript" src="js/index.js"></script>
 </body>
 
 </html>
