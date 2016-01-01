@@ -5,6 +5,7 @@ function isEmail(email) {
   var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
   return regex.test(email);
 }
+
 function isPhone(phone) {
   var regex = /^([0-9 .()-]{10,25})/;
   return regex.test(phone);
@@ -29,6 +30,7 @@ function emailEvent(){
       validEmail = false;
     }
 }
+
 function phoneEvent(){
     if(isPhone($(this).val())) {
       $(this).next().hide();
@@ -51,10 +53,8 @@ function checksubmit(){
     }
 }
 
-
 enableSubmit();
 disableSubmit();
 
-$("#email").keyup(emailEvent).change(checksubmit);
-
-$("#phone").keyup(phoneEvent).change(checksubmit);
+$("#email").keyup(emailEvent).keyup(checksubmit);
+$("#phone").keyup(phoneEvent).keyup(checksubmit);
