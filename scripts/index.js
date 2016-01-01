@@ -55,6 +55,6 @@ function checksubmit(){
 enableSubmit();
 disableSubmit();
 
-$("#email").keyup(emailEvent).keyup(checksubmit);
+$("#email").keyup(emailEvent).change(checksubmit);
 
-$("#phone").keyup(phoneEvent).keyup(checksubmit);
+$("#phone").keyup(phoneEvent).change(checksubmit);
