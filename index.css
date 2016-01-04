@@ -3,43 +3,36 @@ body {
 }
 h1 {
 	color: #E31F24;
-	font-family: "Open Sans", Helvetica, Arial;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-variant: bold;
-	font-weight: 700;
-	letter-spacing: -40px;
-<<<<<<< HEAD
-=======
+	letter-spacing: -.125em;
 	font-weight: bold;
->>>>>>> b5fa643c0e085d3dc0ede58f8bede69fcb26db21
 	font-size: 18em;
 	word-wrap: break-word;
 	margin: 0 auto;
-	margin-left: -50px;
-	margin-top: 0px;
-	margin-bottom: 0px;
+	margin-left: -.15em;
+	margin-top: 0;
+	margin-bottom: 0;
 	line-height: 75%;
 	padding: 25px;
+	text-align: center;
+
 }
 h2 {
 	color: #E31F24;
-	font-family: "Open Sans", Helvetica, Arial;
-<<<<<<< HEAD
-	font-variant: bold;
-	font-weight: 700;
-=======
-	font-variant: 700;
->>>>>>> b5fa643c0e085d3dc0ede58f8bede69fcb26db21
-	letter-spacing: -6px;
-	font-size: 50px;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	letter-spacing: -.12em;
+	font-size: 3em;
 	margin: 0 auto;
-	padding: 0px;
-	margin-top: 0px;
-	margin-bottom: 20px;
+	padding: 0;
+	margin-top: 0;
+	margin-bottom: .5em;
+	text-align: center;
+
 }
 p {
 	color: DDD;
-	font-family: "Open Sans", Helvetica, Arial;
-	font-variant: 700;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	margin: 0 auto;
 }
 .button-primary {
@@ -82,21 +75,20 @@ p {
     text-transform: uppercase;
     display: inline-block;
     line-height: 2em;
-    
 }
 .notifier {
-	border-radius: 5px;
+	border-radius: .5em;
 	display: block;
-	font-family: "Helvetica", Arial;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-variant: bold;
-	font-size: 1.3em;
+	font-size: 1.5em;
 	text-align: center;
 	position: relative;
 	background: #E31F24;
 	left: 0%;
 	top: 0;
 	width: 80%;
-	padding: 7px 10px;
+	padding: .5em .7em;
 	margin: 0;
 	color: #fff;
 	display: inline-block;
@@ -107,11 +99,7 @@ p {
 	padding: 2em;
 	width: 75%%;
 	max-width: 50em;
-<<<<<<< HEAD
-	margin: 1em auto;
-=======
 	margin: .75em auto;
->>>>>>> b5fa643c0e085d3dc0ede58f8bede69fcb26db21
 	text-align: center;
 }
 .image {
@@ -147,7 +135,7 @@ p {
 	opacity: 30%;
 }
 .menu {
-	font-family: "Helvetica Neue", Helvetica, Arial;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-variant: bold;
 	margin: 0 auto;
 	text-align: center;
