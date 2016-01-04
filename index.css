@@ -4,10 +4,11 @@ body {
 h1 {
 	color: #E31F24;
 	font-family: "Open Sans", Helvetica, Arial;
-	font-variant: 700;
+	font-variant: 700, bold;
 	letter-spacing: -40px;
 	font-weight: bold;
-	font-size: 300px;
+	font-size: 18em;
+	word-wrap: break-word;
 	margin: 0 auto;
 	margin-left: -50px;
 	margin-top: 0px;
@@ -92,19 +93,19 @@ p {
 	display: inline-block;
 }
 .content {
-    border-radius: 25px;
+    border-radius: 1.5em;
 	background-color: rgba(255,255,255,.05);
-	padding: 30px;
-	width: 75%;
-	min-width: 600px;
-	margin: 50px auto;
+	padding: 2em;
+	width: 75%%;
+	max-width: 50em;
+	margin: 1em auto;
 	text-align: center;
 }
 .image {
     border-radius: 10px;
 	background-color: rgba(255,255,255,.05);
 	padding: 25px;
-	width: 400px;
+	width: 80%;
 	margin: 50px auto;
 	text-align: center;
 	margin-bottom: 15px;
