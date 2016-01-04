@@ -7,7 +7,7 @@ function isEmail(email) {
 }
 
 function isPhone(phone) {
-  var regex = /^([0-9 .()-]{10,25})/;
+  var regex = /^([0-9 .()-+]{10,25})/;
   return regex.test(phone);
 }
 
