@@ -3,10 +3,11 @@ body {
 }
 h1 {
 	color: #E31F24;
-	font-family: "Open Sans", Helvetica, Arial;
+	font-family: "Helvetica Neue", Helvetica, Arial;
+	font-variant: bold;
 	letter-spacing: -40px;
-	font-weight: 700;
-	font-size: 20em;
+	font-weight: bold;
+	font-size: 300px;
 	margin: 0 auto;
 	margin-left: -50px;
 	margin-top: 0px;
@@ -91,12 +92,12 @@ p {
 	display: inline-block;
 }
 .content {
-    border-radius: 1em;
+    border-radius: 25px;
 	background-color: rgba(255,255,255,.05);
-	padding: 2em;
+	padding: 30px;
 	width: 75%;
-	min-width: 320px;
-	margin: 2em auto;
+	min-width: 600px;
+	margin: 50px auto;
 	text-align: center;
 }
 .image {
