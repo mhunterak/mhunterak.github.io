@@ -1,86 +1,45 @@
-<!--
-Looking for work?
-Email: HuntvonK@gmail 
-subject: It Must Be Easter...
--->
-
+<!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<link rel="stylesheet" href="index.css">
-    <link rel="shortcut icon" href="favicon.ico">
-    <title>HvK</title>
+	<title>Maxwell Hunter</title>
 </head>
 <body>
-	<div class="content">
-		<h1>
-			H<wbr><span title="Hunter vonKrenner" style='font-size:0.85em;'>v</span>K
-		</h1>
-		
-		<div>
-		<h2>Social Media </h2>
-		<h2>&#0020 &#8226 &#0020</h2>
-		<h2>Web Dev </h2>
-		<h2>&#0020 &#8226 &#0020</h2>
-		<h2> Design</h2></div>
-		
-		<div class="image">
-			<h2>Contact Us<br></h2>
-			<div>
-			<form action="https://submit.jotformpro.com/submit/60068939049970/" method="post">
-				<input 
-					class="input" 
-					id="input_1" 
-					name="q1_email"
-					type="text" 
-					placeholder="Email" 
-					autocomplete="off"
-				/>
-				<span class="notifier">Invalid Email Address
-				</span>
-					<script type="text/javascript" charset="utf-8">
-					$("form span").hide();
-					</script>
-
-				<input 
-					class="input" 
-					id="input_2" 
-					name="q2_phone"
-					type="text" 
-					placeholder="Phone"
-					autocomplete="off"
-				/>
-				<span class="notifier">Invalid Phone Number<br>Only numbers and the following symbols<br>are allowed: . ( ) - +
-				</span>
-					<script type="text/javascript" charset="utf-8">
-					$("form span").hide();
-					</script>
-
-				<textarea 
-					class="input" 
-					id="input_3" 
-					name="q3_input"
-					placeholder="Please tell us more about your project" rows="5" 
-				></textarea>
-			    <input 
-			    	type=submit
-			    	class="button-primary" 
-			    	value="Send"
-				/>
-			</form>
-		</div>
-			<h2>Email us at: <br/> HuntvonK [at] gmail.com</h2>
-		</div>
-<!--
-	<nav class="menu">
-	
-		<a class="button-primary" href="design.html">Social Media</a>
-		<a class="button-primary" href="design.html">Web Dev</a>
-		<a class="button-primary" href="design.html">Design</a>
-		</ul>
-	</nav>
--->
+	<div style="
+			text-align: center; 
+			font-family: sans-serif;"
+		id="body">
+		<h1 id="headline">Maxwell Hunter</h1>
+		<h3 >Maxwell Hunter At Gmail Dot Com</h3>
+		<p>set color by name:
+			<br/>
+			<input type="text" 
+				name="input" 
+				id="input" 
+				onkeyup="reload()"
+				value="pink">
+			<br/>
+			<button 
+				id="red" 
+				onclick="setColor('red')"
+				>red</button>
+			<button 
+				id="green" 
+				onclick="setColor('green')"
+				>green</button>
+			<button 
+				id="blue" 
+				onclick="setColor('blue')"
+				>blue</button>
+			<button 
+				id="black" 
+				onclick="setColor('black')"
+				>black</button>
+			<button 
+				id="white" 
+				onclick="setColor('white')"
+				>white</button>
+		</p>
 	</div>
-<script type="text/javascript" src="scripts/index.js"></script>
+	<script type="text/javascript" src="app.js"></script>
 </body>
 </html>
