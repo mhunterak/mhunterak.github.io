@@ -16,7 +16,8 @@ function reload() {
 		document.getElementById("body").style.color="white";
 	}
 	counter+=1;
-	display.textContent="You've tried "+counter+" colors so far."
+	display.textContent="You've tried "+counter+" colors so far.";
+	headline.textContent="Maxwell Hunter's favorite color is "+inputValue;
 }
 
 function setColor(color) {
