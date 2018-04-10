@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Maxwell Hunter</title>
+	<meta name="description" content="Resume website for Maxwell Hunter">
 </head>
 <body>
 	<div style="
@@ -10,13 +11,15 @@
 		id="body">
 		<h1 id="headline">Maxwell Hunter</h1>
 		<h3 >Maxwell Hunter At Gmail Dot Com</h3>
+		<h5 id="counter">{{ counter message here}}}</h5>
 		<p>set color by name:
 			<br/>
 			<input type="text" 
 				name="input" 
 				id="input" 
 				onkeyup="reload()"
-				value="pink">
+				value="pink"
+				style="text-align: center; ">
 			<br/>
 			<button 
 				id="red" 
@@ -30,6 +33,7 @@
 				id="blue" 
 				onclick="setColor('blue')"
 				>blue</button>
+			<br>
 			<button 
 				id="black" 
 				onclick="setColor('black')"

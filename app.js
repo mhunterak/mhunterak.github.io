@@ -1,6 +1,9 @@
+const display = document.getElementById("counter");
 const headline = document.getElementById("headline");
 const textBox = document.getElementById("input");
-let inputValue= document.getElementById("input").value;
+let inputValue = document.getElementById("input").value;
+let counter = 0;
+
 
 function reload() {
 	let body = document.getElementById("body");
@@ -11,8 +14,9 @@ function reload() {
 		document.getElementById("body").style.color="black";
 	} else {
 		document.getElementById("body").style.color="white";
-
 	}
+	counter+=1;
+	display.textContent="You've tried "+counter+" colors so far."
 }
 
 function setColor(color) {
@@ -21,3 +25,4 @@ function setColor(color) {
 }
 
 textBox.addEventListener("click",reload());
+display.textContent="You've tried 1 color so far."
