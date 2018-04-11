@@ -1,8 +1,10 @@
 const display = document.getElementById("counter");
 const headline = document.getElementById("headline");
 const textBox = document.getElementById("input");
+const list = document.getElementById("list");
 let inputValue = document.getElementById("input").value;
 let counter = 0;
+let colorList = "";
 
 
 function reload() {
@@ -16,6 +18,8 @@ function reload() {
 		document.getElementById("body").style.color="white";
 	}
 	counter+=1;
+	colorList=colorList+counter+". "+inputValue+"<br/>";
+	list.innerHTML=colorList;
 	display.textContent="You've tried "+counter+" colors so far.";
 	headline.textContent="Maxwell Hunter's favorite color is "+inputValue;
 }
