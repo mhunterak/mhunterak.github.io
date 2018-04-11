@@ -3,11 +3,10 @@
 <head>
 	<title>Maxwell Hunter</title>
 	<meta name="description" content="Resume website for Maxwell Hunter">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-	<div style="
-			text-align: center; 
-			font-family: sans-serif;"
+	<div style=""
 		id="body">
 		<h1 id="headline">Maxwell Hunter's favorite color is: </h1>
 		<h3 >Maxwell Hunter At Gmail Dot Com</h3>
@@ -17,30 +16,45 @@
 			<input type="text" 
 				name="input" 
 				id="input" 
-				onkeyup="reload()"
+				onchange="reload()"
 				value="pink"
 				style="text-align: center; ">
 			<br/>
 			<button 
-				id="red" 
+				id="red"
 				onclick="setColor('red')"
+				style="
+					background-color: red;
+					color: white;" 
 				>red</button>
 			<button 
 				id="green" 
 				onclick="setColor('green')"
+				style="
+					background-color: green;
+					color: white;" 
 				>green</button>
 			<button 
 				id="blue" 
 				onclick="setColor('blue')"
+				style="
+					background-color: blue;
+					color: white;" 
 				>blue</button>
 			<br>
 			<button 
 				id="black" 
 				onclick="setColor('black')"
+				style="
+					background-color: black;
+					color: white;" 
 				>black</button>
 			<button 
 				id="white" 
 				onclick="setColor('white')"
+				style="
+					background-color: white;
+					color: black" 
 				>white</button>
 		</p>
 		<p id="list"></p>

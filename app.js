@@ -29,5 +29,5 @@ function setColor(color) {
 	reload();
 }
 
-textBox.addEventListener("click",reload());
+textBox.addEventListener("submit",reload());
 display.textContent="You've tried 1 color so far."
