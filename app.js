@@ -3,15 +3,6 @@ const portfolioButton = document.getElementById("portfolio");
 const resumeButton = document.getElementById("resume");
 const linkedinButton = document.getElementById("linkedin");
 
-const display = document.getElementById("counter");
-const headline = document.getElementById("headline");
-const inline = document.getElementById("inline");
-const textBox = document.getElementById("input");
-const list = document.getElementById("list");
-let inputValue = document.getElementById("input").value;
-let counter = 0;
-let colorList = "";
-
 githubButton.addEventListener("click", () => {
 	window.open("https://github.com/mhunterak");
 })
@@ -24,6 +15,15 @@ resumeButton.addEventListener("click", () => {
 linkedinButton.addEventListener("click", () => {
 	window.open("https://www.linkedin.com/in/maxwell-hunter-6a479213/");
 })
+
+const display = document.getElementById("counter");
+const headline = document.getElementById("headline");
+const inline = document.getElementById("inline");
+const textBox = document.getElementById("input");
+const list = document.getElementById("list");
+let inputValue = document.getElementById("input").value;
+let counter = 0;
+let colorList = "";
 
 function reload(newList) {
 	let body = document.getElementById("body");
@@ -41,12 +41,13 @@ function reload(newList) {
 		invert = true;
 		document.getElementById("body").style.color="white";
 	}
-	counter+=1;
 
-	if (newList) {
+	if (newList==true) {
+		counter+=1;
 
 		// add the new color to a list item
 		let newListItem=document.createElement("li")
+		newListItem.id=inputValue;
 		newListItem.textContent=inputValue;
 
 		// add a show button to the list item, to show that color again
@@ -57,10 +58,6 @@ function reload(newList) {
 			showButton.style.color="white";
 		}
 		newListItem.appendChild(showButton);
-		showButton.addEventListener("click", () => {
-			textBox.value=inputValue;
-			reload();
-		});
 
 		// add a delete button to the list item
 		let delButton=document.createElement("button");
@@ -70,10 +67,6 @@ function reload(newList) {
 			delButton.style.color="white";
 		}
 		newListItem.appendChild(delButton);
-		delButton.addEventListener("click", () => {
-			list.removeChild(newListItem);
-		});
-
 
 		list.appendChild(newListItem);
 	}
@@ -81,10 +74,19 @@ function reload(newList) {
 	headline.textContent="Maxwell Hunter's favorite color is "+inputValue;
 }
 
-function setColor(color) {
-	textBox.value=color;
-	reload(false);
-}
+// handle click events on the parent node, with event bubbling
+list.addEventListener("click", (e) => {
+	if (e.target.tagName === 'BUTTON') {
+		if (e.target.textContent === 'delete') {
+		let child=e.target.parentNode;
+		list.removeChild(child);
+		}
+	else if (e.target.textContent === 'show') {
+			textBox.value=e.target.parentNode.id;
+			reload(false);
+		}
+	}
+});
 
 textBox.addEventListener("submit",reload(true));
 display.textContent="You've tried 1 color so far."
