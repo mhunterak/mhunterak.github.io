@@ -6,19 +6,32 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+	<nav>
+			<button id="github">
+				Github
+			</button>
+			<button id="portfolio">
+				Portfolio
+			</button>
+			<button id="resume">
+				Resume
+			</button>
+			<button id="linkedin">
+				linkedin
+			</button>
+	</nav>
 	<div style=""
 		id="body">
 		<div class="inline" 
 			id="inline">
 			<h1 id="headline">Maxwell Hunter's favorite color is: </h1>
-			<h3 >Maxwell Hunter At Gmail Dot Com</h3>
 			<h5 id="counter">{{ counter message here}}}</h5>
 			<p>set color by name and press enter:
 				<br/>
 				<input type="text" 
 					name="input" 
 					id="input" 
-					onchange="reload()"
+					onchange="reload(true)"
 					value="pink"
 					style="text-align: center; ">
 			</p>
