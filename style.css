@@ -1,15 +1,29 @@
 body {
 	width: 100%;
-	padding: 1em;
 	text-align: center; 
 	font-family: sans-serif;
 }
+p {
+	text-align: center;
+}
 button {
-	padding: 2em;
-	margin: 1em;
+	padding: .5rem;
+	margin: .5rem;
+	margin-left: 2rem;
 	background-color: white;
-	font-size: 1em;
+	font-size: .5rem;
 	text-transform: uppercase;
-	border-radius: 1em;
+	border-radius: .5em;
 	border-width: 0px;
+}
+ol {
+	list-style-position: inside;
+	padding: 0;
+}
+.inline {
+	border-radius: 3px;
+	height: 100%; 
+	margin: 1em auto;
+	padding: 1em;
+	width: 80%;
 }

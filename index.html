@@ -8,59 +8,25 @@
 <body>
 	<div style=""
 		id="body">
-		<h1 id="headline">Maxwell Hunter's favorite color is: </h1>
-		<h3 >Maxwell Hunter At Gmail Dot Com</h3>
-		<h5 id="counter">{{ counter message here}}}</h5>
-		<p>set color by name:
-			<br/>
-			<input type="text" 
-				name="input" 
-				id="input" 
-				onchange="reload()"
-				value="pink"
-				style="text-align: center; ">
-			<br/>
-			<button 
-				id="red"
-				onclick="setColor('red')"
-				style="
-					background-color: red;
-					color: white;" 
-				>red</button>
-			<button 
-				id="green" 
-				onclick="setColor('green')"
-				style="
-					background-color: green;
-					color: white;" 
-				>green</button>
-			<button 
-				id="blue" 
-				onclick="setColor('blue')"
-				style="
-					background-color: blue;
-					color: white;" 
-				>blue</button>
-			<br>
-			<button 
-				id="black" 
-				onclick="setColor('black')"
-				style="
-					background-color: black;
-					color: white;" 
-				>black</button>
-			<button 
-				id="white" 
-				onclick="setColor('white')"
-				style="
-					background-color: white;
-					color: black" 
-				>white</button>
-		</p>
-		<p id="list"></p>
-		<p>
-			©2018 Maxwell Hunter
-		</p>
+		<div class="inline" 
+			id="inline">
+			<h1 id="headline">Maxwell Hunter's favorite color is: </h1>
+			<h3 >Maxwell Hunter At Gmail Dot Com</h3>
+			<h5 id="counter">{{ counter message here}}}</h5>
+			<p>set color by name and press enter:
+				<br/>
+				<input type="text" 
+					name="input" 
+					id="input" 
+					onchange="reload()"
+					value="pink"
+					style="text-align: center; ">
+			</p>
+			<ol id="list"></ol>
+			<p>
+				©2018 Maxwell Hunter
+			</p>
+		</div>
 	</div>
 	<script type="text/javascript" src="app.js"></script>
 </body>
