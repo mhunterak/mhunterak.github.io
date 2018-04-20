@@ -2,6 +2,7 @@ const githubButton = document.getElementById("github");
 const portfolioButton = document.getElementById("portfolio");
 const resumeButton = document.getElementById("resume");
 const linkedinButton = document.getElementById("linkedin");
+const treehouseButton = document.getElementById("treehouse");
 
 githubButton.addEventListener("click", () => {
 	window.open("https://github.com/mhunterak");
@@ -14,6 +15,9 @@ resumeButton.addEventListener("click", () => {
 })
 linkedinButton.addEventListener("click", () => {
 	window.open("https://www.linkedin.com/in/maxwell-hunter-6a479213/");
+})
+treehouseButton.addEventListener("click", () => {
+	window.open("https://teamtreehouse.com/maxwellhunter");
 })
 
 const display = document.getElementById("counter");
