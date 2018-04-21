@@ -71,6 +71,20 @@ list.addEventListener("click", (e) => {
 	}
 });
 
+// used to set a listener to change the color on mouseover
+function addButtonListeners(buttonObject, color, link) {
+	buttonObject.addEventListener("mouseover",()=>{
+		if (textBox.value!=color) {
+			textBox.value=color;
+			reload(true);
+		}
+	buttonObject.addEventListener("click", () => {
+		window.open(link);
+	})
+
+	})
+}
+
 textBox.addEventListener("submit",reload(true));
 display.textContent="You've tried 1 color so far."
 
@@ -80,43 +94,8 @@ const resumeButton = document.getElementById("resume");
 const linkedinButton = document.getElementById("linkedin");
 const treehouseButton = document.getElementById("treehouse");
 
-githubButton.addEventListener("click", () => {
-	window.open("https://github.com/mhunterak");
-})
-portfolioButton.addEventListener("click", () => {
-	window.open("http://maxwellhunter.wixsite.com/artwork");
-})
-resumeButton.addEventListener("click", () => {
-	window.open("https://docs.google.com/document/d/1AsHtX5zzXXFOWQEDvrKbwWHJ4jy0dN_KdqdwQcIEqIE/edit#heading=h.5rf9wr4r3no2");
-})
-linkedinButton.addEventListener("click", () => {
-	window.open("https://www.linkedin.com/in/maxwell-hunter-6a479213/");
-})
-treehouseButton.addEventListener("click", () => {
-	window.open("https://teamtreehouse.com/maxwellhunter");
-})
-githubButton.addEventListener("mouseover", () => {
-	console.log("mouseover githubButton");
-	textBox.value="red";
-	reload(true);
-})
-portfolioButton.addEventListener("mouseover", () => {
-	console.log("mouseover githubButton");
-	textBox.value="yellow";
-	reload(true);
-})
-resumeButton.addEventListener("mouseover", () => {
-	console.log("mouseover githubButton");
-	textBox.value="green";
-	reload(true);
-})
-linkedinButton.addEventListener("mouseover", () => {
-	console.log("mouseover githubButton");
-	textBox.value="blue";
-	reload(true);
-})
-treehouseButton.addEventListener("mouseover", () => {
-	console.log("mouseover githubButton");
-	textBox.value="purple";
-	reload(true);
-})
+addButtonListeners(githubButton, "red", "https://github.com/mhunterak");
+addButtonListeners(portfolioButton, "yellow", "http://maxwellhunter.wixsite.com/artwork");
+addButtonListeners(resumeButton, "green", "https://docs.google.com/document/d/1AsHtX5zzXXFOWQEDvrKbwWHJ4jy0dN_KdqdwQcIEqIE/edit#heading=h.5rf9wr4r3no2");
+addButtonListeners(linkedinButton, "blue", "https://www.linkedin.com/in/maxwell-hunter-6a479213/");
+addButtonListeners(treehouseButton, "purple", "https://teamtreehouse.com/maxwellhunter");
