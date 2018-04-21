@@ -1,25 +1,3 @@
-const githubButton = document.getElementById("github");
-const portfolioButton = document.getElementById("portfolio");
-const resumeButton = document.getElementById("resume");
-const linkedinButton = document.getElementById("linkedin");
-const treehouseButton = document.getElementById("treehouse");
-
-githubButton.addEventListener("click", () => {
-	window.open("https://github.com/mhunterak");
-})
-portfolioButton.addEventListener("click", () => {
-	window.open("http://maxwellhunter.wixsite.com/artwork");
-})
-resumeButton.addEventListener("click", () => {
-	window.open("https://docs.google.com/document/d/1AsHtX5zzXXFOWQEDvrKbwWHJ4jy0dN_KdqdwQcIEqIE/edit#heading=h.5rf9wr4r3no2");
-})
-linkedinButton.addEventListener("click", () => {
-	window.open("https://www.linkedin.com/in/maxwell-hunter-6a479213/");
-})
-treehouseButton.addEventListener("click", () => {
-	window.open("https://teamtreehouse.com/maxwellhunter");
-})
-
 const display = document.getElementById("counter");
 const headline = document.getElementById("headline");
 const inline = document.getElementById("inline");
@@ -31,12 +9,13 @@ let colorList = "";
 
 function reload(newList) {
 	let body = document.getElementById("body");
-	let inputValue = document.getElementById("input").value;
+	let inputValue = textBox.value;
 	let invert = false;
 	headline.style.color="dark"+inputValue;
 	inline.style.backgroundColor="light"+inputValue;
 	document.bgColor=inputValue;
 	if (inputValue=="white"
+		||inputValue=="red"
 		||inputValue=="yellow"
 		||inputValue=="pink") {
 		invert = false;
@@ -94,3 +73,50 @@ list.addEventListener("click", (e) => {
 
 textBox.addEventListener("submit",reload(true));
 display.textContent="You've tried 1 color so far."
+
+const githubButton = document.getElementById("github");
+const portfolioButton = document.getElementById("portfolio");
+const resumeButton = document.getElementById("resume");
+const linkedinButton = document.getElementById("linkedin");
+const treehouseButton = document.getElementById("treehouse");
+
+githubButton.addEventListener("click", () => {
+	window.open("https://github.com/mhunterak");
+})
+portfolioButton.addEventListener("click", () => {
+	window.open("http://maxwellhunter.wixsite.com/artwork");
+})
+resumeButton.addEventListener("click", () => {
+	window.open("https://docs.google.com/document/d/1AsHtX5zzXXFOWQEDvrKbwWHJ4jy0dN_KdqdwQcIEqIE/edit#heading=h.5rf9wr4r3no2");
+})
+linkedinButton.addEventListener("click", () => {
+	window.open("https://www.linkedin.com/in/maxwell-hunter-6a479213/");
+})
+treehouseButton.addEventListener("click", () => {
+	window.open("https://teamtreehouse.com/maxwellhunter");
+})
+githubButton.addEventListener("mouseover", () => {
+	console.log("mouseover githubButton");
+	textBox.value="red";
+	reload(true);
+})
+portfolioButton.addEventListener("mouseover", () => {
+	console.log("mouseover githubButton");
+	textBox.value="yellow";
+	reload(true);
+})
+resumeButton.addEventListener("mouseover", () => {
+	console.log("mouseover githubButton");
+	textBox.value="green";
+	reload(true);
+})
+linkedinButton.addEventListener("mouseover", () => {
+	console.log("mouseover githubButton");
+	textBox.value="blue";
+	reload(true);
+})
+treehouseButton.addEventListener("mouseover", () => {
+	console.log("mouseover githubButton");
+	textBox.value="purple";
+	reload(true);
+})

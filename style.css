@@ -14,15 +14,17 @@ button {
 	padding: .5rem;
 	margin: .5rem;
 	background-color: white;
-	
 	font-size: .5rem;
 	text-transform: uppercase;
 	border-radius: .5em;
-	border-width: 0px;
+	border-width: 3px;
+	border-color: #FFF0;
 }
 button:hover {
 	color: white;
-	background-color: blue;
+	background-color: #558;
+	border-color: #FFF;
+
 }
 ol {
 	list-style-position: inside;
