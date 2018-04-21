@@ -2,18 +2,27 @@ body {
 	width: 100%;
 	text-align: center; 
 	font-family: sans-serif;
+	font-family: 'Jua', sans-serif;
 }
 p {
 	text-align: center;
+
+}
+h1 {
 }
 button {
 	padding: .5rem;
 	margin: .5rem;
 	background-color: white;
+	
 	font-size: .5rem;
 	text-transform: uppercase;
 	border-radius: .5em;
 	border-width: 0px;
+}
+button:hover {
+	color: white;
+	background-color: blue;
 }
 ol {
 	list-style-position: inside;
