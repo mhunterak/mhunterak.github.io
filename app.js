@@ -77,13 +77,12 @@ function addButtonListeners(buttonObject, color, link) {
 		if (textBox.value!=color) {
 			textBox.value=color;
 			reload(true);
-		}
+			}
+		})
 	buttonObject.addEventListener("click", () => {
 		window.open(link);
-	})
-
-	})
-}
+		})
+	}
 
 textBox.addEventListener("submit",reload(true));
 display.textContent="You've tried 1 color so far."
