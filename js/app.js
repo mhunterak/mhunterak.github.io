@@ -92,9 +92,11 @@ const portfolioButton = document.getElementById("portfolio");
 const resumeButton = document.getElementById("resume");
 const linkedinButton = document.getElementById("linkedin");
 const treehouseButton = document.getElementById("treehouse");
+const calcButton = document.getElementById("calculator");
 
 addButtonListeners(githubButton, "red", "https://github.com/mhunterak");
 addButtonListeners(portfolioButton, "yellow", "http://maxwellhunter.wixsite.com/artwork");
 addButtonListeners(resumeButton, "green", "https://docs.google.com/document/d/1AsHtX5zzXXFOWQEDvrKbwWHJ4jy0dN_KdqdwQcIEqIE/edit#heading=h.5rf9wr4r3no2");
 addButtonListeners(linkedinButton, "blue", "https://www.linkedin.com/in/maxwell-hunter-6a479213/");
 addButtonListeners(treehouseButton, "purple", "https://teamtreehouse.com/maxwellhunter");
+addButtonListeners(calcButton, "black", "calc.html");
