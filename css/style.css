@@ -1,3 +1,6 @@
+
+
+
 body {
 	width: 100%;
 	text-align: center; 
@@ -36,4 +39,23 @@ ol {
 	margin: 1em auto;
 	padding: 1em;
 	width: 80%;
+}
+
+/* game of life */
+.living {
+	background-color: darkgrey;
+}
+.dying {
+	background-color: lightgrey;
+}
+.alive {
+	background-color: black;
+}
+
+.dead {
+	background-color: white;
+}
+
+.golButtons {
+	border-color: #0f0; border-width: 3px;
 }
