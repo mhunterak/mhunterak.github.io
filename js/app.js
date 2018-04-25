@@ -93,6 +93,7 @@ const resumeButton = document.getElementById("resume");
 const linkedinButton = document.getElementById("linkedin");
 const treehouseButton = document.getElementById("treehouse");
 const calcButton = document.getElementById("calculator");
+const cgolButton = document.getElementById("cgol");
 
 addButtonListeners(githubButton, "red", "https://github.com/mhunterak");
 addButtonListeners(portfolioButton, "yellow", "http://maxwellhunter.wixsite.com/artwork");
@@ -100,3 +101,4 @@ addButtonListeners(resumeButton, "green", "https://docs.google.com/document/d/1A
 addButtonListeners(linkedinButton, "blue", "https://www.linkedin.com/in/maxwell-hunter-6a479213/");
 addButtonListeners(treehouseButton, "purple", "https://teamtreehouse.com/maxwellhunter");
 addButtonListeners(calcButton, "black", "calc.html");
+addButtonListeners(cgolButton, "white", "cgol.html");
