@@ -1,5 +1,3 @@
-screen.lockOrientation('landscape');
-
 const gameWidth = 25;
 const gameHeight = 25;
 const gameboard = document.getElementById("gameboard");
