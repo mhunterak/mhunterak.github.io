@@ -2,7 +2,9 @@
 
 
 body {
+	height: 100%;
 	width: 100%;
+	margin: 0;
 	text-align: center; 
 	font-family: sans-serif;
 	font-family: 'Jua', sans-serif;
@@ -33,6 +35,11 @@ ol {
 	list-style-position: inside;
 	padding: 0;
 }
+
+.container {
+	width: 100%;
+}
+
 .inline {
 	border-radius: 3px;
 	height: 100%; 
@@ -51,11 +58,37 @@ ol {
 .alive {
 	background-color: black;
 }
-
 .dead {
 	background-color: white;
 }
-
 .golButtons {
 	border-color: #0f0; border-width: 3px;
+}
+
+/* survivor */
+#gameboard {
+	border: 1px solid black;
+	margin:  1%;
+	padding: 2.5%;
+
+}
+#menu {
+	border: 1px solid black;
+	margin:  1%;
+	padding: 2.5%;
+	vertical-align: top;
+}
+
+
+.food {
+	background-color: green;
+}
+.monster {
+	background-color: red;
+}
+.rock {
+	background-color: tan;
+}
+.trail {
+	background-color: yellow;
 }
