@@ -24,17 +24,22 @@ function reload(newList) {
 	let inputValue = textBox.value;
 	let invert = false;
 	headline.style.color="dark"+inputValue;
-	inline.style.backgroundColor="light"+inputValue;
+	inline.style.backgroundImage='linear-gradient(to bottom, light'+inputValue+' 50%, '+inputValue+')';
+
 	body.style.backgroundColor=inputValue;
+	body.style.backgroundImage='linear-gradient(to right, dark'+inputValue+' 10%, '+inputValue+' 50%, dark'+inputValue+' 90%)';
 	if (inputValue=="white"
 		||inputValue=="red"
 		||inputValue=="yellow"
 		||inputValue=="pink") {
 		invert = false;
-		document.getElementById("body").style.color="black";
+		body.style.color="black";
+		body.style.textShadow = "0 0 5px white";
+
 	} else {
 		invert = true;
-		document.getElementById("body").style.color="white";
+		body.style.color="white";
+		body.style.textShadow = "0 0 5px black";
 	}
 
 	if (newList==true) {
@@ -114,3 +119,6 @@ addButtonListeners(linkedinButton, "blue", "https://www.linkedin.com/in/maxwell-
 addButtonListeners(treehouseButton, "purple", "https://teamtreehouse.com/maxwellhunter");
 addButtonListeners(calcButton, "black", "calc.html");
 addButtonListeners(cgolButton, "white", "cgol.html");
+
+reload();
+
