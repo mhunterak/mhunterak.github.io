@@ -1,3 +1,4 @@
+const body = document.getElementById("body");
 const display = document.getElementById("counter");
 const headline = document.getElementById("headline");
 const inline = document.getElementById("inline");
@@ -7,8 +8,16 @@ let inputValue = document.getElementById("input").value;
 let counter = 0;
 let colorList = "";
 
+body.style.transition = "all 2s";
+body.style.webkitTransition = "all 2s;"
+
+inline.style.transition = "all 2s";
+inline.style.webkitTransition = "all 2s;"
+
+headline.style.transition = "all 2s";
+headline.style.webkitTransition = "all 2s;"
+
 function reload(newList) {
-	let body = document.getElementById("body");
 	let inputValue = textBox.value;
 	let invert = false;
 	headline.style.color="dark"+inputValue;
@@ -21,11 +30,21 @@ function reload(newList) {
 		invert = false;
 		body.style.color="black";
 		body.style.textShadow = "0 0 5px white";
+		for (let i=0; i<nav.children.length; i+=1) {
+			if (nav.children[i].tagName === 'BUTTON') {
+				nav.children[i].style.boxShadow = "0 0 5px black";
+			}
+		}
 
 	} else {
 		invert = true;
 		body.style.color="white";
 		body.style.textShadow = "0 0 5px black";
+		for (let i=0; i<nav.children.length; i+=1) {
+			if (nav.children[i].tagName === 'BUTTON') {
+				nav.children[i].style.boxShadow = "";
+			}
+		}
 	}
 
 	if (newList==true) {

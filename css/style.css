@@ -11,10 +11,11 @@ body {
 }
 p {
 	text-align: center;
-
 }
+
 h1 {
 }
+
 button {
 	padding: .5rem;
 	margin: .5rem;
@@ -25,15 +26,22 @@ button {
 	border-width: 3px;
 	border-color: #FFF0;
 }
+
 button:hover {
 	color: white;
 	background-color: #558;
 	border-color: #FFF;
 
 }
+
 ol {
 	list-style-position: inside;
 	padding: 0;
+}
+
+li {
+	border: 0px solid black;
+
 }
 
 .container {
@@ -91,4 +99,19 @@ ol {
 }
 .trail {
 	background-color: yellow;
+}
+
+
+/* selectors */
+
+li:first-child {
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+	border-radius: 1em;
+}
+
+li:last-child {
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	border-radius: 1em;
 }
