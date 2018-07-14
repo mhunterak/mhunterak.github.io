@@ -105,13 +105,15 @@ li {
 /* selectors */
 
 li:first-child {
-	border-left: 1px solid black;
 	border-top: 1px solid black;
 	border-radius: 1em;
 }
 
 li:last-child {
-	border-right: 1px solid black;
 	border-bottom: 1px solid black;
 	border-radius: 1em;
+}
+
+li:nth-child(2n+3) {
+	background-color: rgba(0,0,0,0.15);
 }

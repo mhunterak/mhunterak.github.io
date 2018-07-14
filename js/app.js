@@ -8,6 +8,20 @@ let inputValue = document.getElementById("input").value;
 let counter = 0;
 let colorList = "";
 
+const demosButton = document.getElementById("demosButton");
+const demos = document.getElementById("demos");
+demos.hidden = true;
+demosButton.addEventListener("click",()=>{
+	if (demos.hidden) {
+			demosButton.textContent = "DEMOS ▼"
+			demos.hidden = false;
+		} else {
+			demosButton.textContent = "DEMOS ◀"
+			demos.hidden = true;
+		}
+	})
+
+
 body.style.transition = "all 2s";
 body.style.webkitTransition = "all 2s;"
 
@@ -54,6 +68,7 @@ function reload(newList) {
 		let newListItem=document.createElement("li")
 		newListItem.id=inputValue;
 		newListItem.textContent=inputValue;
+		newListItem.opacity=0;
 
 		// add a show button to the list item, to show that color again
 		let showButton=document.createElement("button");
@@ -74,6 +89,7 @@ function reload(newList) {
 		newListItem.appendChild(delButton);
 
 		list.appendChild(newListItem);
+		newListItem.opacity=1;
 	}
 	display.textContent="You've tried "+counter+" colors so far.";
 	headline.textContent="Maxwell Hunter's favorite color is "+inputValue;
