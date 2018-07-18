@@ -13,10 +13,10 @@ const demos = document.getElementById("demos");
 demos.hidden = true;
 demosButton.addEventListener("click",()=>{
 	if (demos.hidden) {
-			demosButton.textContent = "DEMOS ▼"
+			demosButton.textContent = "JAVASCRIPT DEMOS ▼"
 			demos.hidden = false;
 		} else {
-			demosButton.textContent = "DEMOS ◀"
+			demosButton.textContent = "JAVASCRIPT DEMOS ▶"
 			demos.hidden = true;
 		}
 	})
