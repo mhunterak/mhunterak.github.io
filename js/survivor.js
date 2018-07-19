@@ -6,7 +6,7 @@ var viewHeight = 18;
 
 
 // detect small windows, and adjust accordingly
-if(window.innerWidth <= 800 && window.innerHeight <= 600) {
+if(window.innerWidth <= 800 || window.innerHeight <= 600) {
 		viewWidth = 13;
 		viewHeight = 13;
    }
@@ -480,15 +480,12 @@ async function startGame() {
 		let speed = 2000-speedSlider.value;
 		rangeLabel.textContent = "Speed: "+(speedSlider.value/20)+"/100";
 		hunterLabel.textContent = "<< Hunt << "+hunterSlider.value+" >> Forage >>";
-
-		if (hunterSlider.value>hunger||hp) {
+		if (hunterSlider.value>hunger||hunterSlider.value>hp) {
 			chase('food');
 			motivationText.textContent="Motivation: Foraging"
 		} else { 
 			chase('monster');
 			motivationText.textContent="Motivation: Hunting"
-
-
 		}
 		await sleep(speed);
 		generations += 1;
