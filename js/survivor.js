@@ -1,7 +1,16 @@
 const speedSlider = document.createElement('input')
+const hunterSlider = document.createElement('input')
 
-const viewWidth = 25;
-const viewHeight = 25;
+var viewWidth = 18;
+var viewHeight = 18;
+
+
+// detect small windows, and adjust accordingly
+if(window.innerWidth <= 800 && window.innerHeight <= 600) {
+		viewWidth = 13;
+		viewHeight = 13;
+   }
+
 
 let foodRarity = 500;
 let monsterRarity = 500;
@@ -48,11 +57,15 @@ p.appendChild(xpText);
 
 const hpText = document.createElement('p');
 hpText.textContent = "HP: "+hp+"/100";
-
 p.appendChild(hpText);
+
 const hungerText = document.createElement('p');
 hungerText.textContent = "hunger: "+hunger+"/100";
 p.appendChild(hungerText);
+
+const motivationText = document.createElement('p');
+motivationText.textContent = "Motivation: ?";
+p.appendChild(motivationText);
 
 const genText = document.createElement('p');
 genText.textContent = "You've been alive for "+generations+" steps";
@@ -62,17 +75,31 @@ const killText = document.createElement('p');
 killText.textContent = "killed "+kills+" monsters";
 p.appendChild(killText);
 
+const hunterLabel = document.createElement('p');
+hunterLabel.textContent = "<< Hunt << | >> Forage >>";
+p.appendChild(hunterLabel);
+hunterSlider.label='forage or hunt?';
+hunterSlider.type='range';
+hunterSlider.defaultValue='50';
+hunterSlider.max=100;
+hunterSlider.min=0;
+p.appendChild(hunterSlider);
+
+
 const rangeLabel = document.createElement('p');
 rangeLabel.textContent = "Speed:";
 p.appendChild(rangeLabel);
-
 speedSlider.label='speed';
 speedSlider.type='range';
 speedSlider.defaultValue='1500';
 speedSlider.max=2000;
 speedSlider.min=0;
 p.appendChild(speedSlider);
-p.appendChild(startButton);
+
+const buttonDiv = document.createElement('div');
+buttonDiv.appendChild(startButton);
+p.appendChild(buttonDiv);
+
 container.appendChild(p);
 container.appendChild(gameBoard);
 body.appendChild(container);
@@ -82,7 +109,6 @@ const yourLocation = [Math.floor(viewWidth/2), Math.floor(viewHeight/2)];
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -110,7 +136,6 @@ function setTileContent(id) {
 	} else {
 		return ['',0];
 	}
-
 }
 
 function deincrementHunger() {
@@ -290,6 +315,7 @@ function checkNewLocation() {
 		resetTrail();
 		console.log("Monster defeated!")
 	} else if (boardArray[Math.floor(viewWidth/2)][Math.floor(viewHeight/2)] === 2) {
+		xp += 50;
 		hp = 100;
 		hunger = 100;
 		resetTrail();
@@ -452,10 +478,17 @@ async function startGame() {
 			trailReset+=1;
 		}
 		let speed = 2000-speedSlider.value;
-		if (hp>50 && hunger>50) {
-			chase('monster');
-		} else {
+		rangeLabel.textContent = "Speed: "+(speedSlider.value/20)+"/100";
+		hunterLabel.textContent = "<< Hunt << "+hunterSlider.value+" >> Forage >>";
+
+		if (hunterSlider.value>hunger||hp) {
 			chase('food');
+			motivationText.textContent="Motivation: Foraging"
+		} else { 
+			chase('monster');
+			motivationText.textContent="Motivation: Hunting"
+
+
 		}
 		await sleep(speed);
 		generations += 1;
