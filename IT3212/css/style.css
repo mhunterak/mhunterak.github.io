@@ -1,0 +1,112 @@
+/* putting most basic html elements first */
+
+body {
+	background-color: lightyellow;
+	color: #777;
+	font-family: Eczar;
+	padding-top: 3em;
+}
+
+header {
+	background-color: #FFF;
+	color: #777;
+	top: 0;
+	left: 0;
+	display: block;
+	margin: auto;
+	position:fixed;
+	width: 100%;
+}
+
+footer {
+	background-color: #FFF;
+	bottom: 0;
+	left: 0;
+	display: block;
+	margin: auto;
+	position:fixed;
+	padding: 1.5em;
+	width: 100%;
+}
+
+footer p{
+	margin: auto;
+	text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav{
+	display: block;
+	margin: 0.5em auto;
+/*    position: fixed;
+*/
+}
+
+nav li{
+	background-color: #FFF;
+	border-radius: 0.5em;
+    display: inline-block;
+    margin: 0.5em 0.5em 0.5em 0em;
+    padding: 0.5em;
+}
+
+nav li:hover{
+	background-color: yellow;
+	border: 1px solid grey;
+}
+
+nav li:active {
+	background-color: lightyellow;
+	border: 1px solid yellow;
+}
+
+ul {
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+}
+
+li {
+    list-style-type: none;
+
+}
+
+/* text formats go next */
+
+h1 {
+	font-size: 2em;
+	font-weight: bold;
+}
+
+h2 {
+
+}
+
+h3 {
+
+}
+
+h4 {
+
+}
+
+h5 {
+
+}
+
+.container {
+	width: 80%;
+	margin: auto;
+	padding: 0.5em;
+}
+
+#topmenu {
+	display: block;
+	margin: auto;
+	width: 80%;
+}
