@@ -147,6 +147,10 @@ h5 {
 	float: right;
 }
 
+#gallery {
+	border: 1px solid grey;
+}
+
 /* Classes */
 .container {
 	background-color: rgba(255,255,230,0.9);
@@ -154,5 +158,36 @@ h5 {
 	margin: auto;
 	padding: 0.5em 1em 3em;
     overflow: hidden;
+}
 
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+	flex: 25%;
+	max-width: 25%;
+}
+
+.column img {
+	width: 100%;
+	vertical-align: middle;
+}
+
+/* @media max-width adjusts screen to make two columns instead of four */
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+
+  }
+}
+
+/* @media max-width adjusts screen to make one column instead of two  */
+@media screen and (max-width: 500px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
 }
