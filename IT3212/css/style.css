@@ -19,6 +19,18 @@ body {
 	padding: 1em 0 5em 0;
 }
 
+button {
+	background-color: #00674B;
+	border: none;
+	border-radius: 0.25em;
+	color: white;
+	display: inline-block;
+	font-size: 2em;
+	margin: 1em auto;
+	padding: 1em 2em;
+	text-align: center;
+}
+
 header {
 	background-color: #00674B;
 	color: #777;
@@ -53,6 +65,30 @@ a {
     text-decoration: none;
 }
 
+label {
+	font-size: 1.75em;
+	margin: 0.5em auto;
+	padding: 0.25em;
+}
+
+input[type="radio"] {
+	height: 2em;
+}
+
+input[type="text"],
+select,
+textarea {
+	border-radius: 0.25em;
+	font-size: 1em;
+	margin: 1em;
+	padding: 1em;
+	width: 45%;
+}
+
+legend {
+	color: #00674B;
+}
+
 nav {
 	display: block;
 /*	margin: 0.5em auto;
@@ -80,6 +116,7 @@ nav li:active {
 /* Tables */
 	table {
 		border: 1px dotted darkgrey;
+		border-radius: 0.25em;
 		width: 100%;
 	}
 
@@ -147,6 +184,10 @@ h5 {
 	float: right;
 }
 
+#gallery {
+	border: 1px solid grey;
+}
+
 /* Classes */
 .container {
 	background-color: rgba(255,255,230,0.9);
@@ -154,5 +195,36 @@ h5 {
 	margin: auto;
 	padding: 0.5em 1em 3em;
     overflow: hidden;
+}
 
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+	flex: 25%;
+	max-width: 25%;
+}
+
+.column img {
+	width: 100%;
+	vertical-align: middle;
+}
+
+/* @media max-width adjusts screen to make two columns instead of four */
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+
+  }
+}
+
+/* @media max-width adjusts screen to make one column instead of two  */
+@media screen and (max-width: 500px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
 }

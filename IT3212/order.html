@@ -50,28 +50,55 @@ and will feature photos of the food. The header and footer will have links to th
 			Order
 		</h1>
 		<article>
-			<h2>
-				Takeout Menu:
-			</h2>
+			<h2>Order Takeout Now!</h2>
 				<!-- creating multiple row for u3a1 -->
-				<table>
-					<tr> 
-						<td>
-							We can organize items into rows, to keep them organized
-						</td>	
-					</tr>
-					<tr>
-						<td>
-							this is the second row
-						</td>	
-					</tr>
-					<tr>
-						<td>
-							this is the third row
-						</td>	
-					</tr>
-				</table>
-			
+				<form action="response_page.php" method="POST">
+					<table>
+						<tr> 
+							<td>
+								<label for="name">Your Name:</label>
+								<input type="text" id="name" placeholder="John Doe" required>
+							</td>	
+						</tr>
+						<tr>
+							<td>
+								<label for="protien">Protien: </label>
+								<select id="protien" required>
+									<option value="" disabled selected>(choose one)</option>
+									<option value="beef">Beef</option>
+									<option value="chicken">Chicken</option>
+									<option value="tofu">Tofu</option>
+								</select>
+							</td>	
+						</tr>
+						<tr>
+							<td>
+								<fieldset id="spicyness">
+									<legend>How spicy do you like you entree?</legend>
+									<label for="mild">
+										<input type="radio" id="mild" name="spicyness" value="mild" required>
+									 Mild </label>
+									<br/>
+									<label for="medium">
+										<input type="radio" id="medium" name="spicyness" value="medium">
+									 Medium </label>
+									<br/>
+									<label for="spicy"> 
+										<input type="radio" id="spicy" name="spicyness" value="spicy">
+									Spicy </label>
+								</fieldset>	
+							</td>	
+						</tr>
+						<tr> 
+							<td>
+								<label for="notes">Notes to the Chef:</label>
+								<br/>
+								<textarea id="notes" rows="4" placeholder="Thank you so much!"></textarea>
+							</td>	
+						</tr>
+					</table>
+					<button type="submit">Order Now</button>
+				</form>			
 		</article>
 	</section>
 	<footer>
