@@ -19,6 +19,18 @@ body {
 	padding: 1em 0 5em 0;
 }
 
+button {
+	background-color: #00674B;
+	border: none;
+	border-radius: 0.25em;
+	color: white;
+	display: inline-block;
+	font-size: 2em;
+	margin: 1em auto;
+	padding: 1em 2em;
+	text-align: center;
+}
+
 header {
 	background-color: #00674B;
 	color: #777;
@@ -53,6 +65,30 @@ a {
     text-decoration: none;
 }
 
+label {
+	font-size: 1.75em;
+	margin: 0.5em auto;
+	padding: 0.25em;
+}
+
+input[type="radio"] {
+	height: 2em;
+}
+
+input[type="text"],
+select,
+textarea {
+	border-radius: 0.25em;
+	font-size: 1em;
+	margin: 1em;
+	padding: 1em;
+	width: 45%;
+}
+
+legend {
+	color: #00674B;
+}
+
 nav {
 	display: block;
 /*	margin: 0.5em auto;
@@ -80,6 +116,7 @@ nav li:active {
 /* Tables */
 	table {
 		border: 1px dotted darkgrey;
+		border-radius: 0.25em;
 		width: 100%;
 	}
 
