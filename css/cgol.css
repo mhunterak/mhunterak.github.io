@@ -1,0 +1,126 @@
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	text-align: center; 
+	font-family: sans-serif;
+	font-family: 'Jua', sans-serif;
+}
+p {
+	text-align: center;
+}
+
+h1 {
+}
+
+button {
+	padding: .5rem;
+	margin: 0rem;
+	background-color: white;
+	font-size: .5rem;
+	text-transform: uppercase;
+	border-width: 3px solid black;
+}
+
+button:hover {
+	border-color: red;
+
+}
+
+div {
+	margin: 0 auto;
+	margin-top: 0;
+	padding: 0;
+}
+
+ol {
+	list-style-position: inside;
+	padding: 0;
+}
+
+li {
+	border: 0px solid black;
+
+}
+
+.container {
+	width: 100%;
+}
+
+.inline {
+	border-radius: 3px;
+	height: 100%; 
+	margin: 1em auto;
+	padding: 1em;
+	width: 80%;
+}
+
+/* game of life */
+.living {
+	background-color: darkgrey;
+}
+.dying {
+	background-color: lightgrey;
+}
+.alive {
+	background-color: black;
+}
+.dead {
+	background-color: white;
+}
+.golButtons {
+	border-color: #0f0; border-width: 3px;
+}
+
+/* survivor */
+#gameboard {
+	border: 1px solid black;
+	max-width: 800px;
+	min-width: 500px;
+	margin:  1% auto;
+	padding: 2.5%;
+
+}
+#gameboard div{
+	margin: 0;
+	padding: 0;
+	line-height: 0;
+
+}
+#menu {
+	border: 1px solid black;
+	margin:  1%;
+	padding: 2.5%;
+	vertical-align: top;
+}
+
+
+.food {
+	background-color: green;
+}
+.monster {
+	background-color: red;
+}
+.rock {
+	background-color: tan;
+}
+.trail {
+	background-color: yellow;
+}
+
+
+/* selectors */
+
+li:first-child {
+	border-top: 1px solid black;
+	border-radius: 1em;
+}
+
+li:last-child {
+	border-bottom: 1px solid black;
+	border-radius: 1em;
+}
+
+li:nth-child(2n) {
+	background-color: rgba(0,0,0,0.15);
+}

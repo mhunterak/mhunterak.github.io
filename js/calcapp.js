@@ -35,9 +35,7 @@ function doMath(button) {
 			firstNumber=null;
 			secondNumber=null;
 			action="";
-			display.textContent="00.0";
-		} else if (button.id==="decimals to not work") {
-
+			display.textContent="0";
 		} else if (button.id=="=" && secondNumber=== null) {
 			// do nothing
 		} else if (firstNumber===null) {
