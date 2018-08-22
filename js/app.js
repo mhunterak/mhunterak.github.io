@@ -19,6 +19,9 @@ const demosButton = document.getElementById("demosButton");
 const demos = document.getElementById("demos");
 demos.hidden = true;
 
+
+const wait = ms => new Promise((r, j)=>setTimeout(r, ms))
+
 demosButton.addEventListener("mouseover",()=>{
 	if (demos.hidden) {
 			demosButton.textContent = "JAVASCRIPT DEMOS ▼"
@@ -39,4 +42,11 @@ addLinkListener(calcButton, "calc.html");
 addLinkListener(colorsButton, "colors.html");
 addLinkListener(cgolButton, "cgol.html");
 addLinkListener(survivor, "survivor.html");
+
+var highlightDemos = () => demosButton.style.borderColor = 'red';
+var hideHilight = () => demosButton.style.borderColor = 'white';
+var prom = wait(2000);
+
+prom.then(highlightDemos);
+
 
