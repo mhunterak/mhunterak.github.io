@@ -56,9 +56,6 @@ function buildGameBoard() {
 			let newButton=document.createElement('button');
 			let idName = getIdName(j,i);
 			newButton.id=idName;
-			newButton.style.borderColor="#000";
-			newButton.style.backgroundColor="#";
-			newButton.style.margin="0";
 			newButton.className="dead"
 			gdiv.appendChild(newButton);
 		}

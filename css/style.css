@@ -1,27 +1,34 @@
+a {
+	display: inline-block
+}
+
 body {
 	height: 100%;
 	width: 100%;
-	margin: 0;
+	margin: auto;
 	text-align: center; 
-	font-family: sans-serif;
-	font-family: 'Jua', sans-serif;
+	font-family: 'Lato', sans-serif;
+	background-color: lightblue;
 }
 p {
 	text-align: center;
+	padding: 0.25em;
 }
 
 h1 {
+}
+h2 {
 }
 
 button {
 	padding: .5rem;
 	margin: .5rem;
 	background-color: white;
-	font-size: .5rem;
+	font-size: .75rem;
 	text-transform: uppercase;
 	border-radius: .5em;
-	border-width: 3px;
-	border-color: #FFF0;
+	border-width: 2px;
+	border-color: black;
 }
 
 button:hover {
@@ -31,26 +38,73 @@ button:hover {
 
 }
 
-ol {
+img {
+	background-color: white;
+ 	float: left;
+	margin: 0.5em;
+	border: 1em solid grey;
+	border-radius: 50%;
+	padding: 0.5em;
+	max-width: 100%;
+}
+
+
+
+
+ul {
+	border: 1px solid grey;
+	border-radius: 0.25em;
+	display: inline-block;
 	list-style-position: inside;
-	padding: 0;
+	padding: 0.25em;
 }
 
 li {
-	border: 0px solid black;
+	max-width: 100%;
+	padding: 0.25em;
+}
+
+p {
+	padding: 0em 0.5em;
+}
+
+
+
+#container {
+	border-radius: 0.25em;
+	width: 80%;
+	background-color: white;
+	margin: 0.25em auto;
+	padding:  0.25em 0.5em 1em;
+
 
 }
 
-.container {
-	width: 100%;
+.highlight {
+	color: red;
+	font-weight: bold;
 }
-
 .inline {
 	border-radius: 3px;
 	height: 100%; 
-	margin: 1em auto;
-	padding: 1em;
-	width: 80%;
+	margin: 0.25em auto;
+	padding: 0.25em auto;
+	max-width: 100%;
+	width: 100%;
+	overflow: hidden;
+
+}
+
+.twocol {
+	width: 50%
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
 }
 
 /* game of life */
@@ -98,19 +152,25 @@ li {
 	background-color: yellow;
 }
 
+@media (max-width: 600px) {
+	img {
+		float: none;
+	    box-sizing:border-box;
+	    margin: 0 auto;
+	    margin-bottom: 1em;
+		width: 90%;
+	}
+}
+
 
 /* selectors */
 
 li:first-child {
-	border-top: 1px solid black;
-	border-radius: 1em;
 }
 
 li:last-child {
-	border-bottom: 1px solid black;
-	border-radius: 1em;
 }
 
 li:nth-child(2n) {
-	background-color: rgba(0,0,0,0.15);
+	background-color: rgba(0,0,0,0.10);
 }

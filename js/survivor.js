@@ -1,16 +1,17 @@
 const speedSlider = document.createElement('input')
 const hunterSlider = document.createElement('input')
 
-var viewWidth = 18;
-var viewHeight = 18;
+var viewWidth = 27;
+var viewHeight = 27;
 
 
 // detect small windows, and adjust accordingly
+/*
 if(window.innerWidth <= 800 || window.innerHeight <= 600) {
 		viewWidth = 13;
 		viewHeight = 13;
    }
-
+*/
 
 let foodRarity = 500;
 let monsterRarity = 500;
@@ -39,6 +40,7 @@ const p = document.createElement('p');
 p.id = 'menu';
 const startButton = document.createElement('button');
 startButton.textContent = 'START';
+startButton.style.backgroundColor = 'lightgreen';
 container.className = "container";
 
 p.textContent = "| SURVIVOR | ";
@@ -463,9 +465,15 @@ startButton.addEventListener('click', () => {
 		cont=true;
 		startGame();
 		startButton.textContent = 'STOP';
+		startButton.style.backgroundColor = 'red';
+		startButton.style.color = 'white';
+
 	} else {
 		cont=false;
 		startButton.textContent = 'START';
+		startButton.style.backgroundColor = 'lightgreen';
+		startButton.style.color = 'black';
+
 	}});
 
 
