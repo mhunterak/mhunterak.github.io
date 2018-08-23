@@ -75,9 +75,16 @@ p {
 	width: 80%;
 	background-color: white;
 	margin: 0.25em auto;
-	padding:  0.25em 0.5em 1em;
+	padding:  0.25em 1em 1em;
 
 
+}
+
+#demosButton {
+	border-radius: 0.5em;
+	padding: 0.5em;
+	border: 1px solid white;
+	transition: border-color 2s;
 }
 
 .highlight {
