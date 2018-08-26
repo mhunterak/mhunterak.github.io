@@ -1,4 +1,5 @@
 body {
+	background-color: lightblue;
 	height: 100%;
 	width: 100%;
 	margin: 0;
@@ -43,7 +44,8 @@ li {
 }
 
 .container {
-	box-shadow: 7px 7px 5px darkgrey;
+	background-color: lightgrey;
+	box-shadow: 7px 7px 5px black;
 	margin: 1em auto;
 	width: 80%;
 	border: 1px solid black;
