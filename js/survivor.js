@@ -441,20 +441,29 @@ document.onkeydown = checkKey;
 function checkKey(e) {
 
     e = e || window.event;
-
+    let disabled = false;
     if (e.keyCode == '38') {
         moveNorth();
+        disabled=true;
+        // up arrow
     }
     else if (e.keyCode == '40') {
     	moveSouth();
+        disabled=true;
+        // down arrow
     }
     else if (e.keyCode == '37') {
     	moveWest();
-       // left arrow
+        disabled=true;
+        // left arrow
     }
     else if (e.keyCode == '39') {
     	moveEast();
-       // right arrow
+        disabled=true;
+        // right arrow
+    }
+    if (disabled) {
+        e.stopPropagation();
     }
 
 }

@@ -114,51 +114,7 @@ p {
 	float: right;
 }
 
-/* game of life */
-.living {
-	background-color: darkgrey;
-}
-.dying {
-	background-color: lightgrey;
-}
-.alive {
-	background-color: black;
-}
-.dead {
-	background-color: white;
-}
-.golButtons {
-	border-color: #0f0; border-width: 3px;
-}
-
-/* survivor */
-#gameboard {
-	border: 1px solid black;
-	margin:  1%;
-	padding: 2.5%;
-
-}
-#menu {
-	border: 1px solid black;
-	margin:  1%;
-	padding: 2.5%;
-	vertical-align: top;
-}
-
-
-.food {
-	background-color: green;
-}
-.monster {
-	background-color: red;
-}
-.rock {
-	background-color: tan;
-}
-.trail {
-	background-color: yellow;
-}
-
+/* responsive layout display */
 @media (max-width: 600px) {
 	img {
 		float: none;
