@@ -14,6 +14,7 @@ const calcButton =document.getElementById("calculator");
 const colorsButton =document.getElementById("colors");
 const cgolButton =document.getElementById("cgol");
 const survivor =document.getElementById("survivor");
+const weather =document.getElementById("weather");
 
 const demosButton = document.getElementById("demosButton");
 const demos = document.getElementById("demos");
@@ -42,6 +43,7 @@ addLinkListener(calcButton, "calc.html");
 addLinkListener(colorsButton, "colors.html");
 addLinkListener(cgolButton, "cgol.html");
 addLinkListener(survivor, "survivor.html");
+addLinkListener(weather, "weather.html");
 
 var highlightDemos = () => demosButton.style.borderColor = 'red';
 var hideHilight = () => demosButton.style.borderColor = 'white';

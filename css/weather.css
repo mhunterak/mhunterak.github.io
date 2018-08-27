@@ -1,0 +1,83 @@
+body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+    background-size: auto;
+    background-color: grey;
+    font-family: 'Montserrat', sans-serif;
+    padding: 1em;
+    transition: all 4s;
+
+}
+
+.container {
+	margin: 1em auto;
+	font-size: 2em;
+	text-align: center;
+
+}
+
+.fiveDayForecast {
+	background-color: rgba(0.8,0.8,0.8,0.25);
+	border-radius: 0.75em;
+	display: block;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.dayForecast {
+	box-sizing: border-box;
+	color: white;
+	display: inline-block;
+	margin: 0 auto;
+	padding: 0.75em;
+	position: relative;
+    vertical-align: top;
+	width: 20%;
+}
+
+.dayForecast img {
+	background-color: rgba(0.8,0.8,0.8,0.25);
+	border: 0.5em solid white;
+	border-radius: 33%;
+	box-sizing: border-box;
+	padding: 0.5em;
+    vertical-align: bottom;
+    margin: 0.5em auto;
+}
+
+.dayForecast p {
+	background-color: rgba(0.8,0.8,0.8,0.25);
+	border: 0.5em solid white;
+	border-radius: 1em;
+	padding: 0.25em;
+	font-size: 0.75em;
+}
+.high {
+	color: red;
+}
+
+.low {
+	color: blue;
+}
+
+#locationTitle {
+    background-color: grey;
+	border-radius: 0.5em;
+	padding: 0.25em;
+
+}
+
+#newCityDiv {
+	margin-top: 1em;
+}
+
+#newCity{
+	border-radius: 2em;
+	margin-top: 1em;
+	padding: 1em;
+	font-size: 1em;
+	text-align: center;
+}
+
+
