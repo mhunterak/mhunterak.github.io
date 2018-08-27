@@ -24,7 +24,7 @@ function roundToTwoDecimalPlaces(number) {
 
 
 function getLocation() {
-    if (navigator.geolocation) {
+	if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
         alert("Geolocation is not supported by this browser.");
@@ -85,8 +85,25 @@ xhr1.onload = function() {
 }
 
 function showPosition(position) {
-	xhr1.open('GET', "https://cors.io/?https://www.metaweather.com/api/location/search/?lattlong=" + roundToTwoDecimalPlaces(position.coords.latitude) + "," + roundToTwoDecimalPlaces(position.coords.longitude));
-	xhr1.send();
+	navigator.permissions.query({
+		     name: 'geolocation'
+		 }).then(function(result) {
+		     if (result.state == 'granted') {
+				xhr1.open('GET', "https://cors.io/?https://www.metaweather.com/api/location/search/?lattlong=" + roundToTwoDecimalPlaces(position.coords.latitude) + "," + roundToTwoDecimalPlaces(position.coords.longitude));
+				xhr1.send();
+
+		     } else if (result.state == 'prompt') {
+				xhr1.open('GET', "https://cors.io/?https://www.metaweather.com/api/location/search/?lattlong=" + roundToTwoDecimalPlaces(position.coords.latitude) + "," + roundToTwoDecimalPlaces(position.coords.longitude));
+				xhr1.send();
+
+		     } else if (result.state == 'denied') {
+		         alert("location permissions are disabled on insecure platforms, please enter a location by name at the bottom of this page.");
+
+		     }
+		     result.onchange = function() {
+		         alert(result.state);
+		     }
+		 });
 }
 
 document.getElementById("newCityForm").addEventListener("submit", function(e) {
