@@ -1,0 +1,81 @@
+<!-- https://www.metaweather.com/api/location/2475687/ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Weather</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="css/weather.css" />
+</head>
+<body id="body">
+	<div class="container" id="container">
+		<h1>
+			Weather in <span id="locationTitle">Your Location</span>
+		</h1>
+		<h2>
+			<span id="today">Today</span>:
+			<span id='currentWeather'>
+				...
+			</span>
+		</h2>
+		<h3>
+			 <span class="high"  id='highTemp'>	
+			High
+			</span>° / <span class="low" id='lowTemp'>
+			Low
+			</span>°
+			
+		</h3>
+		<div class="fiveDayForecast">
+			<div class="row">
+				<div class="dayForecast">
+					<div id="date1">Today</div>
+					<img id="img1" src="img/spinner.gif">
+					<div id="condition1">fetching...</div>
+			
+				</div><div class="dayForecast">
+					<div id="date2">Tomorrow</div>
+					<img id="img2" src="img/spinner.gif">
+					<div id="condition2">fetching...</div>
+			
+				</div><div class="dayForecast">
+					<div id="date3">Day 3</div>
+					<img id="img3" src="img/spinner.gif">
+					<div id="condition3">fetching...</div>
+				
+				</div><div class="dayForecast">
+					<div id="date4">Day 4</div>
+					<img id="img4" src="img/spinner.gif">
+					<div id="condition4">fetching...</div>
+			
+				</div><div class="dayForecast">
+					<div id="date5">Day 5</div>
+					<img id="img5" src="img/spinner.gif">
+					<div id="condition5">fetching...</div>
+			
+				</div>
+			</div>
+			<div class="row">
+				<div class="dayForecast">
+					<p><span class="high" id="high1">--</span>° / <span class="low" id="low1">--</span>°</p>
+				</div><div class="dayForecast">
+					<p><span class="high" id="high2">--</span>° / <span class="low" id="low2">--</span>°</p>
+				</div><div class="dayForecast">
+					<p><span class="high" id="high3">--</span>° / <span class="low" id="low3">--</span>°</p>
+				</div><div class="dayForecast">
+					<p><span class="high" id="high4">--</span>° / <span class="low" id="low4">--</span>°</p>
+				</div><div class="dayForecast">
+					<p><span class="high" id="high5">--</span>° / <span class="low" id="low5">--</span>°</p>				
+				</div>
+			</div>
+		</div>
+		<div id="newCityDiv">
+			<label id="newCityLabel" for="newCity">Search for new location:</label>
+			<form id="newCityForm">
+				<input id="newCity" type="text" name="newCity">			
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/weather.js"></script>
+</body>
+</html>
