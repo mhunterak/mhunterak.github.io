@@ -277,6 +277,10 @@ document.getElementById("newCityForm").addEventListener("submit", function(e) {
 
 */
 
-getLocation();
+if (window.location.origin=="file://") {
+	getLocation();
+} else {
+	alert("insecure services (like github.io) are not allowed access to location services, Please enter your Location in the form at the bottom.");
+}
 
 
