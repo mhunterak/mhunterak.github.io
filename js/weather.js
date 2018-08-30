@@ -277,10 +277,11 @@ document.getElementById("newCityForm").addEventListener("submit", function(e) {
 
 */
 
-if (window.location.origin=="file://") {
+if (window.location.origin=="http://mhunterak.github.io") {
+	alert("insecure services (like github.io) are not allowed access to location services, Please enter your Location in the form at the bottom.");
 	getLocation();
 } else {
-	alert("insecure services (like github.io) are not allowed access to location services, Please enter your Location in the form at the bottom.");
+	getLocation();
 }
 
 
