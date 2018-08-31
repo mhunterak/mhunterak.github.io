@@ -462,8 +462,8 @@ function checkKey(e) {
         disabled=true;
         // right arrow
     }
-    if (disabled) {
-        e.stopPropagation();
+    if (disabled===true) {
+        e.preventDefault();
     }
 
 }
