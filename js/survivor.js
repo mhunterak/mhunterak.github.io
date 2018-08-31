@@ -1,9 +1,13 @@
+/* DevNotes for Survivor */
+/* Survivor is a survival strategy game. The view is top-down 2D, in the 
+spirit of Pac-Man. */
+
+/* CONTROLLERS */
+// speedSlider controls how fast the simulation cycles through steps
 const speedSlider = document.createElement('input')
+// hunterSlider controls the hunger/hp threshold where the motivation 
+// switches from hunting to foraging
 const hunterSlider = document.createElement('input')
-
-var viewWidth = 27;
-var viewHeight = 27;
-
 
 // detect small windows, and adjust accordingly
 /*
@@ -13,27 +17,45 @@ if(window.innerWidth <= 800 || window.innerHeight <= 600) {
    }
 */
 
-let foodRarity = 500;
-let monsterRarity = 500;
-let rockRarity = 25;
-
-let lvl = 1;
-let hp = 100;
-let xp = 0;
-let hunger = 100;
-let generations = 0;
-let kills = 0;
-
-let trailReset=0;
+/* RARITY VARIABLES */
+var foodRarity = 500;
+var monsterRarity = 500;
+var rockRarity = 25;
 
 
+/* Tracked attributes */
+/* Level - right now, this is set by the length of the number string- the 
+number of digits in the number. ex: 10xp is 2, 10000xp is 5
+XP - classic experience points
+HP - Out of 100 
+	health is lost when fighting a monster, or when hunger is less than 0
+	health is restored when eating food
+Hunger - out of 100
+	hunger is lost for each step
+	hunger is restored when eating food
+Kills - number of monsters killed
+steps - the number of steps you've been alive. */
+
+var lvl = 1;
+var hp = 100;
+var xp = 0;
+var hunger = 100;
+var steps = 0;
+var kills = 0;
+var trailReset=0;
 
 
+
+/* GAMEBOARD SETUP */
+// gameboard is a 27 unit square
+var viewWidth = 27;
+var viewHeight = 27;
 const gameBoard = document.createElement('div');
 gameBoard.style.display='inline-block'
-
 gameBoard.id="gameboard";
-let boardArray = [];
+var boardArray = [];
+
+/* MENU/CONTROLLER SETUP*/
 const body = document.querySelector('body');
 const container = document.createElement('div');
 const p = document.createElement('p');
@@ -42,16 +64,13 @@ const startButton = document.createElement('button');
 startButton.textContent = 'START';
 startButton.style.backgroundColor = 'lightgreen';
 container.className = "container";
-
 p.textContent = "| SURVIVOR | ";
 p.style.display='inline-block';
 p.style.padding='2em';
 p.style.borderWidth= '1px';
-
 const lvlText = document.createElement('p');
 lvlText.textContent = "Level: "+lvl;
 p.appendChild(lvlText);
-
 
 const xpText = document.createElement('p');
 xpText.textContent = "XP: "+xp;
@@ -70,7 +89,7 @@ motivationText.textContent = "Motivation: ?";
 p.appendChild(motivationText);
 
 const genText = document.createElement('p');
-genText.textContent = "You've been alive for "+generations+" steps";
+genText.textContent = "You've been alive for "+steps+" steps";
 p.appendChild(genText);
 
 const killText = document.createElement('p');
@@ -86,7 +105,6 @@ hunterSlider.defaultValue='50';
 hunterSlider.max=100;
 hunterSlider.min=0;
 p.appendChild(hunterSlider);
-
 
 const rangeLabel = document.createElement('p');
 rangeLabel.textContent = "Speed:";
@@ -144,16 +162,11 @@ function deincrementHunger() {
 	hunger-=1;
 	if (hunger<=0) {
 		hp-=1;
-		if (hp<=0) {
-			cont=false;
-			boardArray[Math.floor(viewWidth/2)][Math.floor(viewHeight/2)] = 0;
-			p.textContent = "You've were alive for "+generations+" steps, and killed "+kills+" monsters, but then you died of starvation.";
-			startButton.display='none';
-		}
-	} else if (hp<=0) {
+	}
+	if (hp<=0) {
 		cont=false;
 		boardArray[Math.floor(viewWidth/2)][Math.floor(viewHeight/2)] = 0;
-		p.textContent = "You've were alive for "+generations+" steps, and killed "+kills+" monsters, but then you were killed by a monster."
+		p.textContent = "You've were alive for "+steps+" steps, and killed "+kills+" monsters, but then you were killed by a monster."
 	}
 	buildGameBoardFromArray();
 	updateText();
@@ -164,7 +177,7 @@ function updateText() {
 	xpText.textContent = "XP: "+numberWithCommas(xp);
 	hungerText.textContent = "hunger: "+hunger+"/100";
 	hpText.textContent = "HP: "+hp+"/100";
-	genText.textContent = "You've been alive for "+generations+" steps";
+	genText.textContent = "You've been alive for "+steps+" steps";
 	killText.textContent = "killed "+kills+" monsters";
 }
 
@@ -358,7 +371,8 @@ function moveNorth() {
 	boardArray[Math.floor(viewWidth/2)+1][Math.floor(viewHeight/2)] = 5;
 	buildGameBoardFromArray();
 	deincrementHunger();
-	generations=checkTrailReset(generations);
+	steps=incrementSteps(steps);
+	checkTrailReset(steps);
 	tries=0;
 }
 
@@ -388,7 +402,8 @@ function moveSouth() {
 	boardArray[Math.floor(viewWidth/2)-1][Math.floor(viewHeight/2)] = 5;
 	buildGameBoardFromArray();
 	deincrementHunger();
-	generations=checkTrailReset(generations);
+	steps=incrementSteps(steps);
+	checkTrailReset(steps);
 	tries=0;
 }
 
@@ -415,7 +430,8 @@ function moveWest() {
 	boardArray[Math.floor(viewWidth/2)][Math.floor(viewHeight/2)+1] = 5;
 	buildGameBoardFromArray();
 	deincrementHunger();
-	generations=checkTrailReset(generations);
+	steps=incrementSteps(steps);
+	checkTrailReset(steps);
 	tries=0;
 }
 
@@ -443,18 +459,22 @@ function moveEast() {
 	boardArray[Math.floor(viewWidth/2)][Math.floor(viewHeight/2)-1] = 5;
 	buildGameBoardFromArray();
 	deincrementHunger();
-	generations=checkTrailReset(generations);
+	steps=incrementSteps(steps);
+	checkTrailReset(steps);
 	tries=0;
 }
 
-function checkTrailReset(generations) {
-	generations += 1;
-	if (generations%4==0) {
+function checkTrailReset(steps) {
+	if (steps%4==0) {
 		resetTrail();
 	}
-	return generations;
+	return steps;
 }
 
+function incrementSteps(steps) {
+	steps+=1;
+	return checkTrailReset(steps);
+}
 
 document.onkeydown = checkKey;
 
