@@ -199,6 +199,10 @@ function resetTrail(){
 
 function buildGameBoardFromArray() {
 	gameBoard.innerHTML='';
+	if (hp<0) { 
+		gameBoard.parentElement.removeChild(gameBoard);
+		return false;
+	}
 	for (let i=0; i<viewHeight; i=i+1) {
 		let gdiv=document.createElement('div');
 		for (let j=0; j<viewWidth; j=j+1) {
@@ -328,6 +332,7 @@ function checkNewLocation() {
 let tries = 0
 
 function moveNorth() {
+	if (hp<0) { return false; }
 	tries+=1;
 	if (tries>8) {
 		resetTrail();
@@ -353,11 +358,13 @@ function moveNorth() {
 	boardArray[Math.floor(viewWidth/2)+1][Math.floor(viewHeight/2)] = 5;
 	buildGameBoardFromArray();
 	deincrementHunger();
+	generations=checkTrailReset(generations);
 	tries=0;
 }
 
 
 function moveSouth() {
+	if (hp<0) { return false; }
 	tries+=1;
 	if (tries>8) {
 		resetTrail();
@@ -381,10 +388,12 @@ function moveSouth() {
 	boardArray[Math.floor(viewWidth/2)-1][Math.floor(viewHeight/2)] = 5;
 	buildGameBoardFromArray();
 	deincrementHunger();
+	generations=checkTrailReset(generations);
 	tries=0;
 }
 
 function moveWest() {
+	if (hp<0) { return false; }
 	tries+=1;
 	if (tries>8) {
 		resetTrail();
@@ -406,10 +415,12 @@ function moveWest() {
 	boardArray[Math.floor(viewWidth/2)][Math.floor(viewHeight/2)+1] = 5;
 	buildGameBoardFromArray();
 	deincrementHunger();
+	generations=checkTrailReset(generations);
 	tries=0;
 }
 
 function moveEast() {
+	if (hp<0) { return false; }
 	tries+=1;
 	if (tries>8) {
 		resetTrail();
@@ -432,7 +443,16 @@ function moveEast() {
 	boardArray[Math.floor(viewWidth/2)][Math.floor(viewHeight/2)-1] = 5;
 	buildGameBoardFromArray();
 	deincrementHunger();
+	generations=checkTrailReset(generations);
 	tries=0;
+}
+
+function checkTrailReset(generations) {
+	generations += 1;
+	if (generations%4==0) {
+		resetTrail();
+	}
+	return generations;
 }
 
 
@@ -465,7 +485,6 @@ function checkKey(e) {
     if (disabled===true) {
         e.preventDefault();
     }
-
 }
 let cont = false;
 
@@ -488,12 +507,6 @@ startButton.addEventListener('click', () => {
 
 async function startGame() {
 	while (cont === true) {
-		if (trailReset>=4) {
-			resetTrail();
-			trailReset=0;
-		} else {
-			trailReset+=1;
-		}
 		let speed = 2000-speedSlider.value;
 		rangeLabel.textContent = "Speed: "+(speedSlider.value/20)+"/100";
 		hunterLabel.textContent = "<< Hunt << "+hunterSlider.value+" >> Forage >>";
@@ -505,7 +518,6 @@ async function startGame() {
 			motivationText.textContent="Motivation: Hunting"
 		}
 		await sleep(speed);
-		generations += 1;
 	}
 }
 
