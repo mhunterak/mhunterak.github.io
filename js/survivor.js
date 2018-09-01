@@ -72,48 +72,43 @@ const lvlText = document.createElement('p');
 lvlText.textContent = "Level: "+lvl;
 p.appendChild(lvlText);
 
+/* MENU text setup */
 const xpText = document.createElement('p');
 xpText.textContent = "XP: "+xp;
 p.appendChild(xpText);
-
 const hpText = document.createElement('p');
 hpText.textContent = "HP: "+hp+"/100";
 p.appendChild(hpText);
-
 const hungerText = document.createElement('p');
 hungerText.textContent = "hunger: "+hunger+"/100";
 p.appendChild(hungerText);
-
 const motivationText = document.createElement('p');
 motivationText.textContent = "Motivation: ?";
 p.appendChild(motivationText);
-
 const genText = document.createElement('p');
 genText.textContent = "You've been alive for "+steps+" steps";
 p.appendChild(genText);
-
 const killText = document.createElement('p');
 killText.textContent = "killed "+kills+" monsters";
 p.appendChild(killText);
 
+/* CONTROLLER sliders */
 const hunterLabel = document.createElement('p');
 hunterLabel.textContent = "<< Hunt << | >> Forage >>";
 p.appendChild(hunterLabel);
-hunterSlider.label='forage or hunt?';
 hunterSlider.type='range';
-hunterSlider.defaultValue='50';
+hunterSlider.defaultValue=70;
 hunterSlider.max=100;
 hunterSlider.min=0;
 p.appendChild(hunterSlider);
-
 const rangeLabel = document.createElement('p');
 rangeLabel.textContent = "Speed:";
 p.appendChild(rangeLabel);
 speedSlider.label='speed';
 speedSlider.type='range';
-speedSlider.defaultValue='1500';
 speedSlider.max=2000;
 speedSlider.min=0;
+speedSlider.defaultValue=1850;
 p.appendChild(speedSlider);
 
 const buttonDiv = document.createElement('div');
@@ -200,6 +195,10 @@ function buildNewGameBoard() {
 	buildGameBoardFromArray();
 }
 
+
+// TODO: instead of resetting the trail, let's keep a list of the trail and 
+// generate the trail when making the gameboard. Then, we can just remove the 
+// last item from the list instead of clearing it.
 function resetTrail(){
 	for (let i=0; i<viewHeight; i=i+1) {
 		for (let j=0; j<viewWidth; j=j+1) {
@@ -332,13 +331,13 @@ function checkNewLocation() {
 		hp -= random;
 		kills += 1;
 		resetTrail();
-		console.log("Monster defeated!")
+		console.log("Monster defeated!");
 	} else if (boardArray[Math.floor(viewWidth/2)][Math.floor(viewHeight/2)] === 2) {
 		xp += 50;
 		hp = 100;
 		hunger = 100;
 		resetTrail();
-		console.log("OM NOM NOM")
+		console.log("OM NOM NOM");
 	}
 }
 
@@ -372,7 +371,6 @@ function moveNorth() {
 	buildGameBoardFromArray();
 	deincrementHunger();
 	steps=incrementSteps(steps);
-	checkTrailReset(steps);
 	tries=0;
 }
 
@@ -403,7 +401,6 @@ function moveSouth() {
 	buildGameBoardFromArray();
 	deincrementHunger();
 	steps=incrementSteps(steps);
-	checkTrailReset(steps);
 	tries=0;
 }
 
@@ -431,7 +428,6 @@ function moveWest() {
 	buildGameBoardFromArray();
 	deincrementHunger();
 	steps=incrementSteps(steps);
-	checkTrailReset(steps);
 	tries=0;
 }
 
@@ -460,7 +456,6 @@ function moveEast() {
 	buildGameBoardFromArray();
 	deincrementHunger();
 	steps=incrementSteps(steps);
-	checkTrailReset(steps);
 	tries=0;
 }
 
@@ -476,58 +471,69 @@ function incrementSteps(steps) {
 	return checkTrailReset(steps);
 }
 
+/* KEYBOARD INPUT for manual control */
+//if a key is pressed, run the checkKey function
 document.onkeydown = checkKey;
-
 function checkKey(e) {
-
+	//get e as the keydown event
     e = e || window.event;
+    //track if we're going to override default actions, default is false
     let disabled = false;
     if (e.keyCode == '38') {
+        // up arrow
         moveNorth();
         disabled=true;
-        // up arrow
     }
     else if (e.keyCode == '40') {
+        // down arrow
     	moveSouth();
         disabled=true;
-        // down arrow
     }
     else if (e.keyCode == '37') {
+        // left arrow
     	moveWest();
         disabled=true;
-        // left arrow
     }
     else if (e.keyCode == '39') {
+        // right arrow
     	moveEast();
         disabled=true;
-        // right arrow
     }
+    //if we're going to disabile default actions
     if (disabled===true) {
+    	// prevent default event action
         e.preventDefault();
     }
 }
-let cont = false;
 
+
+// track if automatic play is enabled, default is false
+let cont = false;
+// add an event listener for the start button
 startButton.addEventListener('click', () => {
+	//if the start button is clicked
 	if (cont===false) {
+		// set continue to true to loop gameplay
 		cont=true;
 		startGame();
+		// change the start button into a stop button
 		startButton.textContent = 'STOP';
 		startButton.style.backgroundColor = 'red';
 		startButton.style.color = 'white';
-
+	//if the stop button is clicked
 	} else {
 		cont=false;
+		// change the stop button back into a start button
 		startButton.textContent = 'START';
 		startButton.style.backgroundColor = 'lightgreen';
 		startButton.style.color = 'black';
 
 	}});
 
-
+// Main automatic gameplay function
 async function startGame() {
 	while (cont === true) {
-		let speed = 2000-speedSlider.value;
+		// update label text
 		rangeLabel.textContent = "Speed: "+(speedSlider.value/20)+"/100";
 		hunterLabel.textContent = "<< Hunt << "+hunterSlider.value+" >> Forage >>";
 		if (hunterSlider.value>hunger||hunterSlider.value>hp) {
@@ -537,8 +543,8 @@ async function startGame() {
 			chase('monster');
 			motivationText.textContent="Motivation: Hunting"
 		}
+		// get speed value to set speed
+		let speed = 2000-speedSlider.value;
 		await sleep(speed);
 	}
 }
-
-
