@@ -45,10 +45,14 @@ addLinkListener(cgolButton, "cgol.html");
 addLinkListener(survivor, "survivor.html");
 addLinkListener(weather, "weather.html");
 
-var highlightDemos = () => demosButton.style.borderColor = 'red';
-var hideHilight = () => demosButton.style.borderColor = 'white';
-var prom = wait(2000);
+var prom = wait(flashInterval(), 5000);
 
-prom.then(highlightDemos);
+function flashInterval() {
+	setInterval(function() {
+    	demosButton.classList.toggle('redBorder');
+	}, 2000);
+}
+
+
 
 
