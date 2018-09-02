@@ -87,6 +87,10 @@ p {
 	transition: border-color 2s;
 }
 
+#demosButton.redBorder {
+	border-color: red;
+}
+
 .highlight {
 	color: red;
 	font-weight: bold;
