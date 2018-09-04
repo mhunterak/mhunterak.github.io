@@ -97,7 +97,9 @@ function showPosition(position) {
 				xhr1.send();
 
 		     } else if (result.state == 'denied') {
-		         alert("location permissions are disabled on insecure platforms, please enter a location by name at the bottom of this page.");
+		        alert("location permissions are disabled on insecure platforms, please enter a location by name at the bottom of this page.");
+				xhr1.open('GET', "https://cors.io/?https://www.metaweather.com/api/location/search/?query=" + 'Portland');
+				xhr1.send();
 
 		     }
 		     result.onchange = function() {
@@ -278,8 +280,9 @@ document.getElementById("newCityForm").addEventListener("submit", function(e) {
 */
 
 if (window.location.origin=="http://mhunterak.github.io") {
-	alert("insecure services (like github.io) are not allowed access to location services, Please enter your Location in the form at the bottom.");
-	getLocation();
+	alert("insecure services (like github.io) are not allowed access to location services, Please enter your Location in the form at the bottom. Currently loading weather for Portland.");
+	xhr1.open('GET', "https://cors.io/?https://www.metaweather.com/api/location/search/?query=" + 'Portland');
+	xhr1.send();
 } else {
 	getLocation();
 }
