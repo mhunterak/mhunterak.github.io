@@ -24,7 +24,12 @@ let sum=0;
 let action = "";
 
 const numberWithCommas = (x) => {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	array = x.toString().split(".");
+	if (array.length < 2) {
+		return array[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+	} else if (array.length < 3) {
+		return array[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")+"."+array[1]
+	}
 }
 
 function doMath(buttonid) {
@@ -68,13 +73,14 @@ function doMath(buttonid) {
 							if (parseFloat(sum)==parseInt(sum)) {
 								display.textContent = numberWithCommas(firstNumber)+" "+action+" "+numberWithCommas(secondNumber)+" "+"= "+numberWithCommas(sum);
 							} else {
-								display.textContent = (firstNumber)+" "+action+" "+(secondNumber)+" "+"= "+(sum);
+								display.textContent = (firstNumber)+" "+action+" "+(secondNumber)+" "+"= "+numberWithCommas(sum);
 
 							}
 
 						}
 						firstNumber=sum;
 						secondNumber=null;
+						sum=0.0
 						action="";
 					}
 						
