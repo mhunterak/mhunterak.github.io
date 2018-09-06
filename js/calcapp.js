@@ -149,6 +149,7 @@ function checkKey(e) {
 FEATURE REQUESTS
 needs a decimal button for numbers 0<i<1
 
+
 BUGLIST
 -after pressing equals to get a sum, pressing number buttons just adds numbers
 to the end of the sum. instead, it should overwrite the first number.
