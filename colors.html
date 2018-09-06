@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Maxwell Hunter</title>
+    <link rel="stylesheet" href="css/colors.css" />
+	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico">
+	<meta name="description" content="Resume website for Maxwell Hunter">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+</head>
+<body id="body">
+	<div id="wrapper">
+		<div id="inline">
+			<h1 id="headline">Maxwell Hunter's favorite color is: </h1>
+			<p>set color by name and press enter:
+				<br/>
+				<input type="text" 
+					name="input" 
+					id="input" 
+					onchange="reload(true)"
+					value="pink"
+					style="text-align: center; ">
+			</p>
+			<h5 id="counter">{{ counter message here }}}</h5>
+			<ol id="list"></ol>
+		</div>
+		<footer>
+			<p>©2018 Maxwell Hunter</p>
+		</footer>
+	</div>
+	<script type="text/javascript" src="js/colors.js"></script>
+</body>
+</html>
