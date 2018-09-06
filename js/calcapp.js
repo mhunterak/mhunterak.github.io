@@ -48,10 +48,10 @@ function doMath(buttonid) {
 		} else if (action===null) { 
 			// if a number has been entered, save the math sign
 			action=buttonid;
-			display.textContent=firstNumber+" "+action;
+			display.textContent=numberWithCommas(firstNumber)+" "+action;
 		} else if (secondNumber===null) {
 			action=buttonid;
-			display.textContent = firstNumber+" "+action
+			display.textContent = numberWithCommas(firstNumber)+" "+action
 
 		} else {
 			if (buttonid==="=") {
@@ -73,10 +73,9 @@ function doMath(buttonid) {
 							if (parseFloat(sum)==parseInt(sum)) {
 								display.textContent = numberWithCommas(firstNumber)+" "+action+" "+numberWithCommas(secondNumber)+" "+"= "+numberWithCommas(sum);
 							} else {
-								display.textContent = (firstNumber)+" "+action+" "+(secondNumber)+" "+"= "+numberWithCommas(sum);
+								display.textContent = numberWithCommas(firstNumber)+" "+action+" "+numberWithCommas(secondNumber)+" "+"= "+numberWithCommas(sum);
 
 							}
-
 						}
 						firstNumber=sum;
 						secondNumber=null;
@@ -153,7 +152,6 @@ needs a decimal button for numbers 0<i<1
 BUGLIST
 -after pressing equals to get a sum, pressing number buttons just adds numbers
 to the end of the sum. instead, it should overwrite the first number.
--commas not showing on sum
 -equals should erase the action character
 
 
