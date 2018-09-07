@@ -11,27 +11,38 @@ const button7 = document.getElementById("7");
 const button8 = document.getElementById("8");
 const button9 = document.getElementById("9");
 const button0 = document.getElementById("0");
+
+/* TODO: make decimcal button display, work */
 const buttonPoint = document.getElementById(".");
+
 const buttonTimes = document.getElementById("*");
 const buttonDivide = document.getElementById("/");
 const buttonPlus = document.getElementById("+");
 const buttonMinus = document.getElementById("-");
+
 const buttonEquals = document.getElementById("=");
 
 let firstNumber = null;
 let secondNumber = null;
-let sum = 0;
+let sum = 0.0;
 let action = "";
 
-const numberWithCommas = (x) => {
+// formats numbers to have commas on the digits, but not the decimals
+const numberWithCommas = (x) => { // takes a int or string
+    // split input at the decimal
     array = x.toString().split(".");
+    // if its an integer, array length will only be 1
     if (array.length < 2) {
+        // add a comma every third number from the end
         return array[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    // if there is a decimal
     } else if (array.length < 3) {
+        // only perform that operation on the first part of the array
         return array[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "." + array[1]
     }
 }
 
+// main math function that performs the calculator function
 function doMath(buttonid) {
     // if button is not a number
     if (isNaN(buttonid)) {
@@ -40,7 +51,7 @@ function doMath(buttonid) {
             firstNumber = null;
             secondNumber = null;
             action = "";
-            display.textContent = "0";
+            display.textContent = "00.0";
         } else if (buttonid == "=" && secondNumber === null) {
             // do nothing
         } else if (firstNumber === null) {
@@ -52,6 +63,19 @@ function doMath(buttonid) {
         } else if (secondNumber === null) {
             action = buttonid;
             display.textContent = numberWithCommas(firstNumber) + " " + action
+
+// TODO: UX plan.
+/* as soon as we have a secondNumber and a math operator, we should show the 
+sum. The equals button will then move the sum to be the new first number, and
+start a new operation.
+*/
+
+
+// TODO: BUG - 
+// 0.05194805194805195 + 2,000 = 0.051948051948051952000 (RESULT)
+// 0.05194805194805195 + 2,000 = 2,000.05194805194805195 (EXPECTED)
+/* shouldn't be concatenating strings, should be adding numbers. */
+
 
         } else {
             if (buttonid === "=") {
@@ -147,16 +171,11 @@ function checkKey(e) {
 // TODOs
 /*
 FEATURE REQUESTS
-needs a decimal button for numbers 0<i<1
-
+-needs a decimal button for numbers 0<i<1
 
 BUGLIST
 -after pressing equals to get a sum, pressing number buttons just adds numbers
 to the end of the sum. instead, it should overwrite the first number.
--equals should erase the action character
-
-
-
 */
 
 buttons.addEventListener("click", (e) => {
