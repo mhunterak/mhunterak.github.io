@@ -25,11 +25,29 @@ const buttonEquals = document.getElementById("=");
 let firstNumber = null;
 let secondNumber = null;
 let sum = 0.0;
-let action = "";
+let action = null;
+
+/* the fragile state is turned on after pressing =.
+if you press a number, it will reset the firstNumber 
+and overwrite with the number you entered.
+disabled by default.
+*/
+let fragile = false;
+
+let history= new Array();
+// looks like [firstNumber, action, secondNumber, sum]
+
+// sets the display with a string
+function setDisplay(string) {
+    display.textContent = string;
+}
 
 // formats numbers to have commas on the digits, but not the decimals
 const numberWithCommas = (x) => { // takes a int or string
     // split input at the decimal
+    if (x===null) {
+        return x
+    }
     array = x.toString().split(".");
     // if its an integer, array length will only be 1
     if (array.length < 2) {
@@ -42,26 +60,62 @@ const numberWithCommas = (x) => { // takes a int or string
     }
 }
 
+// sets the display with a string
+function setDisplay(string) {
+    display.textContent = string;
+}
+
+
+function calculate(action, firstNumber, secondNumber, sum) {
+    if (action === "+") {
+        sum = parseFloat(firstNumber) + parseFloat(secondNumber);
+        setDisplay(numberWithCommas(firstNumber) + " " + action + " " + numberWithCommas(secondNumber) + " " + "= " + numberWithCommas(sum));
+    } else if (action === "-") {
+        sum = parseFloat(firstNumber) - parseFloat(secondNumber);
+        setDisplay(numberWithCommas(firstNumber) + " " + action + " " + numberWithCommas(secondNumber) + " " + "= " + numberWithCommas(sum));
+    } else if (action === "*") {
+        sum = parseFloat(firstNumber) * parseFloat(secondNumber);
+        setDisplay(numberWithCommas(firstNumber) + " " + action + " " + numberWithCommas(secondNumber) + " " + "= " + numberWithCommas(sum));
+    } else if (action === "/") {
+        sum = parseFloat(firstNumber) / parseFloat(secondNumber);
+        if (parseFloat(sum) == parseInt(sum)) {
+            display.textContent = numberWithCommas(firstNumber) + " " + action + " " + numberWithCommas(secondNumber) + " " + "= " + numberWithCommas(sum);
+        } else {
+            display.textContent = numberWithCommas(firstNumber) + " " + action + " " + numberWithCommas(secondNumber) + " " + "= " + numberWithCommas(sum);
+        }
+    }
+    return sum
+}
 // main math function that performs the calculator function
+// controls which action is performed when a button is pushed
 function doMath(buttonid) {
     // if button is not a number
+    console.log(buttonid);
     if (isNaN(buttonid)) {
-        console.log("not a number")
+        console.log("Button is not a number")
         if (buttonid === "c") {
             firstNumber = null;
             secondNumber = null;
             action = "";
             display.textContent = "00.0";
         } else if (buttonid == "=" && secondNumber === null) {
-            // do nothing
+            // TODO: repeat the last action - works the first time, needs to work after that
+            // firstNumber is already in position
+            sum = calculate(history[0][1], firstNumber, history[0][2], firstNumber)
+            history.unshift([firstNumber, history[0][1], secondNumber, sum]);
+            firstNumber=sum;
+            secondNumber=null;
+            action=null; 
+            setDisplay(numberWithCommas(firstNumber));
+            fragile=true;
         } else if (firstNumber === null) {
             // if a number hasn't been entered yet, do nothing
-        } else if (action === null) {
+        } else if ('+-*/'.indexOf(buttonid)>=0) {
             // if a number has been entered, save the math sign
             action = buttonid;
             display.textContent = numberWithCommas(firstNumber) + " " + action;
         } else if (secondNumber === null) {
-            action = buttonid;
+            action = secondNumber=parseInt(buttonid);
             display.textContent = numberWithCommas(firstNumber) + " " + action
 
 // TODO: UX plan.
@@ -76,78 +130,58 @@ start a new operation.
 // 0.05194805194805195 + 2,000 = 2,000.05194805194805195 (EXPECTED)
 /* shouldn't be concatenating strings, should be adding numbers. */
 
-
+        // the only other non-number button is equals
         } else {
+            // When Pressing the equals sign
             if (buttonid === "=") {
                 console.log("button is =")
-                if (secondNumber == null) {
-
-                } else {
-                    if (action === "+") {
-                        sum = firstNumber + secondNumber;
-                        display.textContent = numberWithCommas(firstNumber) + " " + action + " " + numberWithCommas(secondNumber) + " " + "= " + numberWithCommas(sum);
-                    } else if (action === "-") {
-                        sum = firstNumber - secondNumber;
-                        display.textContent = numberWithCommas(firstNumber) + " " + action + " " + numberWithCommas(secondNumber) + " " + "= " + numberWithCommas(sum);
-                    } else if (action === "*") {
-                        sum = firstNumber * secondNumber;
-                        display.textContent = numberWithCommas(firstNumber) + " " + action + " " + numberWithCommas(secondNumber) + " " + "= " + numberWithCommas(sum);
-                    } else if (action === "/") {
-                        sum = parseFloat(firstNumber) / parseFloat(secondNumber);
-                        if (parseFloat(sum) == parseInt(sum)) {
-                            display.textContent = numberWithCommas(firstNumber) + " " + action + " " + numberWithCommas(secondNumber) + " " + "= " + numberWithCommas(sum);
-                        } else {
-                            display.textContent = numberWithCommas(firstNumber) + " " + action + " " + numberWithCommas(secondNumber) + " " + "= " + numberWithCommas(sum);
-
-                        }
-                    }
-                    firstNumber = sum;
-                    secondNumber = null;
-                    sum = 0.0
-                    action = "";
-                }
-
+                history.unshift([firstNumber, action, secondNumber, sum]);
+                firstNumber=sum;
+                secondNumber=null;
+                action=null; 
+                setDisplay(numberWithCommas(firstNumber));
+                fragile=true;
+//                    sum = calculate(action, firstNumber, secondNumber, sum);
+                
             }
         }
-        // if button is a number
+    // if button is a number
     } else {
         console.log("is a number")
-        if (sum === 0) {
-            if (firstNumber === null) {
-                firstNumber = parseInt(buttonid);
-                display.textContent = numberWithCommas(firstNumber);
-            } else if (action === "") {
-                newNumber = (firstNumber.toString() + buttonid.toString());
-                firstNumber = newNumber;
-                display.textContent = numberWithCommas(firstNumber);
-            } else {
-                if (secondNumber === null) {
-
-                    secondNumber = parseInt(buttonid);
-                    display.textContent = numberWithCommas(firstNumber) + " " + action + " " + numberWithCommas(secondNumber);
-                } else {
-                    newNumber = (secondNumber.toString() + buttonid.toString());
-                    secondNumber = newNumber;
-                    display.textContent = numberWithCommas(firstNumber) + " " + action + " " + numberWithCommas(secondNumber);
-                }
-            }
-        } else {
+        if (firstNumber === null) {
             firstNumber = parseInt(buttonid);
-            sum = 0;
             display.textContent = numberWithCommas(firstNumber);
+        } else if (action === null) {
+            console.log("136")
+            newNumber = (firstNumber.toString() + buttonid);
+            firstNumber = newNumber;
+            setDisplay(numberWithCommas(firstNumber));
+        } else {
+            // if a secondNumber doesn't exist,
+            if (secondNumber === null) {
+                // create a value for the second number
+                secondNumber = parseInt(buttonid);
+                sum = calculate(action, firstNumber, secondNumber, sum);
+            // if a secondNumber exists, add the number by string concatenation
+            } else {
+                console.log("148")
+                newNumber = parseInt(secondNumber.toString() + buttonid);
+                secondNumber=newNumber;
+                sum = calculate(action, firstNumber, secondNumber, sum);
+            }
         }
     }
 }
-document.onkeydown = checkKey;
 
+
+// if a key is pressed, check for shortcut keys
+document.onkeydown = checkKey;
 function checkKey(e) {
     e = e || window.event;
     let disabled = false; {
         if (e.keyCode >= 96 && e.keyCode <= 105) {
-            console.log(e.keyCode - 96);
             doMath(parseInt(e.keyCode - 96));
         } else if (e.keyCode >= 48 && e.keyCode <= 57) {
-            console.log(e.keyCode - 48);
             doMath(parseInt(e.keyCode - 48));
         } else if (e.keyCode == 187) {
             // plus
