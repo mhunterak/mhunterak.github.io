@@ -72,8 +72,11 @@ li {
 	background-color: darkgrey;
 	border-radius: 0.25em;
 	color: #0F0;
-	margin: auto;
-	padding: 0.5em;
 	font-family: Orbitron;
+	margin: auto;
+	overflow: hidden;
+	padding: 0.5em;
+	text-overflow: ellipsis;
 	width: 80%;
+
 }
