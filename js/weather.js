@@ -31,6 +31,19 @@ function getLocation() {
     }
 }
 
+function getWeatherForCity(query) {
+  if (window.history.pushState) { 
+    let newURL = new URL(window.location.href); 
+    newURL.search = '?city='+query; 
+    window.history.pushState({ 
+      path: newURL.href 
+    }, '', newURL.href); 
+  }
+  xhr1.open('GET', "https://cors.io/?https://www.metaweather.com/api/location/search/?query=" + query);
+  xhr1.send();
+}
+
+
 var xhr0 = new XMLHttpRequest();
 var xhr1 = new XMLHttpRequest();
 
@@ -98,9 +111,7 @@ function showPosition(position) {
 
 		     } else if (result.state == 'denied') {
 		        alert("location permissions are disabled on insecure platforms, please enter a location by name at the bottom of this page.");
-				xhr1.open('GET', "https://cors.io/?https://www.metaweather.com/api/location/search/?query=" + 'Portland');
-				xhr1.send();
-
+            getWeatherForCity("Portland");
 		     }
 		     result.onchange = function() {
 		         alert(result.state);
@@ -109,11 +120,9 @@ function showPosition(position) {
 }
 
 document.getElementById("newCityForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+  e.preventDefault();
 	query = document.getElementById("newCity").value;
-	xhr1.open('GET', "https://cors.io/?https://www.metaweather.com/api/location/search/?query=" + query);
-	xhr1.send();
-
+  getWeatherForCity(query);
 });
 /*
 
@@ -279,12 +288,17 @@ document.getElementById("newCityForm").addEventListener("submit", function(e) {
 
 */
 
-if (window.location.origin=="http://mhunterak.github.io") {
+// TODO: get location query from a query string
+
+var queryData = location.search;
+if (queryData) {
+  queryData = queryData.substring(1,queryData.length).split("&");
+  cityData = queryData[0].split("=")[1];
+  getWeatherForCity(cityData)
+  console.log(queryData)
+} else if (window.location.origin=="http://mhunterak.github.io") {
 	alert("insecure services (like github.io) are not allowed access to location services, Please enter your Location in the form at the bottom. Currently loading weather for Portland.");
-	xhr1.open('GET', "https://cors.io/?https://www.metaweather.com/api/location/search/?query=" + 'Portland');
-	xhr1.send();
+  getWeatherForCity('Portland');
 } else {
 	getLocation();
 }
-
-
