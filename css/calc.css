@@ -72,6 +72,8 @@ li {
 	background-color: darkgrey;
 	border-radius: 0.25em;
 	color: #0F0;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	margin: auto;
 	padding: 0.5em;
 	font-family: Orbitron;
