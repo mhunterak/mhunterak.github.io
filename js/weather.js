@@ -5,18 +5,22 @@ function CelsiusToFahrenheit(temp) {
 	return Math.round(temp).toString();
 } 
 
-var bg_switch = {
+const bg_switch = {
 	"c": "lightblue",
 	"sn": "#aad4e5",
 	"sl": "#aad4e5",
 	"h": "#aad4e5",
 	"t": "darkgrey",
-	"hr": "grey",
-	"lr": "lightgrey",
+	"hr": "darkblue",
+	"lr": "lightblue",
 	"s": "blue",
 	"hc": "grey",
 	"lc": "lightgrey",
 }
+
+const darkText = [
+  "c","lr","lc"
+]
 
 function roundToTwoDecimalPlaces(number) {
 	return Math.floor(number*100)/100;
@@ -62,6 +66,13 @@ xhr0.onload = function() {
 	document.getElementsByTagName("body")[0].style.backgroundColor = bg_switch[weatherStateAbbr];
 	document.getElementById("body").style.backgroundImage = "url(http://www.metaweather.com/static/img/weather/"+weatherStateAbbr+".svg)";
 	document.getElementById("body").style.backgroundColor = bg_switch[weatherStateAbbr];
+  // change text color to white
+  console.log("weatherStateAbbr:"+weatherStateAbbr)
+  if (darkText.includes(weatherStateAbbr)===false) {
+    container.classList.add("lightText");
+  } else {
+    container.classList.remove("lightText");
+  }
 
 
 
