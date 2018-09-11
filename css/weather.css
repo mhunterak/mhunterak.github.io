@@ -84,4 +84,28 @@ body {
 	text-align: center;
 }
 
+@media (max-width: 800px) {
+	h1 {
+		line-height: 150%;
+	}
+	.dayForecast {
+		font-size: 2em;
+		display: block;
+		width: 100%;
+	}
 
+	.dayForecast img {
+		border-width: 1em;
+	}
+
+	.dayForecast p {
+		visibility: hidden;
+		height: 0px;
+	}
+
+	.temps {
+		height: 0px;
+		padding: 0px;
+	}
+
+}
