@@ -8,8 +8,12 @@
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="css/weather.css" />
 </head>
+
+
 <body id="body">
 	<div class="container" id="container">
+		<!-- Here is the main section that displays the title. 
+			It doesn't change much. -->
 		<h1>
 			Weather in <span id="locationTitle">Your Location</span>
 		</h1>
@@ -27,47 +31,40 @@
 			</span>°
 			
 		</h3>
-		<div class="fiveDayForecast">
-			<div class="row">
-				<div class="dayForecast">
-					<div id="date1">Today</div>
-					<img id="img1" src="img/spinner.gif">
-					<div id="condition1">fetching...</div>
+
+		<!-- the 5-day forecast -->
+		<!-- TODO: change to flexbox -->
+		<div class="fiveDayForecast flexContainer">
+			<div class="dayForecast">
+				<div id="date1">Today</div>
+				<p><span class="high" id="high1">--</span>° / <span class="low" id="low1">--</span>°</p>
+				<img id="img1" src="img/spinner.gif">
+				<div class="condition" id="condition1">fetching...</div>
+		
+			</div><div class="dayForecast">
+				<div id="date2">Tomorrow</div>
+				<p><span class="high" id="high2">--</span>° / <span class="low" id="low2">--</span>°</p>
+				<img id="img2" src="img/spinner.gif">
+				<div class="condition" id="condition2">fetching...</div>
+		
+			</div><div class="dayForecast">
+				<div id="date3">Day 3</div>
+				<p><span class="high" id="high3">--</span>° / <span class="low" id="low3">--</span>°</p>
+				<img id="img3" src="img/spinner.gif">
+				<div class="condition" id="condition3">fetching...</div>
 			
-				</div><div class="dayForecast">
-					<div id="date2">Tomorrow</div>
-					<img id="img2" src="img/spinner.gif">
-					<div id="condition2">fetching...</div>
-			
-				</div><div class="dayForecast">
-					<div id="date3">Day 3</div>
-					<img id="img3" src="img/spinner.gif">
-					<div id="condition3">fetching...</div>
-				
-				</div><div class="dayForecast">
-					<div id="date4">Day 4</div>
-					<img id="img4" src="img/spinner.gif">
-					<div id="condition4">fetching...</div>
-			
-				</div><div class="dayForecast">
-					<div id="date5">Day 5</div>
-					<img id="img5" src="img/spinner.gif">
-					<div id="condition5">fetching...</div>
-			
-				</div>
-			</div>
-			<div class="row temps">
-				<div class="dayForecast temps">
-					<p><span class="high" id="high1">--</span>° / <span class="low" id="low1">--</span>°</p>
-				</div><div class="dayForecast temps">
-					<p><span class="high" id="high2">--</span>° / <span class="low" id="low2">--</span>°</p>
-				</div><div class="dayForecast temps">
-					<p><span class="high" id="high3">--</span>° / <span class="low" id="low3">--</span>°</p>
-				</div><div class="dayForecast temps">
-					<p><span class="high" id="high4">--</span>° / <span class="low" id="low4">--</span>°</p>
-				</div><div class="dayForecast temps">
-					<p><span class="high" id="high5">--</span>° / <span class="low" id="low5">--</span>°</p>				
-				</div>
+			</div><div class="dayForecast">
+				<div id="date4">Day 4</div>
+				<p><span class="high" id="high4">--</span>° / <span class="low" id="low4">--</span>°</p>
+				<img id="img4" src="img/spinner.gif">
+				<div class="condition" id="condition4">fetching...</div>
+		
+			</div><div class="dayForecast">
+				<div id="date5">Day 5</div>
+				<p><span class="high" id="high5">--</span>° / <span class="low" id="low5">--</span>°</p>
+				<img id="img5" src="img/spinner.gif">
+				<div class="condition" id="condition5">fetching...</div>
+		
 			</div>
 		</div>
 		<div id="newCityDiv">
