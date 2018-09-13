@@ -88,7 +88,6 @@ xhr0.onload = function() {
 		weatherStateName = resp["consolidated_weather"][i]["weather_state_abbr"];
 		document.getElementById("img"+i).src = "http://www.metaweather.com/static/img/weather/"+weatherStateName+".svg";
 		document.getElementById("img"+i).style.borderColor = bg_switch[weatherStateName];
-		document.getElementById("img"+i).style.width = "80%";
 		document.getElementById("high"+i).textContent = CelsiusToFahrenheit(resp["consolidated_weather"][i]["max_temp"]);
 		document.getElementById("low"+i).textContent = CelsiusToFahrenheit(resp["consolidated_weather"][i]["min_temp"]);
 }
