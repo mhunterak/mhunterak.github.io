@@ -1,34 +1,41 @@
+// function for converting degrees C (from the API) to fahrenheit
 function CelsiusToFahrenheit(temp) {
-	temp = parseInt(temp)
-	temp *= 1.8
-	temp += 32 
-	return Math.round(temp).toString();
-} 
-
-const bg_switch = {
-	"c": "lightblue",
-	"sn": "#aad4e5",
-	"sl": "#aad4e5",
-	"h": "#aad4e5",
-	"t": "darkgrey",
-	"hr": "darkblue",
-	"lr": "lightblue",
-	"s": "blue",
-	"hc": "grey",
-	"lc": "lightgrey",
+    temp = parseInt(temp)
+    temp *= 1.8
+    temp += 32
+    return Math.round(temp).toString();
 }
 
+
+// dictionary for getting the backgound color from the weather condition
+const bg_switch = {
+    "c": "lightblue",
+    "sn": "#aad4e5",
+    "sl": "#aad4e5",
+    "h": "#aad4e5",
+    "t": "darkgrey",
+    "hr": "darkblue",
+    "lr": "lightblue",
+    "s": "blue",
+    "hc": "grey",
+    "lc": "lightgrey",
+}
+
+// list of weather conditions with light colors that need dark text
 const darkText = [
-  "c","lr","lc"
+    "c", "lr", "lc"
 ]
 
+// function for rounding decimals to two places
 function roundToTwoDecimalPlaces(number) {
-	return Math.floor(number*100)/100;
+    return Math.floor(number * 100) / 100;
 }
 
-
+// function for loading geo location from the browser
 function getLocation() {
-	if (navigator.geolocation) {
+    // if geolocation is available, 
+    if (navigator.geolocation) {
+        // get current position and load the weather
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
         alert("Geolocation is not supported by this browser.");
@@ -36,15 +43,15 @@ function getLocation() {
 }
 
 function getWeatherForCity(query) {
-  if (window.history.pushState) { 
-    let newURL = new URL(window.location.href); 
-    newURL.search = '?city='+query; 
-    window.history.pushState({ 
-      path: newURL.href 
-    }, '', newURL.href); 
-  }
-  xhr1.open('GET', "https://cors.io/?https://www.metaweather.com/api/location/search/?query=" + query);
-  xhr1.send();
+    if (window.history.pushState) {
+        let newURL = new URL(window.location.href);
+        newURL.search = '?city=' + query;
+        window.history.pushState({
+            path: newURL.href
+        }, '', newURL.href);
+    }
+    xhr1.open('GET', "https://cors.io/?https://www.metaweather.com/api/location/search/?query=" + query);
+    xhr1.send();
 }
 
 
@@ -52,87 +59,87 @@ var xhr0 = new XMLHttpRequest();
 var xhr1 = new XMLHttpRequest();
 
 xhr0.onload = function() {
-	resp = JSON.parse(xhr0.response);
-	let fullWeatherStateName= resp["consolidated_weather"][1]["weather_state_name"];
-	document.getElementById("currentWeather").textContent = fullWeatherStateName;
+    resp = JSON.parse(xhr0.response);
+    let fullWeatherStateName = resp["consolidated_weather"][1]["weather_state_name"];
+    document.getElementById("currentWeather").textContent = fullWeatherStateName;
 
 
-	let date = new Date(resp["consolidated_weather"][1]["applicable_date"])
-	let dateArray = date.toDateString().split(" ");
-	let dateStr = dateArray[0]+" "+dateArray[1]+" "+dateArray[2];
-	document.getElementById("today").textContent = dateStr;
+    let date = new Date(resp["consolidated_weather"][1]["applicable_date"])
+    let dateArray = date.toDateString().split(" ");
+    let dateStr = dateArray[0] + " " + dateArray[1] + " " + dateArray[2];
+    document.getElementById("today").textContent = dateStr;
 
-	let weatherStateAbbr = resp["consolidated_weather"][1]["weather_state_abbr"];
-	document.getElementsByTagName("body")[0].style.backgroundColor = bg_switch[weatherStateAbbr];
-	document.getElementById("body").style.backgroundImage = "url(http://www.metaweather.com/static/img/weather/"+weatherStateAbbr+".svg)";
-	document.getElementById("body").style.backgroundColor = bg_switch[weatherStateAbbr];
-  // change text color to white
-  console.log("weatherStateAbbr:"+weatherStateAbbr)
-  if (darkText.includes(weatherStateAbbr)===false) {
-    container.classList.add("lightText");
-  } else {
-    container.classList.remove("lightText");
-  }
-
-
+    let weatherStateAbbr = resp["consolidated_weather"][1]["weather_state_abbr"];
+    document.getElementsByTagName("body")[0].style.backgroundColor = bg_switch[weatherStateAbbr];
+    document.getElementById("body").style.backgroundImage = "url(http://www.metaweather.com/static/img/weather/" + weatherStateAbbr + ".svg)";
+    document.getElementById("body").style.backgroundColor = bg_switch[weatherStateAbbr];
+    // change text color to white
+    console.log("weatherStateAbbr:" + weatherStateAbbr)
+    if (darkText.includes(weatherStateAbbr) === false) {
+        container.classList.add("lightText");
+    } else {
+        container.classList.remove("lightText");
+    }
 
 
-	document.getElementById("highTemp").textContent = CelsiusToFahrenheit(resp["consolidated_weather"][0]["max_temp"]);
-	document.getElementById("lowTemp").textContent = CelsiusToFahrenheit(resp["consolidated_weather"][0]["min_temp"]);
-	for (let i=1;i<resp["consolidated_weather"].length;i++) {
-		let date = new Date(resp["consolidated_weather"][i]["applicable_date"])
-		let dateArray = date.toDateString().split(" ");
-		let dateStr = dateArray[1]+" "+dateArray[2];
-		document.getElementById("date"+i).textContent = dateStr;
-		document.getElementById("condition"+i).textContent = resp["consolidated_weather"][i]["weather_state_name"];
-		weatherStateName = resp["consolidated_weather"][i]["weather_state_abbr"];
-		document.getElementById("img"+i).src = "http://www.metaweather.com/static/img/weather/"+weatherStateName+".svg";
-		document.getElementById("img"+i).style.borderColor = bg_switch[weatherStateName];
-		document.getElementById("high"+i).textContent = CelsiusToFahrenheit(resp["consolidated_weather"][i]["max_temp"]);
-		document.getElementById("low"+i).textContent = CelsiusToFahrenheit(resp["consolidated_weather"][i]["min_temp"]);
-}
+
+
+    document.getElementById("highTemp").textContent = CelsiusToFahrenheit(resp["consolidated_weather"][0]["max_temp"]);
+    document.getElementById("lowTemp").textContent = CelsiusToFahrenheit(resp["consolidated_weather"][0]["min_temp"]);
+    for (let i = 1; i < resp["consolidated_weather"].length; i++) {
+        let date = new Date(resp["consolidated_weather"][i]["applicable_date"])
+        let dateArray = date.toDateString().split(" ");
+        let dateStr = dateArray[1] + " " + dateArray[2];
+        document.getElementById("date" + i).textContent = dateStr;
+        document.getElementById("condition" + i).textContent = resp["consolidated_weather"][i]["weather_state_name"];
+        weatherStateName = resp["consolidated_weather"][i]["weather_state_abbr"];
+        document.getElementById("img" + i).src = "http://www.metaweather.com/static/img/weather/" + weatherStateName + ".svg";
+        document.getElementById("img" + i).style.borderColor = bg_switch[weatherStateName];
+        document.getElementById("high" + i).textContent = CelsiusToFahrenheit(resp["consolidated_weather"][i]["max_temp"]);
+        document.getElementById("low" + i).textContent = CelsiusToFahrenheit(resp["consolidated_weather"][i]["min_temp"]);
+    }
 };
 
 xhr1.onload = function() {
-	resp = JSON.parse(xhr1.response);
-	try {
-		xhr0.open('GET', "https://cors.io/?https://www.metaweather.com/api/location/"+resp[0]["woeid"]+"/");
-		xhr0.send();
-		document.getElementById("locationTitle").textContent = resp[0]["title"];
-		document.getElementById("locationTitle").style.backgroundColor = 'white';
-		document.getElementById("locationTitle").style.color = 'red';
-	} catch(err) {
-		alert("No search result found, try a new city");
-	}
+    resp = JSON.parse(xhr1.response);
+    try {
+        xhr0.open('GET', "https://cors.io/?https://www.metaweather.com/api/location/" + resp[0]["woeid"] + "/");
+        xhr0.send();
+        document.getElementById("locationTitle").textContent = resp[0]["title"];
+        document.getElementById("locationTitle").style.backgroundColor = 'white';
+        document.getElementById("locationTitle").style.color = 'red';
+    } catch (err) {
+        alert("No search result found, try a new city");
+    }
 
 }
 
 function showPosition(position) {
-	navigator.permissions.query({
-		     name: 'geolocation'
-		 }).then(function(result) {
-		     if (result.state == 'granted') {
-				xhr1.open('GET', "https://cors.io/?https://www.metaweather.com/api/location/search/?lattlong=" + roundToTwoDecimalPlaces(position.coords.latitude) + "," + roundToTwoDecimalPlaces(position.coords.longitude));
-				xhr1.send();
+    navigator.permissions.query({
+        name: 'geolocation'
+    }).then(function(result) {
+        if (result.state == 'granted') {
+            xhr1.open('GET', "https://cors.io/?https://www.metaweather.com/api/location/search/?lattlong=" + roundToTwoDecimalPlaces(position.coords.latitude) + "," + roundToTwoDecimalPlaces(position.coords.longitude));
+            xhr1.send();
 
-		     } else if (result.state == 'prompt') {
-				xhr1.open('GET', "https://cors.io/?https://www.metaweather.com/api/location/search/?lattlong=" + roundToTwoDecimalPlaces(position.coords.latitude) + "," + roundToTwoDecimalPlaces(position.coords.longitude));
-				xhr1.send();
+        } else if (result.state == 'prompt') {
+            xhr1.open('GET', "https://cors.io/?https://www.metaweather.com/api/location/search/?lattlong=" + roundToTwoDecimalPlaces(position.coords.latitude) + "," + roundToTwoDecimalPlaces(position.coords.longitude));
+            xhr1.send();
 
-		     } else if (result.state == 'denied') {
-		        alert("location permissions are disabled on insecure platforms, please enter a location by name at the bottom of this page.");
+        } else if (result.state == 'denied') {
+            alert("location permissions are disabled on insecure platforms, please enter a location by name at the bottom of this page.");
             getWeatherForCity("Portland");
-		     }
-		     result.onchange = function() {
-		         alert(result.state);
-		     }
-		 });
+        }
+        result.onchange = function() {
+            alert(result.state);
+        }
+    });
 }
 
 document.getElementById("newCityForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-	query = document.getElementById("newCity").value;
-  getWeatherForCity(query);
+    e.preventDefault();
+    query = document.getElementById("newCity").value;
+    getWeatherForCity(query);
 });
 /*
 
@@ -302,13 +309,13 @@ document.getElementById("newCityForm").addEventListener("submit", function(e) {
 
 var queryData = location.search;
 if (queryData) {
-  queryData = queryData.substring(1,queryData.length).split("&");
-  cityData = queryData[0].split("=")[1];
-  getWeatherForCity(cityData)
-  console.log(queryData)
-} else if (window.location.origin=="http://mhunterak.github.io") {
-	alert("insecure services (like github.io) are not allowed access to location services, Please enter your Location in the form at the bottom. Currently loading weather for Portland.");
-  getWeatherForCity('Portland');
+    queryData = queryData.substring(1, queryData.length).split("&");
+    cityData = queryData[0].split("=")[1];
+    getWeatherForCity(cityData)
+    console.log(queryData)
+} else if (window.location.origin == "http://mhunterak.github.io") {
+    alert("insecure services (like github.io) are not allowed access to location services, Please enter your Location in the form at the bottom. Currently loading weather for Portland.");
+    getWeatherForCity('Portland');
 } else {
-	getLocation();
+    getLocation();
 }
