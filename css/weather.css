@@ -28,6 +28,7 @@ body {
 .flexContainer {
 	display: flex;
 	justify-content: space-around;
+	flex-basis: 1;
 }
 
 .dayForecast {
