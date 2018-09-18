@@ -205,6 +205,7 @@ const data = {
     }
 }
 
+const jobDesc = document.getElementById('jobDesc');
 const jobTitle = document.getElementById('jobTitle');
 const proficiencies = document.getElementById('proficiencies');
 const expertise = document.getElementById('expertise');
@@ -237,8 +238,10 @@ function loadNewJob(jobcode) {
     //update job title
     jobTitle.textContent = data[jobcode]["title"] + " Profile";
     jobTitle.classList.add("selector");
+    jobDesc.textContent = data[jobcode]["jobDesc"];
     // passing jobcode into this function sets that button as selected
     addOptions(jobcode);
+
 
     //	update proficienies
     //delete old content
