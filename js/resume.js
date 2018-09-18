@@ -16,7 +16,7 @@ avoid a POD.
 const teamTreehouse = {
     "name": "Team Treehouse - Online Training",
     "date": "(August/2015 – Present)",
-    "description": "Continuing technology education in subjects ranging from Python and Javascript to HTML, CSS and SQL",
+    "description": "Continuing technology education in subjects ranging from Python, SQL and Javascript to HTML and CSS ",
 }
 
 const brooksIP = {
@@ -135,11 +135,11 @@ const CEProficiencies = [{
     },
     {
     	"title": "Traits",
-    	"content": "Self-motivated, Excels at independent learning, Thrives on a small, highly collaborative team, Able to manage multiple tasks and priorities, "
+    	"content": "Self-motivated, Excels at independent learning, Thrives on a small and highly collaborative team, Able to manage multiple tasks and priorities "
     },
     {
     	"title": "Passions",
-    	"content": "Working on customer-facing issues, documenting and automating repeated tasks, synthesizing large amounts of data into a well-defined solution, making and deploying fixes to frontend and backend services in production"
+    	"content": "Working on customer-facing issues, Documenting and automating repeated tasks, Synthesizing large amounts of data into a well-defined solution, Making and deploying fixes to frontend and backend services in production"
     },
     {
     	"title": "Skills",
