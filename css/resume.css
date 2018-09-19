@@ -14,8 +14,8 @@ img {
 h1,
 h4,
 h5 {
-
     font-weight: 700;
+    page-break-after: avoid;
 }
 
 h1 {
@@ -69,6 +69,10 @@ footer p {
 	text-align: center;
 }
 
+section {
+	page-break-inside: avoid;
+}
+
 .nowrap {
 	display: inline-block;
 }
@@ -79,6 +83,11 @@ footer p {
     max-width: 800px;
     margin: 0.5em auto;
     margin-top: 0;
+    display: flex;
+    flex-direction: column;
+}
+#dropdown a {
+	line-height: 2em;
 }
 
 /* HEADLINE */
@@ -142,6 +151,7 @@ role to populate the page with new data.
     padding: 1em;
     position: absolute;
     z-index: 2;
+	line-height: 1.5em;
 
     transform: translate(-50%, -50%);
 }
@@ -241,71 +251,14 @@ to highlight an option a user is considering it
     margin-left: 2.5em;
 }
 
-/* RESPONSIVE DESIGN */
+/* PRINT LAYOUT */
 
-@media (max-width: 800px) {
-    h3 {
-        font-size: 4vw;
-        flex-direction: column;
-    }
-    #dropdown {
-		line-height: 1.5em;
-	}
-	.row {
-		display: flex;
-		justify-content: center;
-	}
-	.row h6 {
-		display: inline-flex;
-		justify-content: flex-end;
-		width: 25%;
-	}
-	.row p {
-		display: inline-flex;
-		width: 60%;,
-	}
-
+@page {
+  size: letter portrait;
 }
 
-@media (max-width: 600px) {
-	body {
-		margin: 1em;
+@media print {
+	footer {
+		display: none;
 	}
-	.row img {
-		display: inline;
-		max-width: unset;
-		width: unset;
-		height: auto;
-		flex-shrink: unset;
-
-	}
-	.row {
-		display: inline-block;
-		margin: 0.5em 0em 0em 0em auto;
-		flex-shrink: unset;
-	}
-    .row h6 {
-		display: inline-block;
-        text-align: center;
-        margin: 0.25em 0em 0em 0em;
-        width: 100%;
-    }
-    .row p {
-		display: inline-block;
-		text-align: center;
-        justify-content: center;
-        margin: 0.25em auto;
-        width: 100%;
-    }
-    #dropdown {
-		line-height: 1em;
-	}
-
-	#dropdown a {
-		line-height: 2em;
-	}
-
-
-
-
 }
