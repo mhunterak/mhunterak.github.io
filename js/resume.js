@@ -36,7 +36,7 @@ const TPMProficiencies = [{
     },
     {
         "title": "Hardware",
-        "content": "Mac/Windows/Linux Server Administration, Containerized Cloud Platforms (AWS, GCP, Heroku)",
+        "content": "Mac/Windows/Linux Server Administration, <span class='nowrap'>Containerized Cloud Platforms (AWS, GCP, Heroku)</span>",
     },
     {
         "title": "Methodologies",
@@ -253,10 +253,10 @@ function loadNewJob(jobcode) {
         let newProficiency = document.createElement("div");
         newProficiency.classList.add("row");
         let newTitle = document.createElement("h6");
-        newTitle.textContent = data[jobcode]["proficiencies"][i]["title"];
+        newTitle.innerHTML = data[jobcode]["proficiencies"][i]["title"];
         newProficiency.appendChild(newTitle);
         let newContent = document.createElement("p");
-        newContent.textContent = data[jobcode]["proficiencies"][i]["content"];
+        newContent.innerHTML = data[jobcode]["proficiencies"][i]["content"];
         newProficiency.appendChild(newContent);
         proficiencies.appendChild(newProficiency);
     }
