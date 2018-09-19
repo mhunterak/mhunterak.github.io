@@ -142,6 +142,7 @@ role to populate the page with new data.
     padding: 1em;
     position: absolute;
     z-index: 2;
+	line-height: 1.5em;
 
     transform: translate(-50%, -50%);
 }
@@ -247,9 +248,6 @@ to highlight an option a user is considering it
     h3 {
         font-size: 4vw;
         flex-direction: column;
-    }
-    #dropdown {
-		line-height: 1.5em;
 	}
 	.row {
 		display: flex;

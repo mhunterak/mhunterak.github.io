@@ -13,18 +13,14 @@ as is appropriate. Content may be defined ouside of the main data object to
 avoid a POD.
 */
 
-const teamTreehouse = {
-    "name": "Team Treehouse - Online Training",
-    "date": "(August/2015 – Present)",
-    "description": "Continuing technology education in subjects ranging from Python, SQL and Javascript to HTML and CSS ",
-}
 
-const brooksIP = {
-    "name": "Brooks Institute of Photography - Ventura CA",
-    "date": "(July/2006 – February/2008)",
-    "description": "Completed Coursework in Visual Communications / Graphic Design",
-}
+/* START TEMPLATES */
+/* 
+rather than using a database, I've hardcoded the main data content. It can
+be moved an external service at a later date, but this acheives the main goal.
+*/
 
+/* proficiencies templates */
 
 const TPMProficiencies = [{
         "title": "Languages",
@@ -32,7 +28,7 @@ const TPMProficiencies = [{
     },
     {
         "title": "Tools",
-        "content": "Git/Github, Trello, Slack, Heroku"
+        "content": "Git/Github, Trello/Asana (scrum boards), Slack"
     },
     {
         "title": "Hardware",
@@ -42,42 +38,7 @@ const TPMProficiencies = [{
         "title": "Methodologies",
         "content": "Agile, Lean, Microservice Architecture, SDLC",
     },
-    /*
-        {
-        	"title": "",
-        	"content", "",
-        },
-        */
 ]
-const TPMExpertise = ["Adept at listening to and analyzing clients’ needs, and communicating with team members to deliver the best solution",
-    "Consistently employs collaborative lean and agile methodologies to optimize workflows, provide top class customer service, and deliver breakthrough technologies and to ensure optimal performance on complex projects and technical initiatives",
-    "Skilled in communicating consistently with clients, discussing their specific design goals, presenting unique solutions, and modifying as necessary until achievement of full client approval and consensus",
-    "Outstanding interpersonal and communication soft skills leveraged to train users, troubleshoot system issues, and ensure total client satisfaction while directing multiple tasks effectively to ensure on target completion of all deliverables"
-]
-const TPMExperience = [{
-        "company": "Treehouse Stickers | Portland, Oregon",
-        "role": "Technical Co-founder / Product Manager",
-        "date": "(August/2012 – February/2018)",
-        "description": `Codified business processes into a centralized cloud-native Python application, a full cycle customer order management system based on UX feedback from customers and employees. Spearheaded UI design from scratch, 
-    	building wireframes and functional prototypes. Conducted A/B beta user tests and implemented adjustments for optimal user experience. Built relationships with clients and production employees 
-    	while monitoring the solutions delivered to respective clients.`,
-        "achievements": ["Led the SEO initiatives to maximize the return on investment by developing and maintaining the company web properties, achieving the #1 organic search result for “Custom Stickers Portland” in a competitive environment",
-            "Delivered top-class user experience for new internal users by providing timely responses with information about product updates and feature request progress, addressing customer issues in a professional manner",
-            "Grew business operations from a $18,000 seed investment to six-figure annual revenue",
-        ],
-    },
-    {
-        "company": "Independent Engagement",
-        "role": "Graphic, Video & Web Designer",
-        "date": "(August/2009 – Present)",
-        "description": `Worked in a remote environment and developed customized technical and media solutions for clients from multiple industries. Held concurrent responsibility for design tasks and interacting with clients, identifying their needs, 
-		collecting relevant information about products, services and their users. Ensured compliance with approved standards to provide quality solutions.`,
-        "achievements": ["Continued development on Treehouse Stickers platform as a contractor, providing training, maintenance and feature requests to employees of the acquiring company",
-            "Produced a video series for Niantic Labs on a a 3-week cross-country tour under field conditions in under 24 hours each"
-        ],
-    }
-]
-const TPMEducation = [teamTreehouse,]
 
 const UXRProficiencies = [{
         "title": "Languages",
@@ -93,73 +54,118 @@ const UXRProficiencies = [{
     },
 ]
 
-const UXRExpertise = ["Adept at listening to and analyzing users' goals and needs, and communicating with team members to deliver the best solution",
-    "Consistently employs collaborative lean and agile methodologies to optimize experience and deliver breakthrough technologies and to ensure optimal performance on complex projects and technical initiatives",
-    "Skilled in communicating consistently with clients, discussing their specific design goals, presenting unique solutions, and modifying as necessary until achievement of full client approval and consensus",
-]
-const UXRExperience = [{
-        "company": "Treehouse Stickers | Portland, Oregon",
-        "role": "Technical Co-founder / UX Designer",
-        "date": "(August/2012 – February/2018)",
-        "description": `Codified business processes into a centralized cloud-native Python application, a full cycle customer order management system based on UX feedback from customers and employees. Spearheaded UI design from scratch, 
-    	building wireframes and functional prototypes. Conducted A/B beta user tests and implemented adjustments for optimal user experience. Built relationships with clients and production employees 
-    	while monitoring the solutions delivered to respective clients.`,
-        "achievements": ["Led the SEO initiatives to maximize the return on investment by developing and maintaining the company web properties, achieving the #1 organic search result for “Custom Stickers Portland” in a competitive environment",
-            "Delivered top-class user experience for new internal users by providing timely responses with information about product updates and feature request progress, addressing customer issues in a professional manner",
-            "Grew business operations from a $18,000 seed investment to six-figure annual revenue, thanks to outstanding user experience",
-        ],
-    },
-    {
-        "company": "Independent Engagement",
-        "role": "Graphic, Video & Web Designer",
-        "date": "(August/2009 – Present)",
-        "description": `Worked in a remote environment and developed customized technical and media solutions for clients from multiple industries. Held concurrent responsibility for design tasks and interacting with clients, identifying their needs, 
-		collecting relevant information about products, services and their users. Ensured compliance with approved standards to provide quality solutions.`,
-        "achievements": ["Continued development on Treehouse Stickers platform as a contractor, providing training, maintenance and feature requests to employees of the acquiring company",
-            "Produced a video series for Niantic Labs on a a 3-week cross-country tour under field conditions in under 24 hours each"
-        ],
-    }
-];
-
 const CEProficiencies = [{
         "title": "Languages",
         "content": "Python (4y), Javascript (4y+), Java (1y+)",
     },
     {
-    	"title": "Frameworks",
-    	"content": "Flask (Python, 3y+), excited to learn new ones! ",
+        "title": "Frameworks",
+        "content": "Flask (Python, 3y+), excited to learn new ones! ",
     },
     {
         "title": "Tools",
         "content": "Slack, Trello (scrum)"
     },
     {
-    	"title": "Traits",
-    	"content": "Self-motivated, Excels at independent learning, Thrives on a small and highly collaborative team, Able to manage multiple tasks and priorities "
+        "title": "Traits",
+        "content": "Self-motivated, Excels at independent learning, Thrives on a small and highly collaborative team, Able to manage multiple tasks and priorities "
     },
     {
-    	"title": "Passions",
-    	"content": "Working on customer-facing issues, Documenting and automating repeated tasks, Synthesizing large amounts of data into a well-defined solution, Making and deploying fixes to frontend and backend services in production"
+        "title": "Passions",
+        "content": "Working on customer-facing issues, Documenting and automating repeated tasks, Synthesizing large amounts of data into a well-defined solution, Making and deploying fixes to frontend and backend services in production"
     },
     {
-    	"title": "Skills",
-    	"content": "Juggling small tasks along with large projects, Communicating complex ideas accurately with technical and non-technical co-workers, Improving and useful new adding features, Supporting tools used by internal teams, Creating and documenting procedures for common tasks, Customer service and Collaboration, Written and verbal communication",
+        "title": "Skills",
+        "content": "Juggling small tasks along with large projects, Communicating complex ideas accurately with technical and non-technical co-workers, Improving and useful new adding features, Supporting tools used by internal teams, Creating and documenting procedures for common tasks, Customer service and Collaboration, Written and verbal communication",
     },
     {
         "title": "Methodologies",
         "content": "Agile, Lean, Microservice Architecture, SDLC",
     },
 ]
+
+var FSDProficiencies = [{
+    "title": "Languages",
+    "content": "Python (4y+), SQL (4y+), HTML (4y+), CSS (4y+), Javascript (4y+), Java (1y+)",
+}, ]
+FSDProficiencies = FSDProficiencies.concat(TPMProficiencies.slice(1, 4));
+
+/* expertise templates */
+
+const TPMExpertise = ["Adept at listening to and analyzing clients’ needs, and communicating with team members to deliver the best solution",
+    "Consistently employs collaborative lean and agile methodologies to optimize workflows, provide top class customer service, and deliver breakthrough technologies and to ensure optimal performance on complex projects and technical initiatives",
+    "Skilled in communicating consistently with clients, discussing their specific design goals, presenting unique solutions, and modifying as necessary until achievement of full client approval and consensus",
+    "Outstanding interpersonal and communication soft skills leveraged to train users, troubleshoot system issues, and ensure total client satisfaction while directing multiple tasks effectively to ensure on target completion of all deliverables"
+]
+
+const UXRExpertise = ["Adept at listening to and analyzing users' goals and needs, and communicating with team members to deliver the best solution",
+    "Consistently employs collaborative lean and agile methodologies to optimize experience and deliver breakthrough technologies and to ensure optimal performance on complex projects and technical initiatives",
+    "Skilled in communicating consistently with clients, discussing their specific design goals, presenting unique solutions, and modifying as necessary until achievement of full client approval and consensus",
+]
+
 const CEExpertise = TPMExpertise;
+const FSDExpertise = UXRExpertise;
+
+/* experience templates */
+
+const TreehouseStickersExperience = {
+    "company": "<a href='https://www.treehousestickers.com'>Treehouse Stickers</a> | Portland, Oregon",
+    "role": "Technical Co-founder / Product Manager",
+    "date": "(August/2012 – February/2018)",
+    "description": `Codified business processes into a centralized cloud-native Python application, a full cycle customer order management system based on UX feedback from customers and employees. Spearheaded UI design from scratch, 
+    	building wireframes and functional prototypes. Conducted A/B beta user tests and implemented adjustments for optimal user experience. Built relationships with clients and production employees 
+    	while monitoring the solutions delivered to respective clients.`,
+    "achievements": ["Led the SEO initiatives to maximize the return on investment by developing and maintaining the company web properties, achieving the #1 organic search result for “Custom Stickers Portland” in a competitive environment",
+        "Delivered top-class user experience for new internal users by providing timely responses with information about product updates and feature request progress, addressing customer issues in a professional manner",
+        "Grew business operations from a $18,000 seed investment to six-figure annual revenue",
+    ],
+}
+
+const IndependentEngagementExperience = {
+    "company": "Independent Engagement",
+    "role": "Graphic, Video & Web Designer",
+    "date": "(August/2009 – Present)",
+    "description": `Worked in a remote environment and developed customized technical and media solutions for clients from multiple industries. Held concurrent responsibility for design tasks and interacting with clients, identifying their needs, 
+		collecting relevant information about products, services and their users. Ensured compliance with approved standards to provide quality solutions.`,
+    "achievements": ["Continued development on Treehouse Stickers platform as a contractor, providing training, maintenance and feature requests to employees of the acquiring company",
+        "Produced a video series for Niantic Labs on a a 3-week cross-country tour under field conditions in under 24 hours each"
+    ],
+}
+
+const TPMExperience = [TreehouseStickersExperience, IndependentEngagementExperience];
+const UXRExperience = [TreehouseStickersExperience, IndependentEngagementExperience];
 const CEExperience = TPMExperience;
-const CEEducation = [teamTreehouse]
+const FSDExperience = [{
+	"company": TreehouseStickersExperience["company"],
+	"role": "Technical Co-founder / Lead Full Stack Developer",
+	"date": TreehouseStickersExperience["date"],
+	"description": TreehouseStickersExperience["description"],
+	"achievements": TreehouseStickersExperience["achievements"],
+}]
 
+/* education templates */
 
-const test = "test";
+const teamTreehouse = {
+    "name": "Team Treehouse - Online Training",
+    "date": "(August/2015 – Present)",
+    "description": "Continuing technology education in subjects ranging from Python, SQL and Javascript to HTML and CSS ",
+}
+const brooksIP = {
+    "name": "Brooks Institute of Photography - Ventura CA",
+    "date": "(July/2006 – February/2008)",
+    "description": "Completed coursework in Visual Communications / Graphic Design",
+}
+const TPMEducation = [teamTreehouse, ];
+const UXREduction = [teamTreehouse, brooksIP];
+const CEEducation = [teamTreehouse, ];
+
+/* END TEMPLATES */
+
+// load data into the main dictionary to update. could be used as an API.
 const data = {
     "TPM": {
         "title": "Technical Product Manager",
-        "jobDesc": "Tech-savvy, dynamic, and results-oriented professional with 9+ years enhancing client relationships and 4+ years developing innovative software solutions",
+        "jobDesc": "Tech-savvy, dynamic, and results-oriented professional with 9+ years experience enhancing client relationships and 4+ years developing innovative software solutions",
         "proficiencies": TPMProficiencies,
         "expertise": TPMExpertise,
         "experience": TPMExperience,
@@ -167,44 +173,39 @@ const data = {
     },
     "UXR": {
         "title": "User Experience Researcher",
-        "jobDesc": "Innovative, dynamic, and detail-oriented professional with 4+ years developing innovative user-centric design solutions",
+        "jobDesc": "Innovative, dynamic, and detail-oriented professional with 4+ years experience developing innovative user-centric design solutions",
         "proficiencies": UXRProficiencies,
         "expertise": UXRExpertise,
         "experience": UXRExperience,
-        "education": [teamTreehouse,brooksIP],
+        "education": UXREduction,
     },
     "CE": {
         "title": "Customer Engineer",
-        "jobDesc": "Tech-savvy, dynamic, and results-oriented professional with 9+ years enhancing customer experiences and 4+ years developing innovative software solutions",
+        "jobDesc": "Tech-savvy, dynamic, and results-oriented professional with 9+ years experience enhancing customer experiences and 4+ years developing innovative software solutions",
         "proficiencies": CEProficiencies,
         "expertise": CEExpertise,
         "experience": CEExperience,
         "education": CEEducation,
     },
-    "TEST": {
-        "jobDesc": "Test description",
-        "title": test,
-        "proficiencies": [{
-            "title": test,
-            "content": test,
-        }],
-        "expertise": [test],
-        "experience": [{
-            "company": "test company",
-            "role": "test role",
-            "date": "(then - now)",
-            "description": "Yeah, it was like that",
-            "achievements": ["I did a bunch of stuff"],
-        }],
-        "education": [{
-            "name": "Test School",
-            "date": "(then - now)",
-            "description": "School of hard knocks",
-        }],
-
-    }
+    "PM": {
+        "title": "Product Manager",
+        "jobDesc": "Tech-savvy, dynamic, and results-oriented professional with 4+ years experience managing innovative software products",
+        "proficiencies": TPMProficiencies,
+        "expertise": TPMExpertise,
+        "experience": TPMExperience,
+        "education": TPMEducation,
+    },
+    "FSD": {
+        "title": "Full Stack Developer",
+        "jobDesc": "Tech-savvy, dynamic, and results-oriented professional with 4+ years experience developing innovative software products",
+        "proficiencies": FSDProficiencies,
+        "expertise": FSDExpertise,
+        "experience": FSDExperience,
+        "education": [teamTreehouse,brooksIP],
+    },
 }
 
+// import HTML elements to manipulate
 const jobDesc = document.getElementById('jobDesc');
 const jobTitle = document.getElementById('jobTitle');
 const proficiencies = document.getElementById('proficiencies');
@@ -216,10 +217,12 @@ function addOptions(selected = "") {
     let options = document.createElement('div');
     options.innerHTML = `
             <div id="dropdown">
-            	Select New Role:
+            	Select New Role:<br/>
                 <a id="TPM" title="Technical Product Manager" onclick="loadNewJob('TPM')">TPM</a>
                 <a id="UXR" title="User Experience Researcher" onclick="loadNewJob('UXR')">UXR</a>
                 <a id="CE" title="Customer Engineer" onclick="loadNewJob('CE')">CE</a>
+                <a id="PM" title="Product Manager" onclick="loadNewJob('PM')">PM</a>
+                <a id="FSD" title="Full Stack Developer" onclick="loadNewJob('FSD')">FSD</a>
             </div>
             `;
     jobTitle.appendChild(options);
@@ -229,8 +232,8 @@ function addOptions(selected = "") {
     }
 }
 
+//main function for loading new content
 function loadNewJob(jobcode) {
-    //main function for loading new content
 
     //before updating content, save the role to a query string
     saveRoleToQueryString(jobcode);
@@ -305,6 +308,7 @@ function loadNewJob(jobcode) {
     }
 
     //	update education, if it exists
+    // delete old content
     while (education.firstChild) {
         education.removeChild(education.firstChild);
     }
@@ -312,7 +316,6 @@ function loadNewJob(jobcode) {
 
     if (data[jobcode]['education'].length) {
         educationTitle.style.display = "inline";
-        // delete old content
 
         // add new content
         for (let i = 0; i < data[jobcode]['education'].length; i++) {
@@ -325,6 +328,7 @@ function loadNewJob(jobcode) {
             education.appendChild(newDescription);
         }
     } else {
+        //hide the education title if there's no content
         educationTitle.style.display = "none";
     }
 }
@@ -348,11 +352,18 @@ function getRoleFromQueryString() {
     return false;
 }
 
+// INIT FUNCTION
+
+//if there's a query string
 if (getRoleFromQueryString()) {
-    //if there's a query string
     // options are already loaded with selected highlighted
-} else {
+
     //if there's no query string
-    // add options with nothing selected
-    addOptions();
+} else {
+    // load the most recent job added
+    loadNewJob(
+        Object.keys(data)[
+            Object.keys(data).length - 1
+        ]
+    );
 }
