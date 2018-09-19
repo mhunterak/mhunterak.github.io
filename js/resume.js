@@ -20,6 +20,24 @@ rather than using a database, I've hardcoded the main data content. It can
 be moved an external service at a later date, but this acheives the main goal.
 */
 
+/* expertise templates */
+
+const TPMExpertise = ["Adept at listening to and analyzing clients’ needs, and communicating with team members to deliver the best solution",
+    "Consistently employs collaborative lean and agile methodologies to optimize workflows, provide top class customer service, and deliver breakthrough technologies and to ensure optimal performance on complex projects and technical initiatives",
+    "Skilled in communicating consistently with clients, discussing their specific design goals, presenting unique solutions, and modifying as necessary until achievement of full client approval and consensus",
+    "Outstanding interpersonal and communication soft skills leveraged to train users, troubleshoot system issues, and ensure total client satisfaction while directing multiple tasks effectively to ensure on target completion of all deliverables"
+]
+
+const UXRExpertise = ["Adept at listening to and analyzing users' goals and needs, and communicating with team members to deliver the best solution",
+    "Consistently employs collaborative lean and agile methodologies to optimize experience and deliver breakthrough technologies and to ensure optimal performance on complex projects and technical initiatives",
+    "Skilled in communicating consistently with clients, discussing their specific design goals, presenting unique solutions, and modifying as necessary until achievement of full client approval and consensus",
+]
+
+const CEExpertise = TPMExpertise;
+const FSDExpertise = UXRExpertise;
+
+
+
 /* proficiencies templates */
 
 const TPMProficiencies = [{
@@ -89,22 +107,6 @@ var FSDProficiencies = [{
     "content": "Python (4y+), SQL (4y+), HTML (4y+), CSS (4y+), Javascript (4y+), Java (1y+)",
 }, ]
 FSDProficiencies = FSDProficiencies.concat(TPMProficiencies.slice(1, 4));
-
-/* expertise templates */
-
-const TPMExpertise = ["Adept at listening to and analyzing clients’ needs, and communicating with team members to deliver the best solution",
-    "Consistently employs collaborative lean and agile methodologies to optimize workflows, provide top class customer service, and deliver breakthrough technologies and to ensure optimal performance on complex projects and technical initiatives",
-    "Skilled in communicating consistently with clients, discussing their specific design goals, presenting unique solutions, and modifying as necessary until achievement of full client approval and consensus",
-    "Outstanding interpersonal and communication soft skills leveraged to train users, troubleshoot system issues, and ensure total client satisfaction while directing multiple tasks effectively to ensure on target completion of all deliverables"
-]
-
-const UXRExpertise = ["Adept at listening to and analyzing users' goals and needs, and communicating with team members to deliver the best solution",
-    "Consistently employs collaborative lean and agile methodologies to optimize experience and deliver breakthrough technologies and to ensure optimal performance on complex projects and technical initiatives",
-    "Skilled in communicating consistently with clients, discussing their specific design goals, presenting unique solutions, and modifying as necessary until achievement of full client approval and consensus",
-]
-
-const CEExpertise = TPMExpertise;
-const FSDExpertise = UXRExpertise;
 
 /* experience templates */
 

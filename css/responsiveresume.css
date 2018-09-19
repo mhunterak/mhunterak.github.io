@@ -1,0 +1,96 @@
+/* RESPONSIVE DESIGN */
+
+@import "resume.css";
+
+@media (max-width: 800px) {
+	a {
+		text-decoration: none;
+		color: black;
+	}
+    h3 {
+        font-size: 4vw;
+        flex-direction: column;
+	}
+	section {
+		page-break-inside: avoid;
+	}
+
+	.name {
+		font-size: 6vw;
+	}
+	.row {
+		display: flex;
+		justify-content: center;
+	}
+	.row h6 {
+		display: inline-flex;
+		justify-content: flex-end;
+		width: 25%;
+	}
+	.row p {
+		display: inline-flex;
+		width: 60%;,
+	}
+	#Headline {
+		order: 0;
+	}
+	#TechnicalProficiencies {
+		order: 1;
+	}
+	#AreasOfExpertise {
+		order: 2;
+	}
+	#Education {
+		order: 3;
+	}
+	#ProfessionalExperience {
+		order: 4;
+	}
+
+}
+
+@media (max-width: 600px) {
+
+	body {
+		margin: 1em;
+	}
+	h3 {
+		display: none;
+	}
+	.row img {
+		display: none;
+/*
+		display: inline;
+		max-width: unset;
+		width: unset;
+		height: auto;
+		flex-shrink: unset;
+*/
+	}
+	.row {
+		display: inline-block;
+		margin: 0.5em 0em 0em 0em auto;
+		flex-shrink: unset;
+	}
+    .row h6 {
+		display: inline-block;
+        text-align: center;
+        margin: 0.25em 0em 0em 0em;
+        width: 100%;
+    }
+    .row p {
+		display: inline-block;
+		text-align: center;
+        justify-content: center;
+        margin: 0.25em auto;
+        width: 100%;
+    }
+    #dropdown {
+		line-height: 1em;
+	}
+
+	#dropdown a {
+		line-height: 2em;
+	}
+
+}
