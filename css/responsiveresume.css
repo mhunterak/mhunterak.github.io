@@ -9,10 +9,6 @@
 	}
     h3 {
         font-size: 4vw;
-        flex-direction: column;
-	}
-	section {
-		page-break-inside: avoid;
 	}
 
 	.name {
@@ -28,9 +24,10 @@
 		width: 25%;
 	}
 	.row p {
-		display: inline-flex;
+		display: inline;
 		width: 60%;,
 	}
+	/*
 	#Headline {
 		order: 0;
 	}
@@ -46,6 +43,7 @@
 	#ProfessionalExperience {
 		order: 4;
 	}
+	*/
 
 }
 
@@ -67,23 +65,7 @@
 		flex-shrink: unset;
 */
 	}
-	.row {
-		display: inline-block;
-		margin: 0.5em 0em 0em 0em auto;
-		flex-shrink: unset;
-	}
-    .row h6 {
-		display: inline-block;
-        text-align: center;
-        margin: 0.25em 0em 0em 0em;
-        width: 100%;
-    }
-    .row p {
-		display: inline-block;
-		text-align: center;
-        justify-content: center;
-        margin: 0.25em auto;
-        width: 100%;
+
     }
     #dropdown {
 		line-height: 1em;

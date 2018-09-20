@@ -138,11 +138,11 @@ const TPMExperience = [TreehouseStickersExperience, IndependentEngagementExperie
 const UXRExperience = [TreehouseStickersExperience, IndependentEngagementExperience];
 const CEExperience = TPMExperience;
 const FSDExperience = [{
-	"company": TreehouseStickersExperience["company"],
-	"role": "Technical Co-founder / Lead Full Stack Developer",
-	"date": TreehouseStickersExperience["date"],
-	"description": TreehouseStickersExperience["description"],
-	"achievements": TreehouseStickersExperience["achievements"],
+    "company": TreehouseStickersExperience["company"],
+    "role": "Technical Co-founder / Lead Full Stack Developer",
+    "date": TreehouseStickersExperience["date"],
+    "description": TreehouseStickersExperience["description"],
+    "achievements": TreehouseStickersExperience["achievements"],
 }]
 
 /* education templates */
@@ -191,7 +191,7 @@ const data = {
     },
     "PM": {
         "title": "Product Manager",
-        "jobDesc": "Tech-savvy, dynamic, and results-oriented professional with 4+ years experience managing innovative software products",
+        "jobDesc": "Dynamic, and results-oriented professional with 4+ years experience managing innovative software products",
         "proficiencies": TPMProficiencies,
         "expertise": TPMExpertise,
         "experience": TPMExperience,
@@ -203,17 +203,38 @@ const data = {
         "proficiencies": FSDProficiencies,
         "expertise": FSDExpertise,
         "experience": FSDExperience,
-        "education": [teamTreehouse,brooksIP],
+        "education": [teamTreehouse, brooksIP],
     },
 }
 
 // import HTML elements to manipulate
+const headTitle = document.getElementsByTagName('title')[0];
 const jobDesc = document.getElementById('jobDesc');
 const jobTitle = document.getElementById('jobTitle');
 const proficiencies = document.getElementById('proficiencies');
 const expertise = document.getElementById('expertise');
 const experience = document.getElementById('experience');
 const education = document.getElementById('education');
+
+
+const headTitleContents = "Maxwell Hunter's Dynamic Resume "
+
+function setHeadTitle(job = "") {
+    let date = new Date();
+    let dateArray = [date.getMonth(), date.getDate(), date.getFullYear().toString().substring(2)];
+    let dateString = dateArray.join("-");
+    if (job.length) {
+        job = " | " + job;
+    }
+    headTitle.textContent = headTitleContents + dateString + job;
+}
+
+function openLinksInNewWindow() {
+    let aElements = document.getElementsByTagName("a");
+    for (let i = 0; i < aElements.length; i++) {
+        aElements[i].target = "_blank";
+    }
+}
 
 function addOptions(selected = "") {
     let options = document.createElement('div');
@@ -246,6 +267,8 @@ function loadNewJob(jobcode) {
     jobDesc.textContent = data[jobcode]["jobDesc"];
     // passing jobcode into this function sets that button as selected
     addOptions(jobcode);
+    // while we're updating the title, we should change the <head> <title> as well
+    setHeadTitle(data[jobcode]["title"]);
 
 
     //	update proficienies
@@ -333,6 +356,7 @@ function loadNewJob(jobcode) {
         //hide the education title if there's no content
         educationTitle.style.display = "none";
     }
+    openLinksInNewWindow();
 }
 
 function saveRoleToQueryString(jobcode) {
