@@ -15,7 +15,6 @@ h1,
 h4,
 h5 {
     font-weight: 700;
-    page-break-after: avoid;
 }
 
 h1 {
@@ -24,12 +23,13 @@ h1 {
 
 h3 {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
 h3 a {
-    padding-left: 0.5em;
+	margin: auto;
 }
 
 h4 {
@@ -211,7 +211,7 @@ to highlight an option a user is considering it
 /* this only applies to proficiencies list */
 
 .row p {
-    display: inline-block;
+    display: inline;
     margin: 0 auto;
     width: 85%;
     margin-left: 1em;
@@ -253,12 +253,19 @@ to highlight an option a user is considering it
 
 /* PRINT LAYOUT */
 
-@page {
-  size: letter portrait;
-}
 
 @media print {
 	footer {
 		display: none;
 	}
+	section,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		page-break-inside: avoid;
+	}
+
 }
