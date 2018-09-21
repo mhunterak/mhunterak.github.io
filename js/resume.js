@@ -23,18 +23,23 @@ be moved an external service at a later date, but this acheives the main goal.
 /* expertise templates */
 
 const TPMExpertise = ["Adept at listening to and analyzing clients’ needs, and communicating with team members to deliver the best solution",
-    "Consistently employs collaborative lean and agile methodologies to optimize workflows, provide top class customer service, and deliver breakthrough technologies and to ensure optimal performance on complex projects and technical initiatives",
+    "Consistently employs collaborative lean and agile methodologies to optimize workflows, provide top class customer service, and deliver breakthrough technologies to ensure optimal performance on complex projects and technical initiatives",
     "Skilled in communicating consistently with clients, discussing their specific design goals, presenting unique solutions, and modifying as necessary until achievement of full client approval and consensus",
     "Outstanding interpersonal and communication soft skills leveraged to train users, troubleshoot system issues, and ensure total client satisfaction while directing multiple tasks effectively to ensure on target completion of all deliverables"
 ]
 
 const UXRExpertise = ["Adept at listening to and analyzing users' goals and needs, and communicating with team members to deliver the best solution",
-    "Consistently employs collaborative lean and agile methodologies to optimize experience and deliver breakthrough technologies and to ensure optimal performance on complex projects and technical initiatives",
+    "Consistently employs collaborative lean and agile methodologies to optimize user experience, deliver breakthrough technologies, and ensure optimal performance on complex projects and technical initiatives",
     "Skilled in communicating consistently with clients, discussing their specific design goals, presenting unique solutions, and modifying as necessary until achievement of full client approval and consensus",
 ]
 
 const CEExpertise = TPMExpertise;
 const FSDExpertise = UXRExpertise;
+const LPDExpertise = ["Adept at listening to and analyzing clients’ needs, and communicating with team members to deliver the best solution",
+    "Consistently employs collaborative lean and agile methodologies to optimize workflows, provide top class customer experience, and deliver breakthrough technologies to ensure optimal performance on complex projects and technical initiatives",
+    "Skilled in communicating consistently with clients, discussing their specific design goals, presenting unique solutions, and modifying as necessary until achievement of full client approval and consensus",
+    "Outstanding interpersonal and communication soft skills leveraged to train users, collaborate with team members, troubleshoot system issues and ensure total client satisfaction while directing multiple tasks effectively to ensure on target completion of all deliverables"
+]
 
 
 
@@ -78,7 +83,7 @@ const CEProficiencies = [{
     },
     {
         "title": "Frameworks",
-        "content": "Flask (Python, 3y+), excited to learn new ones! ",
+        "content": "Flask (Python, 3y+), <span class='nowrap'>excited to learn new ones!</span> ",
     },
     {
         "title": "Tools",
@@ -94,7 +99,7 @@ const CEProficiencies = [{
     },
     {
         "title": "Skills",
-        "content": "Juggling small tasks along with large projects, Communicating complex ideas accurately with technical and non-technical co-workers, Improving and useful new adding features, Supporting tools used by internal teams, Creating and documenting procedures for common tasks, Customer service and Collaboration, Written and verbal communication",
+        "content": "Juggling small tasks along with large projects, Communicating complex ideas accurately with technical and non-technical co-workers, Improving and useful new adding features, Supporting tools used by internal teams, Creating and documenting procedures for common tasks, Customer service and collaboration, Written and verbal communication",
     },
     {
         "title": "Methodologies",
@@ -107,6 +112,34 @@ var FSDProficiencies = [{
     "content": "Python (4y+), SQL (4y+), HTML (4y+), CSS (4y+), Javascript (4y+), Java (1y+)",
 }, ]
 FSDProficiencies = FSDProficiencies.concat(TPMProficiencies.slice(1, 4));
+
+const LPDProficiencies = [{
+        "title": "Languages",
+        "content": "Python (4y+), SQL (4y+), HTML (4y+), CSS (4y+), Javascript (4y+)",
+    },
+	{
+		"title": "Frameworks",
+	    "content": "Flask (Python, 3y+), Django (Python, 1y+), <span class='nowrap'>excited to learn new ones!</span> ",
+	},
+    {
+        "title": "Tools",
+        "content": "Git/Github, Trello/Asana (scrum boards), Slack"
+    },
+    {
+
+    	"title": "Skills",
+    	"content": "Juggling small tasks along with large projects, Communicating complex ideas accurately with technical and non-technical co-workers, Supporting tools used by internal teams, Creating and documenting procedures for common tasks and then automating them, Customer service and collaboration, Excellent written and verbal communication",
+    },
+    {
+        "title": "Hardware",
+        "content": "Mac/Windows/Linux Server Administration, <span class='nowrap'>Containerized Cloud Platforms (AWS, GCP, Heroku)</span>",
+    },
+    {
+        "title": "Methodologies",
+        "content": "Agile, Lean, Microservice Architecture, SDLC",
+    },
+]
+
 
 /* experience templates */
 
@@ -129,8 +162,8 @@ const IndependentEngagementExperience = {
     "date": "(August/2009 – Present)",
     "description": `Worked in a remote environment and developed customized technical and media solutions for clients from multiple industries. Held concurrent responsibility for design tasks and interacting with clients, identifying their needs, 
 		collecting relevant information about products, services and their users. Ensured compliance with approved standards to provide quality solutions.`,
-    "achievements": ["Continued development on Treehouse Stickers platform as a contractor, providing training, maintenance and feature requests to employees of the acquiring company",
-        "Produced a video series for Niantic Labs on a a 3-week cross-country tour under field conditions in under 24 hours each"
+    "achievements": ["Continued development on Treehouse Stickers platform as a contractor, providing training, maintenance and fulfilling feature requests for employees of the acquiring company",
+        "Produced a video series for Niantic Labs on a a 3-week cross-country tour under field conditions, shooting, editing, and uploading each video in under 24 hours"
     ],
 }
 
@@ -143,6 +176,25 @@ const FSDExperience = [{
     "date": TreehouseStickersExperience["date"],
     "description": TreehouseStickersExperience["description"],
     "achievements": TreehouseStickersExperience["achievements"],
+}]
+const LPDExperience = [{
+	"company": TreehouseStickersExperience["company"],
+	"role": "Technical Co-founder / Lead Python Developer",
+    "date": TreehouseStickersExperience["date"],
+    "description": `Codified business processes into a centralized cloud-native Python application, a full cycle customer order management system based on UX feedback from customers and employees.
+    	Collaborated with users and developers to implement adjustments for optimal user experience. Built relationships with clients and employees while monitoring the solutions delivered to respective clients.`,
+    "achievements": [TreehouseStickersExperience["achievements"][0],
+        "Delivered top-class user experience for new internal users by providing timely responses with information about product updates and feature request timelines, addressing customer issues in a professional manner",
+        TreehouseStickersExperience["achievements"][2],
+        ]
+},
+{
+    "company": IndependentEngagementExperience["company"],
+    "role": "Graphic / Video / Web Designer",
+    "date": IndependentEngagementExperience["date"],
+    "description": `Worked in a remote environment and developed customized technical and media solutions for clients from multiple industries. Held concurrent responsibility for design tasks and interacting with clients, identifying their needs, 
+		collecting relevant information about products, services and their users. Interfaced with offshore teams in a leadership capacity, and ensured compliance with approved standards.`,
+    "achievements": IndependentEngagementExperience["achievements"],
 }]
 
 /* education templates */
@@ -167,7 +219,7 @@ const CEEducation = [teamTreehouse, ];
 const data = {
     "TPM": {
         "title": "Technical Product Manager",
-        "jobDesc": "Tech-savvy, dynamic, and results-oriented professional with 9+ years experience enhancing client relationships and 4+ years developing innovative software solutions",
+        "jobDesc": "Tech-savvy, dynamic, results-oriented professional with 9+ years experience enhancing client relationships and 4+ years developing innovative software solutions",
         "proficiencies": TPMProficiencies,
         "expertise": TPMExpertise,
         "experience": TPMExperience,
@@ -175,7 +227,7 @@ const data = {
     },
     "UXR": {
         "title": "User Experience Researcher",
-        "jobDesc": "Innovative, dynamic, and detail-oriented professional with 4+ years experience developing innovative user-centric design solutions",
+        "jobDesc": "Innovative, dynamic, detail-oriented professional with 4+ years experience developing innovative user-centric design solutions",
         "proficiencies": UXRProficiencies,
         "expertise": UXRExpertise,
         "experience": UXRExperience,
@@ -183,7 +235,7 @@ const data = {
     },
     "CE": {
         "title": "Customer Engineer",
-        "jobDesc": "Tech-savvy, dynamic, and results-oriented professional with 9+ years experience enhancing customer experiences and 4+ years developing innovative software solutions",
+        "jobDesc": "Tech-savvy, dynamic, results-oriented professional with 9+ years experience enhancing customer experiences and 4+ years developing innovative software solutions",
         "proficiencies": CEProficiencies,
         "expertise": CEExpertise,
         "experience": CEExperience,
@@ -191,7 +243,7 @@ const data = {
     },
     "PM": {
         "title": "Product Manager",
-        "jobDesc": "Dynamic, and results-oriented professional with 4+ years experience managing innovative software products",
+        "jobDesc": "Tech-savvy, dynamic, results-oriented professional with 4+ years experience managing innovative software products",
         "proficiencies": TPMProficiencies,
         "expertise": TPMExpertise,
         "experience": TPMExperience,
@@ -199,11 +251,20 @@ const data = {
     },
     "FSD": {
         "title": "Full Stack Developer",
-        "jobDesc": "Tech-savvy, dynamic, and results-oriented professional with 4+ years experience developing innovative software products",
+        "jobDesc": "Tech-savvy, dynamic, results-oriented professional with 4+ years experience developing innovative software products",
         "proficiencies": FSDProficiencies,
         "expertise": FSDExpertise,
         "experience": FSDExperience,
         "education": [teamTreehouse, brooksIP],
+    },
+    "LPD": {
+        "title": "Lead Python Developer",
+        "jobDesc": "Savvy, diplomatic, results-oriented professional with 5+ years of entrepreneurship experience and 4+ years experience leading development teams creating innovative software products",
+        "proficiencies": LPDProficiencies,
+        "expertise": LPDExpertise,
+        "experience": LPDExperience,
+        "education": [teamTreehouse],
+
     },
 }
 
@@ -246,6 +307,7 @@ function addOptions(selected = "") {
                 <a id="CE" title="Customer Engineer" onclick="loadNewJob('CE')">CE</a>
                 <a id="PM" title="Product Manager" onclick="loadNewJob('PM')">PM</a>
                 <a id="FSD" title="Full Stack Developer" onclick="loadNewJob('FSD')">FSD</a>
+                <a id="LPD" title="Lead Python Developer" onclick="loadNewJob('LPD')">LPD</a>
             </div>
             `;
     jobTitle.appendChild(options);
