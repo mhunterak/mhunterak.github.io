@@ -119,7 +119,7 @@ const LPDProficiencies = [{
     },
 	{
 		"title": "Frameworks",
-	    "content": "Flask (Python, 3y+), Django (Python, 1y+), Angular (Javascript, 1y+), <span class='nowrap'>excited to learn new ones!</span> ",
+	    "content": "Flask (Python, 3y+), Django (Python, 1y+), <span class='nowrap'>excited to learn new ones!</span> ",
 	},
     {
         "title": "Tools",
