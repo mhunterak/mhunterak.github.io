@@ -69,6 +69,7 @@ footer p {
 	text-align: center;
 }
 
+.nowrap span,
 section {
 	page-break-inside: avoid;
 }
