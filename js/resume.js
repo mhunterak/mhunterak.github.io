@@ -47,7 +47,7 @@ const LPDExpertise = ["Adept at listening to and analyzing clients’ needs, and
 
 const TPMProficiencies = [{
         "title": "Languages",
-        "content": "Python (4y+), SQL (4y+), HTML (4y+), CSS (4y+), Javascript (4y+)",
+        "content": "Python (4y+), SQL (4y+), HTML (4y+), CSS (4y+), <span class='nowrap'>Javascript (4y+)</span>",
     },
     {
         "title": "Tools",
@@ -115,7 +115,7 @@ FSDProficiencies = FSDProficiencies.concat(TPMProficiencies.slice(1, 4));
 
 const LPDProficiencies = [{
         "title": "Languages",
-        "content": "Python (4y+), SQL (4y+), HTML (4y+), CSS (4y+), Javascript (4y+)",
+        "content": "Python (4y+), SQL (4y+), HTML (4y+), <span class='nowrap'>Javascript (4y+)</span>",
     },
 	{
 		"title": "Frameworks",
@@ -136,7 +136,7 @@ const LPDProficiencies = [{
     },
     {
         "title": "Methodologies",
-        "content": "Agile, Lean, Microservice Architecture, SDLC",
+        "content": "Agile, Lean, Microservice Architecture, SDLC, TDD, CD/CI",
     },
 ]
 

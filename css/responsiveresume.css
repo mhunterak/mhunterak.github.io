@@ -55,6 +55,9 @@
 	h3 {
 		display: none;
 	}
+	#jobDesc {
+		width: 100%;
+	}
 	.row img {
 		display: none;
 /*
