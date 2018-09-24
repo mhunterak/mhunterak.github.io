@@ -69,13 +69,20 @@
 */
 	}
 
-    }
     #dropdown {
 		line-height: 1em;
+		transform: translateX(-50%);
 	}
+	.selector:hover #dropdown{
 
+		display: inline-flex;
+		flex-direction: column;
+		margin-bottom: unset;
+	}
+	.selector:hover #dropdown a {
+		margin-bottom: unset;
+	}
 	#dropdown a {
 		line-height: 2em;
 	}
-
 }

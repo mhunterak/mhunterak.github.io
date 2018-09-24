@@ -4,6 +4,7 @@ body {
     font-weight: 400;
     margin: 2vw;
     text-align: center;
+    float: none;
 }
 
 img {
@@ -71,7 +72,6 @@ footer p {
 
 .nowrap span,
 section {
-	page-break-inside: avoid;
 }
 
 .nowrap {
@@ -149,29 +149,39 @@ role to populate the page with new data.
     border: 3px solid black;
     display: none;
     justify-content: center;
-    padding: 1em;
+    margin: auto;
+    padding: 1em 0em;
     position: absolute;
     z-index: 2;
 	line-height: 1.5em;
-
-    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
 }
 
 /* show menu when the job title is hovered over */
 
+.selector {
+    position: relative;
+}
+
 .selector:hover #dropdown {
-    display: inline;
+    display: block;
 }
 
 /* Controller buttons */
+#dropdown {
+    position: absolute;
+}
 
 #dropdown a {
 	background-color: white;
     border: 1px solid black;
+    margin: 0.2em;
     margin-bottom: 1em;
     padding: 0.25em;
 
 }
+
 
 /* Highlight buttons on hover, 
 to highlight an option a user is considering it
@@ -252,21 +262,16 @@ to highlight an option a user is considering it
     margin-left: 2.5em;
 }
 
+
 /* PRINT LAYOUT */
 
-
 @media print {
-	footer {
-		display: none;
-	}
-	section,
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		page-break-inside: avoid;
-	}
+    footer {
+        display: none;
+    }
 
+    section {
+        overflow: visible;
+        page-break-inside: avoid;
+    }
 }
