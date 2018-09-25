@@ -96,7 +96,7 @@ const CEProficiencies = [{
     },
     {
         "title": "Traits",
-        "content": "Self-motivated, Excels at independent learning, Thrives on a small and highly collaborative team, Able to manage multiple tasks and priorities "
+        "content": "Autodidactic, Self-motivated, Excels at independent learning, Thrives on a small and highly collaborative team, Able to manage multiple tasks and priorities "
     },
     {
         "title": "Passions",
@@ -268,7 +268,7 @@ const data = {
     },
     "CE": {
         "title": "Customer Engineer",
-        "jobDesc": "Tech-savvy, dynamic, results-oriented professional with 9+ years experience enhancing customer experiences and 4+ years developing innovative software solutions",
+        "jobDesc": "Tech-savvy, autodidactic, results-oriented professional with 9+ years experience enhancing customer experiences and 4+ years developing innovative software solutions",
         "proficiencies": CEProficiencies,
         "expertise": CEExpertise,
         "experience": CEExperience,
@@ -284,7 +284,7 @@ const data = {
     },
     "FSD": {
         "title": "Full Stack Developer",
-        "jobDesc": "Tech-savvy, dynamic, results-oriented professional with 4+ years experience developing innovative software products",
+        "jobDesc": "Tech-savvy, autodidactic, results-oriented professional with 4+ years experience developing innovative software products",
         "proficiencies": FSDProficiencies,
         "expertise": FSDExpertise,
         "experience": FSDExperience,
