@@ -46,6 +46,9 @@ const GDExpertise = [LPDExpertise[0],
     LPDExpertise[2],
 ];
 
+const QAAEExpertise = ["Researching and implementing new technologies and approaches",
+    "Analyzing and communicating test results",
+    "Creating reusable test data sets from real-world instances"];
 
 
 /* proficiencies templates */
@@ -152,6 +155,23 @@ const GDProficiencies = [{
     }
 ]
 
+const QAAEProficiencies = [
+    CEProficiencies[0],
+    {
+        "title": "Tools",
+        "content": "Selenium, Trello (Scrum boards for bug tracking), Slack",
+    },
+    {
+        "title": "Skills",
+        "content": "Creating and documenting procedures for test conditions and automating them, Excellent written and verbal communication, Self-starter, Highly analytical and organized",
+    },
+    {
+        "title": "Methodologies",
+        "content": "Lean, Agile, SDLC, TDD, CI/CD/CD",
+    },
+    ]
+
+
 /* experience templates */
 
 const TreehouseStickersExperience = {
@@ -228,7 +248,18 @@ const GDExperience = [{
         IndependentEngagementExperience["achievements"][1]],
 
 }]
-
+const QAAEExperience = [{
+    "company": TreehouseStickersExperience["company"],
+    "role": TreehouseStickersExperience["role"],
+    "date": TreehouseStickersExperience["date"],
+    "description": `Codified business processes into a centralized cloud-native Python application according to TDD and CI/CD/CD methodologies. Created, executed, and maintained test automations.
+     Conducted automated tests for web browsers (Selenium) and mobile (Robotium). Used SQL to prepare and track test data, and for results analysis. Used coverage.py to provide metrics and reports.`,
+    "achievements": [
+        TreehouseStickersExperience["achievements"][1],
+        "Built strong developer skills in several languages including Java, Javascript and Python",
+        ]
+}]
+TPMExperience;
 /* education templates */
 
 const teamTreehouse = {
@@ -245,6 +276,7 @@ const TPMEducation = [teamTreehouse, ];
 const UXREduction = [teamTreehouse, brooksIP];
 const CEEducation = [teamTreehouse, ];
 const GDEducation = [brooksIP];
+const QAAEEducation = [teamTreehouse, ];
 
 /* END TEMPLATES */
 
@@ -305,6 +337,15 @@ const data = {
         "expertise": GDExpertise,
         "experience": GDExperience,
         "education": GDEducation,
+    },
+    "QAAE": {
+        "title": "QA Automation Engineer",
+        "jobDesc": "Tech-savvy, self-starting, detail-oriented professional with 4+ years developing test-driven software applications",
+        "proficiencies": QAAEProficiencies,
+        "expertise": QAAEExpertise,
+        "experience": QAAEExperience,
+        "education": QAAEEducation,
+
     }
 }
 
