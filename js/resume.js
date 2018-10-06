@@ -346,6 +346,15 @@ const data = {
         "experience": QAAEExperience,
         "education": QAAEEducation,
 
+    },
+    "DSE": {
+        "title": "Developer Support Engineer",
+        "jobDesc": "Tech-savvy, dynamic, results-oriented professional with 9+ years experience enhancing client relationships and 4+ years developing innovative software solutions",
+        "proficiencies": TPMProficiencies,
+        "expertise": TPMExpertise,
+        "experience": TPMExperience,
+        "education": TPMEducation,
+
     }
 }
 
