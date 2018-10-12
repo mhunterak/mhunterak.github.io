@@ -16,20 +16,26 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
-#set testing to local or live server
+sys.stdout.write('.') #increment itialization progress
+sys.stdout.flush()
+
+sys.stdout.write('.') #increment itialization progress
+sys.stdout.flush()
+
 DEBUG = True
 
-sys.stdout.write('.') #increment itialization progress
-sys.stdout.flush()
+def buildChrome():
+	return webdriver.Chrome()
+	driver = buildChrome()
 
-#initialize selenium driver
-driver = webdriver.Chrome()
-sys.stdout.write('.') #increment itialization progress
-sys.stdout.flush()
+
+def buildFirefox():
+	return webdriver.Firefox()
+
 
 #select test or prodo env
-def selectEnvironment(DEBUG):
-	if not DEBUG:
+def selectEnvironment(debug):
+	if not debug:
 		return 'http://mhunterak.github.io/'
 	else:
 		return 'file:///Users/Treehouse/Documents/Github/mhunterak.github.io/'
@@ -117,7 +123,7 @@ class TestResume(unittest.TestCase):
 		self.assertFalse((CEButton).is_displayed())
 
 		#test that if the selector is hovered, the dropdown buttons are displayed
-		ActionChains(driver).move_to_element(jobTitle).perform()
+		ActionChains(driver).move_to_element(jobTitle).click(jobTitle).perform()
 		self.assertTrue((driver.find_element_by_css_selector('#dropdown')).is_displayed())
 		self.assertTrue((CEButton).is_displayed())
 
@@ -133,32 +139,54 @@ class TestResume(unittest.TestCase):
 		# the CSE profile displays
 		self.assertTrue("Customer Engineer Profile" in jobTitle.text)
 
+def buildAndRunTests(debug):
+	#assign global value to the argument
+	selectEnvironment(debug)
+
+	if debug:
+		print "TESTING DEBUG "; print
+	else:
+		print "TESTING PRODO "; print
+
+	suite = unittest.TestLoader().loadTestsFromTestCase(TestIndex)
+	#	weather tests aren't working right, probably because of the location permissions
+	#	suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestWeather))
+	suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestResume))
+
+	#sample of adding new class of tests to the test suite
+	#	suite.addTest(unittest.TestLoader().loadTestsFromTestCase(#NewTestClass))
+	
+	#run tests
+	unittest.TextTestRunner(verbosity=2).run(suite)
+
 sys.stdout.write('.') #increment itialization progress
 sys.stdout.flush()
 
 print;print #add new lines
 
 if __name__ == '__main__':
-	suite = unittest.TestLoader().loadTestsFromTestCase(TestIndex)
-#	weather tests aren't working right, probably because of the location permissions
-#	suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestWeather))
-	suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestResume))
-
-#sample of adding new class of tests to the test suite
-#	suite.addTest(unittest.TestLoader().loadTestsFromTestCase(#NewTestClass))
-
-	#run test suite with DEBUG on
-	print "RUNNING TESTS IN DEBUG"; print
-	unittest.TextTestRunner(verbosity=2).run(suite)
-	print "DEBUG TESTS COMPLETE"
-	#run test suite with DEBUG off
-	print;print;print "RUNNING TESTS IN PRODO"; print
-	DEBUG = False
-	suite = unittest.TestLoader().loadTestsFromTestCase(TestIndex)
-	suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestResume))
-	unittest.TextTestRunner(verbosity=2).run(suite)
-	print "PRODO TESTS COMPLETE"
+	i = 0
+	j = 0
+	while i < 2:
+		if i == 0:
+			driver = buildChrome()
+			print "--> TESTING IN CHROME <--"; print
+		elif i == 1:
+			driver = buildFirefox()
+			print "--> TESTING IN FIREFOX <--"; print
+		while j < 2:
+			if j == 0: #DEBUG tests
+				DEBUG = True
+				buildAndRunTests(True)
+				j += 1
+			elif j == 1: #PRODO tests
+				DEBUG = False
+				buildAndRunTests(False)
+				j = 2
+		i += 1
+		j = 0
 
 
 #cleanup
 driver.quit()
+print;print "TESTS COMPLETE";print
