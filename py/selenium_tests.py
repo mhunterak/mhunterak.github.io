@@ -22,26 +22,20 @@ sys.stdout.flush()
 sys.stdout.write('.') #increment itialization progress
 sys.stdout.flush()
 
+DEBUG = True
+
 def buildChrome():
 	return webdriver.Chrome()
-driver = buildChrome()
+	driver = buildChrome()
 
 
 def buildFirefox():
 	return webdriver.Firefox()
 
 
-DEBUG = True
-def toggleDebug(DEBUG):
-	if DEBUG:
-		return False
-	else:
-		return True
-
-
 #select test or prodo env
-def selectEnvironment(DEBUG):
-	if not DEBUG:
+def selectEnvironment(debug):
+	if not debug:
 		return 'http://mhunterak.github.io/'
 	else:
 		return 'file:///Users/Treehouse/Documents/Github/mhunterak.github.io/'
@@ -147,9 +141,9 @@ class TestResume(unittest.TestCase):
 
 def buildAndRunTests(debug):
 	#assign global value to the argument
-	DEBUG = debug 
+	selectEnvironment(debug)
 
-	if DEBUG:
+	if debug:
 		print "TESTING DEBUG "; print
 	else:
 		print "TESTING PRODO "; print
@@ -182,9 +176,11 @@ if __name__ == '__main__':
 			print "--> TESTING IN FIREFOX <--"; print
 		while j < 2:
 			if j == 0: #DEBUG tests
+				DEBUG = True
 				buildAndRunTests(True)
 				j += 1
 			elif j == 1: #PRODO tests
+				DEBUG = False
 				buildAndRunTests(False)
 				j = 2
 		i += 1
@@ -193,3 +189,4 @@ if __name__ == '__main__':
 
 #cleanup
 driver.quit()
+print;print "TESTS COMPLETE";print
