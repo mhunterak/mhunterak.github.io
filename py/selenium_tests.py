@@ -1,15 +1,16 @@
 import sys
 print "AUTOMATED TESTING FOR MAXWELL HUNTER'S GITHUB PAGE"
 
-
+import datetime
 #import unittest framework
 import unittest
 import sys
 
 print;sys.stdout.write("initializing")
 sys.stdout.flush()
+startTime = datetime.datetime.now()
 
-
+#import selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -19,21 +20,49 @@ from selenium.webdriver.common.action_chains import ActionChains
 sys.stdout.write('.') #increment itialization progress
 sys.stdout.flush()
 
+#set global variables for permution conditions
+RELEASES = [ #Set global production modes
+	'Debug', 
+	# 'Alpha'
+	# 'Beta'
+	'Production',
+	] 
+BROWSERS = ['Chrome', 'Firefox']
+SCREEN_SIZES = [ #set global screen sizes for testing - list of tuples (height, width)
+	#MOBILE - PORTRAIT
+	(375, 667),
+	(414, 736),
+	#MOBILE - LANDSCAPE
+	(667, 375),
+	(736, 414),
+	#DESKTOP
+	(1024, 768),
+	(1280, 800),
+	(1366, 768),
+	(1920, 1080),
+	] 
+
+DEBUG = True #set global variable for testing as default
+
 sys.stdout.write('.') #increment itialization progress
 sys.stdout.flush()
 
-DEBUG = True
+###FUNCTIONS
 
 def buildChrome():
 	return webdriver.Chrome()
 	driver = buildChrome()
 
-
 def buildFirefox():
 	return webdriver.Firefox()
 
+def setWidowSize(width, height):
+	print; print "DISPLAY RESOLUTION: {} x {}".format(height, width); print;
+	driver.set_window_position(0, 0)
+	driver.set_window_size(width, height)
 
-#select test or prodo env
+#select test or prodo environment
+#TODO: instead of a global boolean DEBUG, we should set this to use key strings
 def selectEnvironment(debug):
 	if not debug:
 		return 'http://mhunterak.github.io/'
@@ -41,8 +70,11 @@ def selectEnvironment(debug):
 		return 'file:///Users/Treehouse/Documents/Github/mhunterak.github.io/'
 
 def loadPage(page):
-	driver.get(selectEnvironment(DEBUG)+page+'.html')	
+	driver.get(
+		selectEnvironment(DEBUG)+page+'.html'
+		)	
 
+#TEST CLASSES
 class TestIndex(unittest.TestCase):
 	def testIndex_NameInTitle(self):
 		#load the page we're working on
@@ -141,6 +173,7 @@ class TestResume(unittest.TestCase):
 
 def buildAndRunTests(debug):
 	#assign global value to the argument
+	#TODO: instead of a global boolean DEBUG, we should set this to use key strings
 	selectEnvironment(debug)
 
 	if debug:
@@ -153,40 +186,39 @@ def buildAndRunTests(debug):
 	#	suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestWeather))
 	suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestResume))
 
-	#sample of adding new class of tests to the test suite
+	#sample code for adding new class of tests to the test suite
 	#	suite.addTest(unittest.TestLoader().loadTestsFromTestCase(#NewTestClass))
 	
 	#run tests
 	unittest.TextTestRunner(verbosity=2).run(suite)
 
-sys.stdout.write('.') #increment itialization progress
+sys.stdout.write('. Done') #itialization progress complete
 sys.stdout.flush()
-
-print;print #add new lines
+print;print 
 
 if __name__ == '__main__':
-	i = 0
-	j = 0
-	while i < 2:
-		if i == 0:
+	#loop over browsers
+	for browser in BROWSERS: 
+		if browser == 'Chrome':
 			driver = buildChrome()
 			print "--> TESTING IN CHROME <--"; print
-		elif i == 1:
+		elif browser == 'Firefox':
 			driver = buildFirefox()
 			print "--> TESTING IN FIREFOX <--"; print
-		while j < 2:
-			if j == 0: #DEBUG tests
-				DEBUG = True
-				buildAndRunTests(True)
-				j += 1
-			elif j == 1: #PRODO tests
-				DEBUG = False
-				buildAndRunTests(False)
-				j = 2
-		i += 1
-		j = 0
+		#loop over screen sizes
+		for (height, width) in SCREEN_SIZES: 
+			setWidowSize(height, width)
+			#loop over releases
+			for release in RELEASES:
+				if release == 'Debug': #DEBUG tests
+					DEBUG = True
+					buildAndRunTests(True)
+				elif release == 'Production': #PRODO tests
+					DEBUG = False
+					buildAndRunTests(False)
 
 
 #cleanup
+endTime = datetime.datetime.now()
+print; print 'TESTS COMPLETED IN {}'.format(endTime - startTime)
 driver.quit()
-print;print "TESTS COMPLETE";print
