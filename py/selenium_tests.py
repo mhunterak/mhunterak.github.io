@@ -20,13 +20,14 @@ from selenium.webdriver.common.action_chains import ActionChains
 sys.stdout.write('.') #increment itialization progress
 sys.stdout.flush()
 
-#set global variables for permution conditions
-RELEASES = [ #Set global production modes
-	'Debug', 
-	# 'Alpha'
-	# 'Beta'
-	'Production',
-	] 
+###set global variables for permution conditions
+ENVIRONMENTS = { #Set global production modes
+		'Debug' : 'http://mhunterak.github.io/', 
+		# 'Alpha'
+		# 'Beta'
+		'Production' : 'file:///Users/Treehouse/Documents/Github/mhunterak.github.io/',
+	}
+RELEASES = ENVIRONMENTS.keys() 
 BROWSERS = ['Chrome', 'Firefox']
 SCREEN_SIZES = [ #set global screen sizes for testing - list of tuples (height, width)
 	#MOBILE - PORTRAIT
@@ -42,7 +43,10 @@ SCREEN_SIZES = [ #set global screen sizes for testing - list of tuples (height, 
 	(1920, 1080),
 	] 
 
-DEBUG = True #set global variable for testing as default
+DEBUG = True #set global variable for testing as True by default
+ENVIRONMENT = 'Testing' #set global variable for environment by string
+#has more options besides debug or prodo
+
 
 sys.stdout.write('.') #increment itialization progress
 sys.stdout.flush()
@@ -51,28 +55,23 @@ sys.stdout.flush()
 
 def buildChrome():
 	return webdriver.Chrome()
-	driver = buildChrome()
 
 def buildFirefox():
 	return webdriver.Firefox()
 
+# We don't need the function, but this is what it would look like
+'''
+def selectEnvironmentByString(string):
+	return ENVIRONMENTS[string]
+'''
+
 def setWidowSize(width, height):
-	print; print "DISPLAY RESOLUTION: {} x {}".format(height, width); print;
+	print; print "SETTING DISPLAY RESOLUTION TO {} x {}".format(height, width); print;
 	driver.set_window_position(0, 0)
 	driver.set_window_size(width, height)
 
-#select test or prodo environment
-#TODO: instead of a global boolean DEBUG, we should set this to use key strings
-def selectEnvironment(debug):
-	if not debug:
-		return 'http://mhunterak.github.io/'
-	else:
-		return 'file:///Users/Treehouse/Documents/Github/mhunterak.github.io/'
-
 def loadPage(page):
-	driver.get(
-		selectEnvironment(DEBUG)+page+'.html'
-		)	
+	driver.get(ENVIRONMENTS[ENVIRONMENT]+page+'.html')
 
 #TEST CLASSES
 class TestIndex(unittest.TestCase):
@@ -171,15 +170,10 @@ class TestResume(unittest.TestCase):
 		# the CSE profile displays
 		self.assertTrue("Customer Engineer Profile" in jobTitle.text)
 
-def buildAndRunTests(debug):
+def buildAndRunTests():
 	#assign global value to the argument
-	#TODO: instead of a global boolean DEBUG, we should set this to use key strings
-	selectEnvironment(debug)
 
-	if debug:
-		print "TESTING DEBUG "; print
-	else:
-		print "TESTING PRODO "; print
+	print "TESTING {} ".format(ENVIRONMENT); print
 
 	suite = unittest.TestLoader().loadTestsFromTestCase(TestIndex)
 	#	weather tests aren't working right, probably because of the location permissions
@@ -196,28 +190,26 @@ sys.stdout.write('. Done') #itialization progress complete
 sys.stdout.flush()
 print;print 
 
+#loop order is browsers, then releases, then screen sizes
 if __name__ == '__main__':
 	#loop over browsers
+	#sets the global browser to a certain browser type to run tests
 	for browser in BROWSERS: 
+		print 'Loading New browser' #itialization progress complete
 		if browser == 'Chrome':
-			driver = buildChrome()
 			print "--> TESTING IN CHROME <--"; print
+			driver = buildChrome()
 		elif browser == 'Firefox':
-			driver = buildFirefox()
 			print "--> TESTING IN FIREFOX <--"; print
-		#loop over screen sizes
-		for (height, width) in SCREEN_SIZES: 
-			setWidowSize(height, width)
-			#loop over releases
-			for release in RELEASES:
-				if release == 'Debug': #DEBUG tests
-					DEBUG = True
-					buildAndRunTests(True)
-				elif release == 'Production': #PRODO tests
-					DEBUG = False
-					buildAndRunTests(False)
-
-
+			driver = buildFirefox()
+		#loop over releases
+		for release in ENVIRONMENTS.keys() :
+			#setting the global ENVIRONMENT variable to a string avoids an extra if statement
+			ENVIRONMENT = release
+			#loop over screen sizes
+			for (height, width) in SCREEN_SIZES: 
+				setWidowSize(height, width)
+				buildAndRunTests()
 #cleanup
 endTime = datetime.datetime.now()
 print; print 'TESTS COMPLETED IN {}'.format(endTime - startTime)
