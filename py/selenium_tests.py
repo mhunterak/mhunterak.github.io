@@ -22,12 +22,11 @@ sys.stdout.flush()
 
 ###set global variables for permution conditions
 ENVIRONMENTS = { #Set global production modes
-		'Debug' : 'http://mhunterak.github.io/', 
+		'Debug' : 'file:///Users/Treehouse/Documents/Github/mhunterak.github.io/', 
 		# 'Alpha'
 		# 'Beta'
-		'Production' : 'file:///Users/Treehouse/Documents/Github/mhunterak.github.io/',
-	}
-RELEASES = ENVIRONMENTS.keys() 
+		'Production' : 'http://mhunterak.github.io/',
+	} 
 BROWSERS = ['Chrome', 'Firefox']
 SCREEN_SIZES = [ #set global screen sizes for testing - list of tuples (height, width)
 	#MOBILE - PORTRAIT
@@ -147,6 +146,7 @@ class TestResume(unittest.TestCase):
 
 	def testResumeDropdownVisibilityFunctionality(self):
 		loadPage('resume')
+		jobDesc = driver.find_element_by_css_selector('#jobDesc')
 		jobTitle = driver.find_element_by_css_selector('#jobTitle')
 		CEButton=driver.find_element_by_css_selector('#CE')
 		#test that dropdown buttons are hidden
@@ -154,19 +154,28 @@ class TestResume(unittest.TestCase):
 		self.assertFalse((CEButton).is_displayed())
 
 		#test that if the selector is hovered, the dropdown buttons are displayed
-		ActionChains(driver).move_to_element(jobTitle).click(jobTitle).perform()
+		ActionChains(driver).move_to_element(jobDesc).perform()
+		jobTitle.location_once_scrolled_into_view
+		ActionChains(driver).move_to_element(jobTitle).click().perform()
+		ActionChains(driver).move_to_element(CEButton).perform()
+
 		self.assertTrue((driver.find_element_by_css_selector('#dropdown')).is_displayed())
 		self.assertTrue((CEButton).is_displayed())
 
 	def testResumeDropdownButtonsFunctionality(self):
 		loadPage('resume')
+		jobDesc = driver.find_element_by_css_selector('#jobDesc')
 		jobTitle = driver.find_element_by_css_selector('#jobTitle')
 		CEButton=driver.find_element_by_css_selector('#CE')
 		#when first loaded, the page will show the most recent profile.
 		# in this case, the DSE profile
 		self.assertTrue("Developer Support Engineer Profile" in jobTitle.text)
 		#when you move to the job title, the buttons appear, then you click the CE button
-		ActionChains(driver).move_to_element(jobTitle).move_to_element(CEButton).click(CEButton).perform()
+		ActionChains(driver).move_to_element(jobDesc).perform()
+		jobTitle.location_once_scrolled_into_view
+		ActionChains(driver).move_to_element(jobTitle).perform()
+		CEButton.location_once_scrolled_into_view
+		ActionChains(driver).move_to_element(CEButton).click(CEButton).perform()
 		# the CSE profile displays
 		self.assertTrue("Customer Engineer Profile" in jobTitle.text)
 
@@ -210,7 +219,11 @@ if __name__ == '__main__':
 			for (height, width) in SCREEN_SIZES: 
 				setWidowSize(height, width)
 				buildAndRunTests()
-#cleanup
-endTime = datetime.datetime.now()
-print; print 'TESTS COMPLETED IN {}'.format(endTime - startTime)
-driver.quit()
+	#cleanup
+	endTime = datetime.datetime.now()
+	print; print 'TESTS COMPLETED IN {}'.format(endTime - startTime)
+	driver.quit()
+else:
+	endTime = datetime.datetime.now()
+	print; print 'TESTS LOADED IN {}'.format(endTime - startTime)
+
