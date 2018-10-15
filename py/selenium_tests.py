@@ -92,6 +92,21 @@ class TestIndex(unittest.TestCase):
 			value='demosButton'
 			)).is_displayed(), True)
 
+	def testIndex_DropdownStartsHidden(self): 
+		#load the page we're working on
+		loadPage('index')
+		#test that dropdown starts hidden
+		self.assertFalse((driver.find_element_by_css_selector('#demos')).is_displayed())
+
+	def testIndex_HoverAndDropdownIsShown(self):
+		#load the page we're working on
+		loadPage('index')
+		#action: move mouse over Javascript Demos
+		ActionChains(driver).move_to_element(
+			(driver.find_element_by_css_selector('#demosButton'))).perform()
+		#test that dropdown is shown now
+		self.assertTrue((driver.find_element_by_css_selector('#demos')).is_displayed())
+
 '''
 class TestWeather(unittest.TestCase):
 	def testWeather_Title(self):
@@ -132,7 +147,7 @@ class TestResume(unittest.TestCase):
 		#test that the title is accurate
 		self.assertTrue(('Dynamic Resume' in driver.title))
 
-	def testResumeVisibility(self):
+	def testResume_Visibility(self):
 		#load the page we're working on
 		loadPage('resume')
 		jobTitle = driver.find_element_by_css_selector('#jobTitle')
@@ -144,7 +159,7 @@ class TestResume(unittest.TestCase):
 		#test that the selector is displayed
 		self.assertTrue(jobTitle.is_displayed())
 
-	def testResumeDropdownVisibilityFunctionality(self):
+	def testResume_DropdownVisibilityFunctionality(self):
 		loadPage('resume')
 		jobDesc = driver.find_element_by_css_selector('#jobDesc')
 		jobTitle = driver.find_element_by_css_selector('#jobTitle')
@@ -162,7 +177,7 @@ class TestResume(unittest.TestCase):
 		self.assertTrue((driver.find_element_by_css_selector('#dropdown')).is_displayed())
 		self.assertTrue((CEButton).is_displayed())
 
-	def testResumeDropdownButtonsFunctionality(self):
+	def testResume_DropdownButtonsFunctionality(self):
 		loadPage('resume')
 		jobDesc = driver.find_element_by_css_selector('#jobDesc')
 		jobTitle = driver.find_element_by_css_selector('#jobTitle')
