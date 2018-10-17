@@ -242,15 +242,15 @@ class TestCalculator(unittest.TestCase):
 			button).click(button).perform()
 		self.assertEqual(display.text, u"7")
 
-	def testCalculator_keys_7x7(self):
+	def testCalculator_keys_2plus2(self):
 		#load the page we're working on
 		loadPage('calc')
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
-		#press 7, then x, then 7
-		ActionChains(driver).send_keys('7').send_keys('x').send_keys(
-			'7').send_keys(Keys.ENTER).perform()
-		self.assertEqual(display.text, u"49")
+		#press 2, then +, then 2
+		ActionChains(driver).send_keys('2').send_keys('+').send_keys(
+			'2').send_keys(Keys.ENTER).perform()
+		self.assertEqual(display.text, u"4")
 
 	def testCalculator_keys_2x2(self):
 		#load the page we're working on
@@ -261,6 +261,16 @@ class TestCalculator(unittest.TestCase):
 		ActionChains(driver).send_keys('2').send_keys('x').send_keys(
 			'2').send_keys(Keys.ENTER).perform()
 		self.assertEqual(display.text, u"4")
+
+	def testCalculator_keys_7x7(self):
+		#load the page we're working on
+		loadPage('calc')
+		#load the display element
+		display = driver.find_element_by_css_selector('#display')
+		#press 7, then x, then 7
+		ActionChains(driver).send_keys('7').send_keys('x').send_keys(
+			'7').send_keys(Keys.ENTER).perform()
+		self.assertEqual(display.text, u"49")
 
 	def testCalculator_keys_5x5x5(self):
 		#load the page we're working on
@@ -275,7 +285,61 @@ class TestCalculator(unittest.TestCase):
 		self.assertEqual(display.text, u"125")
 
 	#TODO: plus key isn't working in firefox
+	
+	###
+	#THESE TESTS ARE CURRENTLY FAILING
+	###
 
+	#TODO: build out corrected functionality so that these tests pass.
+	def testCalculator_keys_3plus3plus3(self):
+		#load the page we're working on
+		loadPage('calc')
+		#load the display element
+		display = driver.find_element_by_css_selector('#display')
+		ActionChains(driver).send_keys(
+			'3').send_keys('+').send_keys('3').send_keys('+').send_keys(
+			'3').send_keys(Keys.ENTER).perform()
+
+		self.assertEqual(display.text, u"9")
+	def testCalculator_keys_5plus7plus(self):
+		#load the page we're working on
+		loadPage('calc')
+		#load the display element
+		display = driver.find_element_by_css_selector('#display')
+		ActionChains(driver).send_keys(
+			'5').send_keys('+').send_keys('7').send_keys('+').perform()
+		self.assertEqual(display.text, u"12")
+
+	def testCalculator_keys_5plus7C(self):
+		#load the page we're working on
+		loadPage('calc')
+		#load the display element
+		display = driver.find_element_by_css_selector('#display')
+		ActionChains(driver).send_keys(
+			'5').send_keys('+').send_keys('7').send_keys('c').perform()
+		self.assertEqual(display.text, u"0.00")
+
+	def testCalculator_keys_numberAfterEnter(self):
+		#load the page we're working on
+		loadPage('calc')
+		#load the display element
+		display = driver.find_element_by_css_selector('#display')
+		ActionChains(driver).send_keys(
+			'5').send_keys('+').send_keys('7').send_keys(
+			Keys.ENTER).send_keys('2').perform()
+		self.assertEqual(display.text, u"2")
+
+	def testCalculator_keys_piDecimcal(self):
+		#load the page we're working on
+		loadPage('calc')
+		#load the display element
+		display = driver.find_element_by_css_selector('#display')
+		ActionChains(driver).send_keys(
+			'3').send_keys('.').send_keys('1').send_keys(
+			'4').perform()
+		self.assertEqual(display.text, u"3.14")
+
+###############
 
 def buildAndRunTests():
 	#assign global value to the argument
