@@ -77,6 +77,10 @@ def setWindowSize(height, width):
 def loadPage(page):
 	driver.get(ENVIRONMENTS[ENVIRONMENT]+page+'.html')
 
+def mouseToAndClick(button):
+	ActionChains(driver).move_to_element(button).click(button).perform()		
+
+
 
 #TEST CLASSES
 class TestIndex(unittest.TestCase):
@@ -237,17 +241,171 @@ class TestCalculator(unittest.TestCase):
 		display = driver.find_element_by_css_selector('#display')
 		self.assertEqual(display.text, "00.00")
 
+	#TEST PAGE BUTTONS (clicked with mouse)
 	def testCalculator_buttons_7(self):
 		#load the page we're working on
 		loadPage('calc')
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		# the fourth button displayed in the top left corner should be the 7
-		button = driver.find_elements_by_css_selector('button')[4]
+		button7 = driver.find_elements_by_css_selector('button')[4]
 		# click the 7 button
-		ActionChains(driver).move_to_element(
-			button).click(button).perform()
+		mouseToAndClick(button7)
+
 		self.assertEqual(display.text, u"7")
+
+	def testCalculator_buttons_2plus2(self):
+		#load the page we're working on
+		loadPage('calc')
+		#load the display element
+		display = driver.find_element_by_css_selector('#display')
+		#get buttons for 2, +, and enter
+		button2 = driver.find_elements_by_css_selector('button')[13]
+		buttonPlus = driver.find_elements_by_css_selector('button')[19]
+		buttonEquals = driver.find_elements_by_css_selector('button')[18]
+
+		#press 2, then +, then 2, then =
+		mouseToAndClick(button2)
+		mouseToAndClick(buttonPlus)
+		mouseToAndClick(button2)
+		mouseToAndClick(buttonEquals)
+
+		self.assertEqual(display.text, u"4")
+
+	def testCalculator_buttons_2x2(self):
+		#load the page we're working on
+		loadPage('calc')
+		#load the display element
+		display = driver.find_element_by_css_selector('#display')
+		#get buttons for 2, *, and enter
+		button2 = driver.find_elements_by_css_selector('button')[13]
+		buttonTimes = driver.find_elements_by_css_selector('button')[11]
+		buttonEquals = driver.find_elements_by_css_selector('button')[18]
+
+		#press 2, then *, then 2, then =
+		mouseToAndClick(button2)
+		mouseToAndClick(buttonTimes)
+		mouseToAndClick(button2)
+		mouseToAndClick(buttonEquals)
+
+		self.assertEqual(display.text, u"4")
+
+	def testCalculator_buttons_7x7(self):
+		#load the page we're working on
+		loadPage('calc')
+		#load the display element
+		display = driver.find_element_by_css_selector('#display')
+		#get buttons for 7, *, and enter
+		button7 = driver.find_elements_by_css_selector('button')[4]
+		buttonTimes = driver.find_elements_by_css_selector('button')[11]
+		buttonEquals = driver.find_elements_by_css_selector('button')[18]
+
+		#press 7, then *, then 7, then =
+		mouseToAndClick(button7)
+		mouseToAndClick(buttonTimes)
+		mouseToAndClick(button7)
+		mouseToAndClick(buttonEquals)
+
+		self.assertEqual(display.text, u"49")
+
+	def testCalculator_buttons_5x5x5(self):
+		#load the page we're working on
+		loadPage('calc')
+		#load the display element
+		display = driver.find_element_by_css_selector('#display')
+		#get buttons for 5, *, and enter
+		button5 = driver.find_elements_by_css_selector('button')[9]
+		buttonTimes = driver.find_elements_by_css_selector('button')[11]
+		buttonEquals = driver.find_elements_by_css_selector('button')[18]
+
+		#press 5, 
+		mouseToAndClick(button5)
+		#then *, then 5, then =, then *, then 5
+		for _ in range(0,2):
+			mouseToAndClick(buttonTimes)
+			mouseToAndClick(button5)
+			mouseToAndClick(buttonEquals)
+		self.assertEqual(display.text, u"125")
+
+	def testCalculator_buttons_3plus3plus3(self):
+		#load the page we're working on
+		loadPage('calc')
+		#load the display element
+		display = driver.find_element_by_css_selector('#display')
+		#get buttons for 3, +, and =
+		button3 = driver.find_elements_by_css_selector('button')[14]
+		buttonPlus = driver.find_elements_by_css_selector('button')[19]
+		buttonEquals = driver.find_elements_by_css_selector('button')[18]
+
+
+		#press 3, 
+		mouseToAndClick(button3)
+		#then +, then 3, then =, then +, then 3
+		for _ in range(0,2):
+			mouseToAndClick(buttonPlus)
+			mouseToAndClick(button3)
+			mouseToAndClick(buttonEquals)
+
+		self.assertEqual(display.text, u"9")
+
+	def testCalculator_buttons_5plus7plus(self):
+		#load the page we're working on
+		loadPage('calc')
+		#load the display element
+		display = driver.find_element_by_css_selector('#display')
+
+		button5 = driver.find_elements_by_css_selector('button')[9]
+		button7 = driver.find_elements_by_css_selector('button')[4]
+		buttonPlus = driver.find_elements_by_css_selector('button')[19]
+
+		mouseToAndClick(button5)
+		mouseToAndClick(buttonPlus)
+		mouseToAndClick(button7)
+		mouseToAndClick(buttonPlus)
+
+		self.assertEqual(display.text, u"5 + 7")
+
+	def testCalculator_buttons_5plus7C(self):
+		#load the page we're working on
+		loadPage('calc')
+		#load the display element
+		display = driver.find_element_by_css_selector('#display')
+
+		button5 = driver.find_elements_by_css_selector('button')[9]
+		buttonPlus = driver.find_elements_by_css_selector('button')[19]
+		button7 = driver.find_elements_by_css_selector('button')[4]
+		buttonC = driver.find_elements_by_css_selector('button')[0]
+
+
+		mouseToAndClick(button5)
+		mouseToAndClick(buttonPlus)
+		mouseToAndClick(button7)
+		mouseToAndClick(buttonC)
+
+		self.assertEqual(display.text, u"00.00")
+	
+	def testCalculator_buttons_numberAfterEquals(self):
+		#load the page we're working on
+		loadPage('calc')
+		#load the display element
+		display = driver.find_element_by_css_selector('#display')
+
+		button2 = driver.find_elements_by_css_selector('button')[13]
+		button5 = driver.find_elements_by_css_selector('button')[9]
+		button7 = driver.find_elements_by_css_selector('button')[4]
+		buttonPlus = driver.find_elements_by_css_selector('button')[19]
+		buttonEquals = driver.find_elements_by_css_selector('button')[18]
+
+		mouseToAndClick(button5)
+		mouseToAndClick(buttonPlus)
+		mouseToAndClick(button7)
+		mouseToAndClick(buttonEquals)
+		mouseToAndClick(button2)
+
+		self.assertEqual(display.text, u"2")
+
+
+	#TEST KEYS
 
 	def testCalculator_keys_2plus2(self):
 		#load the page we're working on
