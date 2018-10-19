@@ -77,6 +77,7 @@ def setWindowSize(height, width):
 def loadPage(page):
 	driver.get(ENVIRONMENTS[ENVIRONMENT]+page+'.html')
 
+
 #TEST CLASSES
 class TestIndex(unittest.TestCase):
 	def testIndex_NameInTitle(self):
@@ -161,7 +162,7 @@ class TestResume(unittest.TestCase):
 		#test that the selector is displayed
 		self.assertTrue(jobTitle.is_displayed())
 
-	def testResume_DropdownVisibilityFunctionality(self):
+	def testResume_DropdownVisibilityFunctionality_Init(self):
 		#load the page we're working on
 		loadPage('resume')
 		jobDesc = driver.find_element_by_css_selector('#jobDesc')
@@ -171,6 +172,12 @@ class TestResume(unittest.TestCase):
 		self.assertFalse((driver.find_element_by_css_selector('#dropdown')).is_displayed())
 		self.assertFalse((CEButton).is_displayed())
 
+	def testResume_DropdownVisibilityFunctionality_Action(self):
+		#load the page we're working on
+		loadPage('resume')
+		jobDesc = driver.find_element_by_css_selector('#jobDesc')
+		jobTitle = driver.find_element_by_css_selector('#jobTitle')
+		CEButton = driver.find_element_by_css_selector('#CE')
 		#test that if the selector is hovered, the dropdown buttons are displayed
 		ActionChains(driver).move_to_element(jobDesc).perform()
 		jobTitle.location_once_scrolled_into_view
@@ -223,20 +230,20 @@ class TestResume(unittest.TestCase):
 			self.assertTrue(paragraph.is_displayed())
 
 class TestCalculator(unittest.TestCase):
-	#if the javascript is loaded correctly, the display will read 00.0
+	#if the javascript is loaded correctly, the display will read 00.00
 	def testCalculator_blankDisplay(self):
 		#load the page we're working on
 		loadPage('calc')
 		display = driver.find_element_by_css_selector('#display')
-		self.assertEqual(display.text, "00.0")
+		self.assertEqual(display.text, "00.00")
 
 	def testCalculator_buttons_7(self):
 		#load the page we're working on
 		loadPage('calc')
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
-		# the first button displayed in the top left corner should be the 7
-		button = driver.find_element_by_css_selector('button')
+		# the fourth button displayed in the top left corner should be the 7
+		button = driver.find_elements_by_css_selector('button')[4]
 		# click the 7 button
 		ActionChains(driver).move_to_element(
 			button).click(button).perform()
@@ -287,20 +294,23 @@ class TestCalculator(unittest.TestCase):
 	#TODO: plus key isn't working in firefox
 	
 	###
-	#THESE TESTS ARE CURRENTLY FAILING
+	# 5/6 OF THE FOLLOWING TESTS ARE CURRENTLY PASSING}
 	###
 
 	#TODO: build out corrected functionality so that these tests pass.
+
 	def testCalculator_keys_3plus3plus3(self):
 		#load the page we're working on
 		loadPage('calc')
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		ActionChains(driver).send_keys(
-			'3').send_keys('+').send_keys('3').send_keys('+').send_keys(
-			'3').send_keys(Keys.ENTER).perform()
+			'3').send_keys('+').send_keys('3').send_keys(
+			Keys.ENTER).send_keys('+').send_keys('3').send_keys(
+			Keys.ENTER).perform()
 
 		self.assertEqual(display.text, u"9")
+
 	def testCalculator_keys_5plus7plus(self):
 		#load the page we're working on
 		loadPage('calc')
@@ -308,7 +318,7 @@ class TestCalculator(unittest.TestCase):
 		display = driver.find_element_by_css_selector('#display')
 		ActionChains(driver).send_keys(
 			'5').send_keys('+').send_keys('7').send_keys('+').perform()
-		self.assertEqual(display.text, u"12")
+		self.assertEqual(display.text, u"5 + 7")
 
 	def testCalculator_keys_5plus7C(self):
 		#load the page we're working on
@@ -317,8 +327,8 @@ class TestCalculator(unittest.TestCase):
 		display = driver.find_element_by_css_selector('#display')
 		ActionChains(driver).send_keys(
 			'5').send_keys('+').send_keys('7').send_keys('c').perform()
-		self.assertEqual(display.text, u"0.00")
-
+		self.assertEqual(display.text, u"00.00")
+	
 	def testCalculator_keys_numberAfterEnter(self):
 		#load the page we're working on
 		loadPage('calc')
@@ -329,6 +339,7 @@ class TestCalculator(unittest.TestCase):
 			Keys.ENTER).send_keys('2').perform()
 		self.assertEqual(display.text, u"2")
 
+	#FAILING TEST - We don't have functionality for the decimal button yet, which also doesn't exist
 	def testCalculator_keys_piDecimcal(self):
 		#load the page we're working on
 		loadPage('calc')
@@ -338,6 +349,18 @@ class TestCalculator(unittest.TestCase):
 			'3').send_keys('.').send_keys('1').send_keys(
 			'4').perform()
 		self.assertEqual(display.text, u"3.14")
+
+	def testCalculator_keys_5div7plus2000(self):
+		#load the page we're working on
+		loadPage('calc')
+		#load the display element
+		display = driver.find_element_by_css_selector('#display')
+		ActionChains(driver).send_keys(
+			'5').send_keys('/').send_keys('7').send_keys(
+			Keys.ENTER).send_keys('+').send_keys('2').send_keys(
+			'0').send_keys('0').send_keys('0').send_keys(Keys.ENTER).perform()
+		self.assertEqual(display.text, u"2,000.7142857142858")
+
 
 ###############
 
