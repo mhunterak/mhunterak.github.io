@@ -125,6 +125,13 @@ function doMath(buttonid) {
             } 
         } else if (buttonid === ".") {
             // TODO: Add functionality to the decimal button
+            // if secondNumber is not null, we're adding the decimal to the secondNumber
+            if (!!secondNumber) {
+
+            // if secondNumber is null, we're adding the decimal to the firstNumber    
+            } else {
+
+            }
             alert('The Decimal button is out of order. sorry!');
         } else if (buttonid === "c") {
             firstNumber = null;
