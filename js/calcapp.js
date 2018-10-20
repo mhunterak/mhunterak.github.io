@@ -106,7 +106,6 @@ function calculate(action, firstNumber, secondNumber, sum) {
 // controls which action is performed when a button is pushed
 function doMath(buttonid) {
     // if button is not a number
-    console.log(buttonid);
     if (isNaN(buttonid)) {
         console.log("Button is not a number")
         if (buttonid === "") {
@@ -211,7 +210,6 @@ start a new operation.
                 sum = calculate(action, firstNumber, secondNumber, sum);
             // if a secondNumber exists, add the number by string concatenation
             } else {
-                console.log("148")
                 newNumber = parseInt(secondNumber.toString() + buttonid);
                 secondNumber=newNumber;
                 sum = calculate(action, firstNumber, secondNumber, sum);
@@ -225,30 +223,29 @@ start a new operation.
 document.onkeydown = checkKey;
 function checkKey(e) {
     e = e || window.event;
+    console.log(e.key)
     let disabled = false; {
-        if (e.keyCode >= 96 && e.keyCode <= 105) {
-            doMath(parseInt(e.keyCode - 96));
-        } else if (e.keyCode >= 48 && e.keyCode <= 57) {
-            doMath(parseInt(e.keyCode - 48));
-        } else if (e.keyCode === 187) {
+        if (parseInt(e.key)<10) {
+            doMath(parseInt(e.key));
+        } else if (e.key === '+') {
             // plus
             doMath("+");
-        } else if (e.keyCode === 189) {
+        } else if (e.key === '-') {
             // minus
             doMath("-");
-        } else if (e.keyCode === 88) {
+        } else if (e.key === 'x') {
             // times
             doMath("*");
-        } else if (e.keyCode === 191) {
+        } else if (e.key === '/') {
             // divide
             doMath("/");
-        } else if (e.keyCode === 13) {
+        } else if (['=','Enter'].indexOf(e.key) >= 0) {
             // equals
             doMath("=");
-        } else if (e.keyCode === 67) {
+        } else if (e.key === 'c') {
             // clear
             doMath("c");
-        } else if (e.keyCode === 8) {
+        } else if (['<','Backspace'].indexOf(e.key) >= 0) {
             // clear
             doMath("<");
         }
