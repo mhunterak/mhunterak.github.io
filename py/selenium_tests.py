@@ -1,40 +1,30 @@
-import sys
-print "AUTOMATED TESTING FOR MAXWELL HUNTER'S GITHUB PAGE"
+print "================================================================="
+print " INITIALIZING AUTOMATED TESTING FOR MAXWELL HUNTER'S GITHUB PAGE"
+print "================================================================="
+print;print
 
 import datetime
-#import unittest framework
-import unittest
-import sys
-
-print;sys.stdout.write("initializing")
-sys.stdout.flush()
 startTime = datetime.datetime.now()
 
-#import selenium
+import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
-sys.stdout.write('.') #increment itialization progress
-sys.stdout.flush()
-
-ENVIRONMENT = 'Testing' #set global variable for environment by string
-#has more options besides debug or prodo
 ###set global variables for permution conditions
 ENVIRONMENTS = { #Set global production modes
 		'Debug' : 'file:///Users/Treehouse/Documents/Github/mhunterak.github.io/', 
-		# 'Alpha'
-		# 'Beta'
+		# 'Alpha' : 'none',
+		# 'Beta' : 'none',
 		'Production' : 'http://mhunterak.github.io/',
 	} 
-BROWSERS = ['Chrome', 'Firefox']
-SCREEN_SIZE = [
-	0, #height
-	0 #width
-	]
-SCREEN_SIZES = [ #set global screen sizes for testing - list of tuples (height, width)
+BROWSERS = {
+	'Chrome' : webdriver.Chrome(),
+	'Firefox' : webdriver.Firefox()
+	}
+SCREEN_SIZES = [ # list of tuples (width, height)
 	#MOBILE - PORTRAIT
 	(375, 667),
 	(414, 736),
@@ -48,19 +38,20 @@ SCREEN_SIZES = [ #set global screen sizes for testing - list of tuples (height, 
 	(1920, 1080),
 	] 
 
-DEBUG = True #set global variable for testing as True by default
+#set global variable for browser by string
+BROWSER = 'Netscape' 
+#set global variable for environment by string
+ENVIRONMENT = 'Testing' 
+#has more options besides debug or prodo
+#set global variable for storing current browser dimensions
+SCREEN_SIZE = [
+	0, #height
+	0, #width
+	]
 
 
-sys.stdout.write('.') #increment itialization progress
-sys.stdout.flush()
 
 ###FUNCTIONS
-
-def buildChrome():
-	return webdriver.Chrome()
-
-def buildFirefox():
-	return webdriver.Firefox()
 
 # We don't need the function, but this is what it would look like
 '''
@@ -69,16 +60,15 @@ def selectEnvironmentByString(string):
 '''
 
 def setWindowSize(height, width):
-	print; print "SETTING DISPLAY RESOLUTION TO {} x {}".format(height, width); print;
-	SCREEN_SIZE = [height, width]
+	SCREEN_SIZE = [int(height), int(width)]
 	driver.set_window_position(0, 0)
 	driver.set_window_size(height, width)
 
 def loadPage(page):
 	driver.get(ENVIRONMENTS[ENVIRONMENT]+page+'.html')
 
-def mouseToAndClick(button):
-	ActionChains(driver).move_to_element(button).click(button).perform()		
+def mouseToAndClick(element):
+	ActionChains(driver).move_to_element(element).click(element).perform()		
 
 def clearScreen():
 	driver.get(driver.current_url)
@@ -86,32 +76,31 @@ def clearScreen():
 #TEST CLASSES
 class TestIndex(unittest.TestCase):
 	def testIndex_NameInTitle(self):
-		#load the page we're working on
 		loadPage('index')
+
 		#test that my name is in the title
 		self.assertTrue('Maxwell Hunter' in driver.title)
 
 	def testIndex_Visibility(self):
-		#load the page we're working on
 		loadPage('index')
+
 		#test that colors button is hidden
 		self.assertFalse(driver.find_element_by_css_selector('#colors',).is_displayed())
-
 		# test that demosButton is is_displayed
 		self.assertTrue(driver.find_element_by_css_selector('#demosButton').is_displayed())
 
 	def testIndex_DropdownStartsHidden(self): 
-		#load the page we're working on
 		loadPage('index')
+
 		#test that dropdown starts hidden
 		self.assertFalse((driver.find_element_by_css_selector('#demos')).is_displayed())
 
 	def testIndex_HoverAndDropdownIsShown(self):
-		#load the page we're working on
 		loadPage('index')
+		demosButton = driver.find_element_by_css_selector('#demosButton')
 		#action: move mouse over Javascript Demos
-		ActionChains(driver).move_to_element(
-			(driver.find_element_by_css_selector('#demosButton'))).perform()
+		mouseToAndClick(demosButton)
+
 		#test that dropdown is shown now
 		self.assertTrue((driver.find_element_by_css_selector('#demos')).is_displayed())
 
@@ -150,39 +139,38 @@ class TestWeather(unittest.TestCase):
 
 class TestResume(unittest.TestCase):
 	def testResume_Title(self):
-		#load the page we're working on
 		loadPage('resume')
+
 		#test that the title is accurate
 		self.assertTrue(('Dynamic Resume' in driver.title))
 
 	def testResume_Visibility(self):
-		#load the page we're working on
 		loadPage('resume')
 		jobTitle = driver.find_element_by_css_selector('#jobTitle')
 
-
 		#test that #container is displayed
 		self.assertTrue((driver.find_element_by_css_selector('#container')).is_displayed())
-
-		#test that the selector is displayed
+		#test that the jobTitle selector is displayed
 		self.assertTrue(jobTitle.is_displayed())
 
 	def testResume_DropdownVisibilityFunctionality_Init(self):
-		#load the page we're working on
 		loadPage('resume')
 		jobDesc = driver.find_element_by_css_selector('#jobDesc')
 		jobTitle = driver.find_element_by_css_selector('#jobTitle')
 		CEButton = driver.find_element_by_css_selector('#CE')
+
+		#just in case the mouse initializes on top of the jobDesc element, move the mouse away
+		ActionChains(driver).move_to_element(jobTitle)
 		#test that dropdown buttons are hidden
 		self.assertFalse((driver.find_element_by_css_selector('#dropdown')).is_displayed())
 		self.assertFalse((CEButton).is_displayed())
 
 	def testResume_DropdownVisibilityFunctionality_Action(self):
-		#load the page we're working on
 		loadPage('resume')
 		jobDesc = driver.find_element_by_css_selector('#jobDesc')
 		jobTitle = driver.find_element_by_css_selector('#jobTitle')
 		CEButton = driver.find_element_by_css_selector('#CE')
+
 		#test that if the selector is hovered, the dropdown buttons are displayed
 		ActionChains(driver).move_to_element(jobDesc).perform()
 		jobTitle.location_once_scrolled_into_view
@@ -193,28 +181,30 @@ class TestResume(unittest.TestCase):
 		self.assertTrue((CEButton).is_displayed())
 
 	def testResume_DropdownButtonsFunctionality(self):
-		#load the page we're working on
 		loadPage('resume')
 		jobDesc = driver.find_element_by_css_selector('#jobDesc')
 		jobTitle = driver.find_element_by_css_selector('#jobTitle')
 		CEButton = driver.find_element_by_css_selector('#CE')
+
 		#when first loaded, the page will show the most recent profile.
 		# in this case, the DSE profile
 		self.assertTrue("Developer Support Engineer Profile" in jobTitle.text)
+
 		#when you move to the job title, the buttons appear, then you click the CE button
 		ActionChains(driver).move_to_element(jobDesc).perform()
 		jobTitle.location_once_scrolled_into_view
 		ActionChains(driver).move_to_element(jobTitle).perform()
 		CEButton.location_once_scrolled_into_view
 		ActionChains(driver).move_to_element(CEButton).click(CEButton).perform()
+
 		# the CSE profile displays
 		self.assertTrue("Customer Engineer Profile" in jobTitle.text)
 
 	def testResume_hidePicture(self):
-		#load the page we're working on
 		loadPage('resume')
 		picture = driver.find_element_by_css_selector('img')
 		width = driver.get_window_size()['width']
+
 		#if the screen width is under 600 px, the picture is hidden
 		if width <= 600:
 			self.assertFalse(picture.is_displayed())
@@ -223,14 +213,14 @@ class TestResume(unittest.TestCase):
 			self.assertTrue(picture.is_displayed())
 
 	def testResume_hideParagraph(self):
-		width = driver.get_window_size()['width']
-		#load the page we're working on
 		loadPage('resume')
+		width = driver.get_window_size()['width']
 		paragraph = driver.find_element_by_css_selector('h3')
+
 		#if width <= 600, the paragraph is not displayed
 		if width <= 600:
 			self.assertFalse(paragraph.is_displayed())
-			#if width > 600, the paragraph is displayed
+		#if width > 600, the paragraph is displayed
 		else:
 			self.assertTrue(paragraph.is_displayed())
 
@@ -238,7 +228,6 @@ class TestCalculator(unittest.TestCase):
 
 	#if the javascript is loaded correctly, the display will read 00.00
 	def testCalculator_blankDisplay(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
 
@@ -247,11 +236,9 @@ class TestCalculator(unittest.TestCase):
 
 	#TEST PAGE BUTTONS (clicked with mouse)
 	def testCalculator_buttons_7(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
 
-		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		# the fourth button displayed in the top left corner should be the 7
 		button7 = driver.find_elements_by_css_selector('button')[4]
@@ -261,11 +248,8 @@ class TestCalculator(unittest.TestCase):
 		self.assertEqual(display.text, u"7")
 
 	def testCalculator_buttons_2plus2(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
-
-		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		#get buttons for 2, +, and enter
 		button2 = driver.find_elements_by_css_selector('button')[13]
@@ -281,11 +265,8 @@ class TestCalculator(unittest.TestCase):
 		self.assertEqual(display.text, u"4")
 
 	def testCalculator_buttons_2x2(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
-
-		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		#get buttons for 2, *, and enter
 		button2 = driver.find_elements_by_css_selector('button')[13]
@@ -301,11 +282,8 @@ class TestCalculator(unittest.TestCase):
 		self.assertEqual(display.text, u"4")
 
 	def testCalculator_buttons_7x7(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
-
-		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		#get buttons for 7, *, and enter
 		button7 = driver.find_elements_by_css_selector('button')[4]
@@ -321,11 +299,8 @@ class TestCalculator(unittest.TestCase):
 		self.assertEqual(display.text, u"49")
 
 	def testCalculator_buttons_5x5x5(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
-
-		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		#get buttons for 5, *, and enter
 		button5 = driver.find_elements_by_css_selector('button')[9]
@@ -342,17 +317,13 @@ class TestCalculator(unittest.TestCase):
 		self.assertEqual(display.text, u"125")
 
 	def testCalculator_buttons_3plus3plus3(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
-
-		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		#get buttons for 3, +, and =
 		button3 = driver.find_elements_by_css_selector('button')[14]
 		buttonPlus = driver.find_elements_by_css_selector('button')[19]
 		buttonEquals = driver.find_elements_by_css_selector('button')[18]
-
 
 		#press 3, 
 		mouseToAndClick(button3)
@@ -365,13 +336,9 @@ class TestCalculator(unittest.TestCase):
 		self.assertEqual(display.text, u"9")
 
 	def testCalculator_buttons_5plus7plus(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
-
-		#load the display element
 		display = driver.find_element_by_css_selector('#display')
-
 		button5 = driver.find_elements_by_css_selector('button')[9]
 		button7 = driver.find_elements_by_css_selector('button')[4]
 		buttonPlus = driver.find_elements_by_css_selector('button')[19]
@@ -384,13 +351,9 @@ class TestCalculator(unittest.TestCase):
 		self.assertEqual(display.text, u"5 + 7")
 
 	def testCalculator_buttons_5plus7C(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
-
-		#load the display element
 		display = driver.find_element_by_css_selector('#display')
-
 		button5 = driver.find_elements_by_css_selector('button')[9]
 		buttonPlus = driver.find_elements_by_css_selector('button')[19]
 		button7 = driver.find_elements_by_css_selector('button')[4]
@@ -405,13 +368,9 @@ class TestCalculator(unittest.TestCase):
 		self.assertEqual(display.text, u"00.00")
 	
 	def testCalculator_buttons_numberAfterEquals(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
-
-		#load the display element
 		display = driver.find_element_by_css_selector('#display')
-
 		button2 = driver.find_elements_by_css_selector('button')[13]
 		button5 = driver.find_elements_by_css_selector('button')[9]
 		button7 = driver.find_elements_by_css_selector('button')[4]
@@ -426,52 +385,47 @@ class TestCalculator(unittest.TestCase):
 
 		self.assertEqual(display.text, u"2")
 
-
 	#TEST KEYS
 
 	def testCalculator_keys_2plus2(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
+		display = driver.find_element_by_css_selector('#display')
 
 		#press 2, then +, then 2
 		ActionChains(driver).send_keys('2').send_keys('+').send_keys(
 			'2').send_keys(Keys.ENTER).perform()
-		#load the display element
-		display = driver.find_element_by_css_selector('#display')
+
+
 		self.assertEqual(display.text, u"4")
 
 	def testCalculator_keys_2x2(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
 
-		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		#press 2, then +, then 2
 		ActionChains(driver).send_keys('2').send_keys('x').send_keys(
 			'2').send_keys(Keys.ENTER).perform()
+
 		self.assertEqual(display.text, u"4")
 
 	def testCalculator_keys_7x7(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
-
-		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		#press 7, then x, then 7
+
 		ActionChains(driver).send_keys('7').send_keys('x').send_keys(
 			'7').send_keys(Keys.ENTER).perform()
+
 		self.assertEqual(display.text, u"49")
 
 	def testCalculator_keys_5x5x5(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
-
-		#load the display element
 		display = driver.find_element_by_css_selector('#display')
+
 		ActionChains(driver).send_keys(
 			'5').send_keys('x').send_keys('5').send_keys(
 			Keys.ENTER).send_keys(
@@ -479,21 +433,13 @@ class TestCalculator(unittest.TestCase):
 
 		self.assertEqual(display.text, u"125")
 
-	#TODO: plus key isn't working in firefox
-	
-	###
-	# 5/6 OF THE FOLLOWING TESTS ARE CURRENTLY PASSING}
-	###
-
-	#TODO: build out corrected functionality so that these tests pass.
+	#TODO: build out decimal functionality so that these tests pass.
 
 	def testCalculator_keys_3plus3plus3(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
-
-		#load the display element
 		display = driver.find_element_by_css_selector('#display')
+
 		ActionChains(driver).send_keys(
 			'3').send_keys('+').send_keys('3').send_keys(
 			Keys.ENTER).send_keys('+').send_keys('3').send_keys(
@@ -502,46 +448,42 @@ class TestCalculator(unittest.TestCase):
 		self.assertEqual(display.text, u"9")
 
 	def testCalculator_keys_5plus7plus(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
-
-		#load the display element
 		display = driver.find_element_by_css_selector('#display')
+
 		ActionChains(driver).send_keys(
 			'5').send_keys('+').send_keys('7').send_keys('+').perform()
+
 		self.assertEqual(display.text, u"5 + 7")
 
 	def testCalculator_keys_5plus7C(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
-
-		#load the display element
 		display = driver.find_element_by_css_selector('#display')
+
 		ActionChains(driver).send_keys(
 			'5').send_keys('+').send_keys('7').send_keys('c').perform()
+
 		self.assertEqual(display.text, u"00.00")
 	
 	def testCalculator_keys_numberAfterEnter(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
-
-		#load the display element
 		display = driver.find_element_by_css_selector('#display')
+
 		ActionChains(driver).send_keys(
 			'5').send_keys('+').send_keys('7').send_keys(
 			Keys.ENTER).send_keys('2').perform()
+
 		self.assertEqual(display.text, u"2")
+
 	'''
 	#FAILING TEST - We don't have functionality for the decimal button yet, which also doesn't exist
 	def testCalculator_keys_piDecimcal(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
 
-		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		ActionChains(driver).send_keys(
 			'3').send_keys('.').send_keys('1').send_keys(
@@ -550,31 +492,33 @@ class TestCalculator(unittest.TestCase):
 	'''
 
 	def testCalculator_keys_5div7plus2000(self):
-		#load the page we're working on
 		loadPage('calc')
 		clearScreen()
-
-		#load the display element
 		display = driver.find_element_by_css_selector('#display')
+
 		ActionChains(driver).send_keys(
 			'5').send_keys('/').send_keys('ESCAPE').send_keys('7').send_keys(
 			Keys.ENTER).send_keys('+').send_keys('2').send_keys(
 			'0').send_keys('0').send_keys('0').send_keys(Keys.ENTER).perform()
-		self.assertEqual(display.text, u"2,000.7142857142858")
 
+		self.assertEqual(display.text, u"2,000.7142857142858")
 
 ###############
 
-def buildAndRunTests():
-	#assign global value to the argument
+def buildAndRunTests(height, width):
+	print; print "TESTING ON {} IN {} AT {}x{}  ".format(
+		BROWSER.upper(), 
+		ENVIRONMENT.upper(), 
+		width,
+		height,
+		); print
 
-	print "TESTING {} ".format(ENVIRONMENT); print
+	setWindowSize(height, width)
 
 	suite = unittest.TestLoader().loadTestsFromTestCase(TestIndex)
 	#	weather tests aren't working right, probably because of the location permissions
 	#	suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestWeather))
 	suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestResume))
-
 	suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestCalculator))
 
 	#sample code for adding new class of tests to the test suite
@@ -583,35 +527,28 @@ def buildAndRunTests():
 	#run tests
 	unittest.TextTestRunner(verbosity=2).run(suite)
 
-sys.stdout.write('. Done') #itialization progress complete
-sys.stdout.flush()
-print;print 
-
 #loop order is browsers, then releases, then screen sizes
 if __name__ == '__main__':
 	#loop over browsers
-	#sets the global browser to a certain browser type to run tests
-	for browser in BROWSERS: 
-		print 'Loading New browser' #itialization progress complete
-		if browser == 'Chrome':
-			print "--> TESTING IN CHROME <--"; print
-			driver = buildChrome()
-		elif browser == 'Firefox':
-			print "--> TESTING IN FIREFOX <--"; print
-			driver = buildFirefox()
+	for browser in BROWSERS.keys(): 
+		#BROWSERS is now a dictionary of the driver init functions.
+		driver = BROWSERS[browser]
+		BROWSER = browser
+
 		#loop over releases
-		for release in ENVIRONMENTS.keys() :
+		for release in ENVIRONMENTS.keys():
 			#setting the global ENVIRONMENT variable to a string avoids an extra if statement
 			ENVIRONMENT = release
+
 			#loop over screen sizes
 			for (height, width) in SCREEN_SIZES: 
-				setWindowSize(height, width)
-				buildAndRunTests()
+				buildAndRunTests(height, width)
+
 	#cleanup
 	endTime = datetime.datetime.now()
 	print; print 'TESTS COMPLETED IN {}'.format(endTime - startTime)
 	driver.quit()
+
 else:
 	endTime = datetime.datetime.now()
 	print; print 'TESTS LOADED IN {}'.format(endTime - startTime)
-
