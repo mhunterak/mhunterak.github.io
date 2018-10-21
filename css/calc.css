@@ -81,3 +81,33 @@ li {
 	text-overflow: ellipsis;
 	width: 80%;
 }
+
+@media (max-height: 425px) {
+	footer {
+		font-size: 0.75em;
+	}
+	h1 {
+		font-size: 0.5em;
+	}
+	.container {
+
+		box-shadow: 7px 7px 5px black;
+		margin: 0.25em 0 auto;
+		width: 95%;
+		border: 1px solid black;
+		border-radius: 1em;
+		padding: 0.5em;
+	}
+
+	#display {
+		font-size: 1.5em;
+		margin-bottom: 0.125em;
+	}
+
+	#buttons button{
+		font-size: 1.5em;
+		margin: 0 auto;
+	}
+
+
+}
