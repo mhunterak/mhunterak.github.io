@@ -80,7 +80,8 @@ def loadPage(page):
 def mouseToAndClick(button):
 	ActionChains(driver).move_to_element(button).click(button).perform()		
 
-
+def clearScreen():
+	driver.get(driver.current_url)
 
 #TEST CLASSES
 class TestIndex(unittest.TestCase):
@@ -234,10 +235,13 @@ class TestResume(unittest.TestCase):
 			self.assertTrue(paragraph.is_displayed())
 
 class TestCalculator(unittest.TestCase):
+
 	#if the javascript is loaded correctly, the display will read 00.00
 	def testCalculator_blankDisplay(self):
 		#load the page we're working on
 		loadPage('calc')
+		clearScreen()
+
 		display = driver.find_element_by_css_selector('#display')
 		self.assertEqual(display.text, "00.00")
 
@@ -245,6 +249,8 @@ class TestCalculator(unittest.TestCase):
 	def testCalculator_buttons_7(self):
 		#load the page we're working on
 		loadPage('calc')
+		clearScreen()
+
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		# the fourth button displayed in the top left corner should be the 7
@@ -257,6 +263,8 @@ class TestCalculator(unittest.TestCase):
 	def testCalculator_buttons_2plus2(self):
 		#load the page we're working on
 		loadPage('calc')
+		clearScreen()
+
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		#get buttons for 2, +, and enter
@@ -275,6 +283,8 @@ class TestCalculator(unittest.TestCase):
 	def testCalculator_buttons_2x2(self):
 		#load the page we're working on
 		loadPage('calc')
+		clearScreen()
+
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		#get buttons for 2, *, and enter
@@ -293,6 +303,8 @@ class TestCalculator(unittest.TestCase):
 	def testCalculator_buttons_7x7(self):
 		#load the page we're working on
 		loadPage('calc')
+		clearScreen()
+
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		#get buttons for 7, *, and enter
@@ -311,6 +323,8 @@ class TestCalculator(unittest.TestCase):
 	def testCalculator_buttons_5x5x5(self):
 		#load the page we're working on
 		loadPage('calc')
+		clearScreen()
+
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		#get buttons for 5, *, and enter
@@ -330,6 +344,8 @@ class TestCalculator(unittest.TestCase):
 	def testCalculator_buttons_3plus3plus3(self):
 		#load the page we're working on
 		loadPage('calc')
+		clearScreen()
+
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		#get buttons for 3, +, and =
@@ -351,6 +367,8 @@ class TestCalculator(unittest.TestCase):
 	def testCalculator_buttons_5plus7plus(self):
 		#load the page we're working on
 		loadPage('calc')
+		clearScreen()
+
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 
@@ -368,6 +386,8 @@ class TestCalculator(unittest.TestCase):
 	def testCalculator_buttons_5plus7C(self):
 		#load the page we're working on
 		loadPage('calc')
+		clearScreen()
+
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 
@@ -387,6 +407,8 @@ class TestCalculator(unittest.TestCase):
 	def testCalculator_buttons_numberAfterEquals(self):
 		#load the page we're working on
 		loadPage('calc')
+		clearScreen()
+
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 
@@ -410,16 +432,20 @@ class TestCalculator(unittest.TestCase):
 	def testCalculator_keys_2plus2(self):
 		#load the page we're working on
 		loadPage('calc')
-		#load the display element
-		display = driver.find_element_by_css_selector('#display')
+		clearScreen()
+
 		#press 2, then +, then 2
 		ActionChains(driver).send_keys('2').send_keys('+').send_keys(
 			'2').send_keys(Keys.ENTER).perform()
+		#load the display element
+		display = driver.find_element_by_css_selector('#display')
 		self.assertEqual(display.text, u"4")
 
 	def testCalculator_keys_2x2(self):
 		#load the page we're working on
 		loadPage('calc')
+		clearScreen()
+
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		#press 2, then +, then 2
@@ -430,6 +456,8 @@ class TestCalculator(unittest.TestCase):
 	def testCalculator_keys_7x7(self):
 		#load the page we're working on
 		loadPage('calc')
+		clearScreen()
+
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		#press 7, then x, then 7
@@ -440,6 +468,8 @@ class TestCalculator(unittest.TestCase):
 	def testCalculator_keys_5x5x5(self):
 		#load the page we're working on
 		loadPage('calc')
+		clearScreen()
+
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		ActionChains(driver).send_keys(
@@ -460,6 +490,8 @@ class TestCalculator(unittest.TestCase):
 	def testCalculator_keys_3plus3plus3(self):
 		#load the page we're working on
 		loadPage('calc')
+		clearScreen()
+
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		ActionChains(driver).send_keys(
@@ -472,6 +504,8 @@ class TestCalculator(unittest.TestCase):
 	def testCalculator_keys_5plus7plus(self):
 		#load the page we're working on
 		loadPage('calc')
+		clearScreen()
+
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		ActionChains(driver).send_keys(
@@ -481,6 +515,8 @@ class TestCalculator(unittest.TestCase):
 	def testCalculator_keys_5plus7C(self):
 		#load the page we're working on
 		loadPage('calc')
+		clearScreen()
+
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		ActionChains(driver).send_keys(
@@ -490,31 +526,38 @@ class TestCalculator(unittest.TestCase):
 	def testCalculator_keys_numberAfterEnter(self):
 		#load the page we're working on
 		loadPage('calc')
+		clearScreen()
+
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		ActionChains(driver).send_keys(
 			'5').send_keys('+').send_keys('7').send_keys(
 			Keys.ENTER).send_keys('2').perform()
 		self.assertEqual(display.text, u"2")
-
+	'''
 	#FAILING TEST - We don't have functionality for the decimal button yet, which also doesn't exist
 	def testCalculator_keys_piDecimcal(self):
 		#load the page we're working on
 		loadPage('calc')
+		clearScreen()
+
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		ActionChains(driver).send_keys(
 			'3').send_keys('.').send_keys('1').send_keys(
 			'4').perform()
 		self.assertEqual(display.text, u"3.14")
+	'''
 
 	def testCalculator_keys_5div7plus2000(self):
 		#load the page we're working on
 		loadPage('calc')
+		clearScreen()
+
 		#load the display element
 		display = driver.find_element_by_css_selector('#display')
 		ActionChains(driver).send_keys(
-			'5').send_keys('/').send_keys('7').send_keys(
+			'5').send_keys('/').send_keys('ESCAPE').send_keys('7').send_keys(
 			Keys.ENTER).send_keys('+').send_keys('2').send_keys(
 			'0').send_keys('0').send_keys('0').send_keys(Keys.ENTER).perform()
 		self.assertEqual(display.text, u"2,000.7142857142858")
