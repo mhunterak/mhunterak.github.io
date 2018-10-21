@@ -112,7 +112,7 @@ function doMath(buttonid) {
             // ignore buttons that have no ID
         } else if (buttonid == "<") {
             if (secondNumber == null) {
-                numberArray = firstNumber.split("");
+                numberArray = firstNumber.toString().split("");
                 numberArray.pop(-1);
                 firstNumber=numberArray.join("");
                 setDisplay(numberWithCommas(firstNumber));
