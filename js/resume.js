@@ -173,7 +173,6 @@ const QAAEProficiencies = [
 
 
 /* experience templates */
-
 const TreehouseStickersExperience = {
     "company": "<a href='https://www.treehousestickers.com'>Treehouse Stickers</a> | Portland, Oregon",
     "role": "Technical Co-founder / Product Manager",
@@ -186,7 +185,6 @@ const TreehouseStickersExperience = {
         "Grew business operations from a $18,000 seed investment to six-figure annual revenue",
     ],
 }
-
 const IndependentEngagementExperience = {
     "company": "Independent Engagement",
     "role": "Graphic, Video & Web Designer",
@@ -197,7 +195,6 @@ const IndependentEngagementExperience = {
         "Produced a video series for Niantic Labs on a a 3-week cross-country tour under field conditions, shooting, editing, and uploading each video in under 24 hours"
     ],
 }
-
 const TPMExperience = [TreehouseStickersExperience, IndependentEngagementExperience];
 const UXRExperience = [TreehouseStickersExperience, IndependentEngagementExperience];
 const CEExperience = TPMExperience;
@@ -246,7 +243,6 @@ const GDExperience = [{
         and collecting relevant information about products, services and their users. Ensured compliance with strict regulatory standards.`,
     "achievements": [
         IndependentEngagementExperience["achievements"][1]],
-
 }]
 const QAAEExperience = [{
     "company": TreehouseStickersExperience["company"],
@@ -345,7 +341,6 @@ const data = {
         "expertise": QAAEExpertise,
         "experience": QAAEExperience,
         "education": QAAEEducation,
-
     },
     "DSE": {
         "title": "Developer Support Engineer",
@@ -354,8 +349,17 @@ const data = {
         "expertise": TPMExpertise,
         "experience": TPMExperience,
         "education": TPMEducation,
-
-    }
+    },
+    /*
+    "CSM": {
+        "title": "Customer Success Manager",
+        "jobDesc": "Tech-savvy, dynamic, results-oriented professional with 9+ years experience enhancing client relationships and 4+ years developing innovative software solutions",
+        "proficiencies": TPMProficiencies,
+        "expertise": TPMExpertise,
+        "experience": TPMExperience,
+        "education": TPMEducation,
+    },
+    */
 }
 
 // import HTML elements to manipulate
@@ -391,6 +395,8 @@ function addOptions(selected = "") {
     let options = document.createElement('div');
     options.id = "dropdown";
     options.innerHTML = "Select New Job Profile:<br/>";
+    let flexBox = document.createElement('div');
+    flexBox.id = "flexBox";
     for (let i=0; i<Object.keys(data).length; i++) {
     	let newProfile = data[Object.keys(data)[i]]
     	let newLink = document.createElement("a");
@@ -400,8 +406,9 @@ function addOptions(selected = "") {
     	newLink.onclick = function() {
     		loadNewJob(newLink.id);
     	}
-    	options.appendChild(newLink);
+    	flexBox.appendChild(newLink);
     }
+    options.appendChild(flexBox);
     jobTitle.appendChild(options);
     if (selected) {
         selectedTag = document.getElementById(selected);
@@ -543,9 +550,9 @@ function getRoleFromQueryString() {
 if (getRoleFromQueryString()) {
     // options are already loaded with selected highlighted
 
-    //if there's no query string
+//if there's no query string,
 } else {
-    // load the most recent job added
+    // load the most recent position added
     loadNewJob(
         Object.keys(data)[
             Object.keys(data).length - 1
