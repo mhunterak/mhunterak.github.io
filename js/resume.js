@@ -1,6 +1,6 @@
 /*
 The Idea: Make a dropdown menu of different jobs I'm applying for and have the
-resume change depending on the job role.
+resume change to highlight different experience depending on the job role.
 
 Excpected Action: clicking on the job title displays a dropdown of different
 job roles. Clicking on the role updates the resume text to highlight different
@@ -12,7 +12,6 @@ some data is further separated out into deeper layers of lists and dictionaries
 as is appropriate. Content may be defined ouside of the main data object to
 avoid a POD.
 */
-
 
 /* START TEMPLATES */
 /* 
@@ -34,7 +33,11 @@ const UXRExpertise = ["Adept at listening to and analyzing users' goals and need
 ]
 
 const CEExpertise = TPMExpertise;
-const FSDExpertise = UXRExpertise;
+const FSDExpertise = [
+    "Adept at listening to and analyzing end user goals and needs, and communicating with team members to deliver the best solution",
+    "Consistently employs collaborative lean and agile methodologies to optimize user experience, deliver breakthrough technologies, and ensure optimal performance on complex projects and technical initiatives",
+    "Skilled in communicating consistently with beta users, discussing their specific workflow goals, presenting unique solutions, and modifying on a continuous basis to deliver the best possible user experience",
+]
 const LPDExpertise = ["Adept at listening to and analyzing clients’ needs, and communicating with team members to deliver the best solution",
     "Consistently employs collaborative lean and agile methodologies to optimize workflows, provide top class customer experience, and deliver breakthrough technologies to ensure optimal performance on complex projects and technical initiatives",
     "Skilled in communicating consistently with clients, discussing their specific design goals, presenting unique solutions, and modifying as necessary until achievement of full client approval and consensus",
@@ -118,7 +121,11 @@ const CEProficiencies = [{
 var FSDProficiencies = [{
     "title": "Languages",
     "content": "Python (4y+), SQL (4y+), HTML (4y+), CSS (4y+), Javascript (4y+), Java (1y+)",
-}].concat(TPMProficiencies.slice(1, 4));
+},
+{   "title": "Methodologies",
+    "content": "Agile, Lean, SDLC, TDD, Continuous Integration / Delivery / Deployment",
+}].concat(TPMProficiencies.slice(1, 3));
+
 
 const LPDProficiencies = [{
         "title": "Languages",
@@ -202,7 +209,7 @@ const FSDExperience = [{
     "company": TreehouseStickersExperience["company"],
     "role": "Technical Co-founder / Lead Full Stack Developer",
     "date": TreehouseStickersExperience["date"],
-    "description": TreehouseStickersExperience["description"],
+    "description": "Codified business workflow processes into a centralized cloud-native Python application, a full cycle customer relationship management system based on UX feedback from customers and employees. Spearheaded UX & UI design from scratch, building wireframes and functional prototypes. Gained extensive experience with APIs, both using 3rd party APIs and building my own for using with frontend frameworks. Built in business analytics to define, capture, and use real-time event data for business insights and new product features. Conducted A/B beta user tests and implemented adjustments for optimal user experience. Built relationships with clients and production employees while monitoring the solutions delivered to respective clients.",
     "achievements": TreehouseStickersExperience["achievements"],
 }]
 const LPDExperience = [{
@@ -312,7 +319,7 @@ const data = {
     },
     "FSD": {
         "title": "Full Stack Developer",
-        "jobDesc": "Tech-savvy, autodidactic, results-oriented professional with 4+ years experience developing innovative software products",
+        "jobDesc": "Tech-savvy, autodidactic, results-oriented professional with 4+ years experience developing innovative software tools",
         "proficiencies": FSDProficiencies,
         "expertise": FSDExpertise,
         "experience": FSDExperience,
@@ -361,6 +368,7 @@ const data = {
     },
     */
 }
+
 
 // import HTML elements to manipulate
 const headTitle = document.getElementsByTagName('title')[0];
