@@ -2,7 +2,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center; 
-    background-size: auto;
+    background-size: auto 90%;
     background-color: grey;
     font-family: 'Montserrat', sans-serif;
     padding: 1em;
@@ -18,7 +18,7 @@ body {
 }
 
 .fiveDayForecast {
-	background-color: rgba(0.8,0.8,0.8,0.25);
+	background-color: rgba(0.8,0.8,0.8,0.4);
 	border-radius: 0.75em;
 	display: block;
 	margin: 0 auto;
@@ -34,6 +34,8 @@ body {
 .dayForecast {
 	box-sizing: border-box;
 	color: white;
+	display: flex;
+	flex-direction: column;
 	margin: 0 auto;
 	padding: 0.75em;
 	position: relative;
@@ -42,9 +44,9 @@ body {
 }
 
 .dayForecast img {
-	background-color: rgba(0.8,0.8,0.8,0.25);
-	border: 0.5em solid white;
-	border-radius: 33%;
+
+
+
 	box-sizing: border-box;
 	padding: 0.5em;
     vertical-align: bottom;
@@ -53,22 +55,18 @@ body {
 }
 
 .dayForecast p {
-	background-color: rgba(0.8,0.8,0.8,0.25);
-	border: 0.5em solid white;
+	background-color: rgba(0.8,0.8,0.8,0.4);
 	border-radius: 1em;
 	padding: 0.25em;
 	display: inline-block;
 }
-.high {
-	color: red;
-}
-
-.low {
-	color: blue;
-}
 
 .lightText {
 	color: white;
+}
+
+.condition {
+	margin-top: auto;
 }
 
 #locationTitle {
@@ -88,32 +86,4 @@ body {
 	padding: 1em;
 	font-size: 1em;
 	text-align: center;
-}
-
-@media (max-width: 800px) {
-	h1 {
-		line-height: 150%;
-	}
-	.flexContainer {
-		flex-direction: column;
-	}
-
-	.condition {
-		font-size: 8vw;
-	}
-
-
-	.dayForecast {
-		font-size: 10vw;
-		width: 100%;
-	}
-
-	.dayForecast img {
-		border-width: 1em;
-		width: 100%;
-	}
-
-	.dayForecast p {
-		font-size: 8vw;
-	}
 }
