@@ -21,24 +21,29 @@ be moved an external service at a later date, but this acheives the main goal.
 
 /* expertise templates */
 
-const TPMExpertise = ["Adept at listening to and analyzing clients’ needs, and communicating with team members to deliver the best solution",
+const TPMExpertise = [
+    "Adept at listening to and analyzing clients’ needs, and communicating with team members to deliver the best solution",
     "Consistently employs collaborative lean and agile methodologies to optimize workflows, provide top class customer service, and deliver breakthrough technologies to ensure optimal performance on complex projects and technical initiatives",
     "Skilled in communicating consistently with clients, discussing their specific design goals, presenting unique solutions, and modifying as necessary until achievement of full client approval and consensus",
     "Outstanding interpersonal and communication soft skills leveraged to train users, troubleshoot system issues, and ensure total client satisfaction while directing multiple tasks effectively to ensure on target completion of all deliverables"
 ]
 
-const UXRExpertise = ["Adept at listening to and analyzing users' goals and needs, and communicating with team members to deliver the best solution",
+const UXRExpertise = [
+    "Adept at listening to and analyzing users' goals and needs, and communicating with team members to deliver the best solution",
     "Consistently employs collaborative lean and agile methodologies to optimize user experience, deliver breakthrough technologies, and ensure optimal performance on complex projects and technical initiatives",
     "Skilled in communicating consistently with clients, discussing their specific design goals, presenting unique solutions, and modifying as necessary until achievement of full client approval and consensus",
 ]
 
 const CEExpertise = TPMExpertise;
+
 const FSDExpertise = [
     "Adept at listening to and analyzing end user goals and needs, and communicating with team members to deliver the best solution",
     "Consistently employs collaborative lean and agile methodologies to optimize user experience, deliver breakthrough technologies, and ensure optimal performance on complex projects and technical initiatives",
     "Skilled in communicating consistently with beta users, discussing their specific workflow goals, presenting unique solutions, and modifying on a continuous basis to deliver the best possible user experience",
 ]
-const LPDExpertise = ["Adept at listening to and analyzing clients’ needs, and communicating with team members to deliver the best solution",
+
+const LPDExpertise = [
+    "Adept at listening to and analyzing clients’ needs, and communicating with team members to deliver the best solution",
     "Consistently employs collaborative lean and agile methodologies to optimize workflows, provide top class customer experience, and deliver breakthrough technologies to ensure optimal performance on complex projects and technical initiatives",
     "Skilled in communicating consistently with clients, discussing their specific design goals, presenting unique solutions, and modifying as necessary until achievement of full client approval and consensus",
     "Outstanding interpersonal and communication soft skills leveraged to train users, collaborate with team members, troubleshoot system issues and ensure total client satisfaction while directing multiple tasks effectively to ensure on target completion of all deliverables"
@@ -49,10 +54,16 @@ const GDExpertise = [LPDExpertise[0],
     LPDExpertise[2],
 ];
 
-const QAAEExpertise = ["Researching and implementing new technologies and approaches",
+const QAAEExpertise = [
+    "Researching and implementing new technologies and approaches",
     "Analyzing and communicating test results",
     "Creating reusable test data sets from real-world instances"];
 
+const PDFSExpertise = [
+    "Consistently employing collaborative agile methodologies to optimize workflows, and deliver breakthrough technologies to ensure optimal performance on complex projects and technical initiatives",
+    "Listening to and analyzing end user goals and needs, and communicating with team members to deliver the best solution",
+    "Skilled in communicating consistently with beta users, discussing their specific workflow goals, presenting unique solutions, and modifying on a continuous basis to deliver the best possible user experience",
+    ];
 
 /* proficiencies templates */
 
@@ -178,6 +189,28 @@ const QAAEProficiencies = [
     },
     ]
 
+const PDFSProficiencies = [
+    {
+        "title": "Languages",
+        "content": "Python (4y+), SQL (4y+), HTML (10y+), CSS (8y+), Javascript (4y+), Java (1y+)",
+    },
+    {
+        "title": "Frameworks",
+        "content": "Flask (Python, 3y+), <span class='nowrap'>excited to learn new ones!</span> ",
+    },    {   "title": "Methodologies",
+        "content": "Agile, Lean, SDLC, TDD, Continuous Integration / Delivery / Deployment",
+    },
+    {
+        "title": "Tools",
+        "content": "Trello, Slack",
+    },
+    {
+        "title": "Hardware",
+        "content": "Linux Server Administration, <span class='nowrap'>Containerized Cloud Platforms (AWS, GCP, Heroku)</span>",
+    },
+
+    ]
+
 
 /* experience templates */
 const TreehouseStickersExperience = {
@@ -187,7 +220,8 @@ const TreehouseStickersExperience = {
     "description": `Codified business processes into a centralized cloud-native Python application, a full cycle customer order management system based on UX feedback from customers and employees. Spearheaded UI design from scratch, 
     	building wireframes and functional prototypes. Conducted A/B beta user tests and implemented adjustments for optimal user experience. Built relationships with clients and production employees 
     	while monitoring the solutions delivered to respective clients.`,
-    "achievements": ["Led the SEO initiatives to maximize the return on investment by developing and maintaining the company web properties, achieving the #1 organic search result for “Custom Stickers Portland” in a competitive environment",
+    "achievements": [
+        "Led the SEO initiatives to maximize the return on investment by developing and maintaining the company web properties, achieving the #1 organic search result for “Custom Stickers Portland” in a competitive environment",
         "Delivered top-class user experience for new internal users by providing timely responses with information about product updates and feature request progress, addressing customer issues in a professional manner",
         "Grew business operations from a $18,000 seed investment to six-figure annual revenue",
     ],
@@ -198,7 +232,8 @@ const IndependentEngagementExperience = {
     "date": "(August/2009 – Present)",
     "description": `Worked in a remote environment and developed customized technical and media solutions for clients from multiple industries. Held concurrent responsibility for design tasks and interacting with clients, identifying their needs, 
 		and collecting relevant information about products, services and their users. Ensured compliance with approved standards to provide quality solutions.`,
-    "achievements": ["Continued development on Treehouse Stickers platform as a contractor, providing training, maintenance and fulfilling feature requests for employees of the acquiring company",
+    "achievements": [
+        "Continued development on Treehouse Stickers platform as a contractor, providing training, maintenance and fulfilling feature requests for employees of the acquiring company",
         "Produced a video series for Niantic Labs on a a 3-week cross-country tour under field conditions, shooting, editing, and uploading each video in under 24 hours"
     ],
 }
@@ -218,7 +253,8 @@ const LPDExperience = [{
     "date": TreehouseStickersExperience["date"],
     "description": `Codified business processes into a centralized cloud-native Python application, a full cycle customer order management system based on UX feedback from customers and employees.
     	Collaborated with users and developers to implement adjustments for optimal user experience. Built relationships with clients and employees while monitoring the solutions delivered to respective clients.`,
-    "achievements": [TreehouseStickersExperience["achievements"][0],
+    "achievements": [
+        TreehouseStickersExperience["achievements"][0],
         "Delivered top-class user experience for new internal users by providing timely responses with information about product updates and feature request timelines, addressing customer issues in a professional manner",
         TreehouseStickersExperience["achievements"][2],
         ]
@@ -231,38 +267,57 @@ const LPDExperience = [{
 		and collecting relevant information about products, services and their users. Interfaced with offshore teams in a leadership capacity, and ensured compliance with approved standards.`,
     "achievements": IndependentEngagementExperience["achievements"],
 }]
-const GDExperience = [{
-    "company": TreehouseStickersExperience["company"],
-    "role": "Technical Co-founder / Graphic Design Lead",
-    "date": TreehouseStickersExperience["date"],
-    "description": `Worked with client-submitted artwork to construct print-ready files. Built relationships with production employees 
-        while ensuring the quality of print solutions delivered to customers. Codified business practices into a centralized cloud-native web application, resulting in the significant improvment of customer experience, order fidelity, and reduction of our-fault order reprints`,
-    "achievements": [TreehouseStickersExperience["achievements"][0],
-        "Delivered top-class design solutions by communicating directly with stakeholders, addressing customer issues in a professional manner",
-        TreehouseStickersExperience["achievements"][2],
-        "Executed negotiations to get acquired by a larger printing company"]
-        },
-        {
-    "company": IndependentEngagementExperience["company"],
-    "role": "Graphic / Video / Web Designer",
-    "date": IndependentEngagementExperience["date"],
-    "description": `Worked in a remote environment and developed customized technical and media solutions for clients from multiple industries. Held concurrent responsibility for design tasks, interacting with clients, identifying their needs, 
-        and collecting relevant information about products, services and their users. Ensured compliance with strict regulatory standards.`,
-    "achievements": [
-        IndependentEngagementExperience["achievements"][1]],
-}]
-const QAAEExperience = [{
-    "company": TreehouseStickersExperience["company"],
-    "role": TreehouseStickersExperience["role"],
-    "date": TreehouseStickersExperience["date"],
-    "description": `Codified business processes into a centralized cloud-native Python application according to TDD and CI/CD/CD methodologies. Created, executed, and maintained test automations.
-     Conducted automated tests for web browsers (Selenium) and mobile (Robotium). Used SQL to prepare and track test data, and for results analysis. Used coverage.py to provide metrics and reports.`,
-    "achievements": [
-        TreehouseStickersExperience["achievements"][1],
-        "Built strong developer skills in several languages including Java, Javascript and Python",
-        ]
-}]
+const GDExperience = [
+    {
+        "company": TreehouseStickersExperience["company"],
+        "role": "Technical Co-founder / Graphic Design Lead",
+        "date": TreehouseStickersExperience["date"],
+        "description": `Worked with client-submitted artwork to construct print-ready files. Built relationships with production employees 
+            while ensuring the quality of print solutions delivered to customers. Codified business practices into a centralized cloud-native web application, resulting in the significant improvment of customer experience, order fidelity, and reduction of our-fault order reprints`,
+        "achievements": [
+            TreehouseStickersExperience["achievements"][0],
+            "Delivered top-class design solutions by communicating directly with stakeholders, addressing customer issues in a professional manner",
+            TreehouseStickersExperience["achievements"][2],
+            "Executed negotiations to get acquired by a larger printing company"]
+    },
+    {
+        "company": IndependentEngagementExperience["company"],
+        "role": "Graphic / Video / Web Designer",
+        "date": IndependentEngagementExperience["date"],
+        "description": `Worked in a remote environment and developed customized technical and media solutions for clients from multiple industries. Held concurrent responsibility for design tasks, interacting with clients, identifying their needs, 
+            and collecting relevant information about products, services and their users. Ensured compliance with strict regulatory standards.`,
+        "achievements": [
+            IndependentEngagementExperience["achievements"][1]],
+    }
+]
+const QAAEExperience = [
+    {
+        "company": TreehouseStickersExperience["company"],
+        "role": TreehouseStickersExperience["role"],
+        "date": TreehouseStickersExperience["date"],
+        "description": `Codified business processes into a centralized cloud-native Python application according to TDD and CI/CD/CD methodologies. Created, executed, and maintained test automations.
+         Conducted automated tests for web browsers (Selenium) and mobile (Robotium). Used SQL to prepare and track test data, and for results analysis. Used coverage.py to provide metrics and reports.`,
+        "achievements": [
+            TreehouseStickersExperience["achievements"][1],
+            "Built strong developer skills in several languages including Java, Javascript and Python",
+            ]
+    }
+    ]
 TPMExperience;
+
+const PDFSExperience = [
+    {
+        "company": TreehouseStickersExperience["company"],
+        "role": "Technical Co-founder / Full Stack Python Developer",
+        "date": TreehouseStickersExperience["date"],
+        "description": "Codified business workflow processes into a centralized cloud-native Python application (Frontend/Backend/Database), a full cycle customer relationship management system based on UX feedback from customers and employees. Spearheaded UX & UI design from scratch, building wireframes and functional prototypes. Gained extensive experience with APIs, both using 3rd party APIs and building my own for using with frontend frameworks.",
+        "achievements": [
+            TreehouseStickersExperience["achievements"][1],
+            "Built strong developer skills in several languages including Java, Javascript and Python",
+            ]
+    }
+    ]
+
 /* education templates */
 
 const teamTreehouse = {
@@ -280,6 +335,7 @@ const UXREduction = [teamTreehouse, brooksIP];
 const CEEducation = [teamTreehouse, ];
 const GDEducation = [brooksIP];
 const QAAEEducation = [teamTreehouse, ];
+const PDFSEducation = [teamTreehouse, ];
 
 /* END TEMPLATES */
 
@@ -356,6 +412,14 @@ const data = {
         "expertise": TPMExpertise,
         "experience": TPMExperience,
         "education": TPMEducation,
+    },
+    "PDFS": {
+        "title": "Python Developer (Full Stack)",
+        "jobDesc": "Tech-savvy, dynamic, results-oriented professional with 4+ years developing innovative software solutions",
+        "proficiencies": PDFSProficiencies,
+        "expertise": PDFSExpertise,
+        "experience": PDFSExperience,
+        "education": PDFSEducation,
     },
     /*
     "CSM": {
