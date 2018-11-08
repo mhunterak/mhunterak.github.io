@@ -448,7 +448,7 @@ const headTitleContents = "Maxwell Hunter's Dynamic Resume "
 
 function setHeadTitle(job = "") {
     let date = new Date();
-    let dateArray = [date.getMonth(), date.getDate(), date.getFullYear().toString().substring(2)];
+    let dateArray = [date.getMonth()+1, date.getDate(), date.getFullYear().toString().substring(2)];
     let dateString = dateArray.join("-");
     if (job.length) {
         job = " | " + job;
