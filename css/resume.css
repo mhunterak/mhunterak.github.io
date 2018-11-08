@@ -39,8 +39,8 @@ h4 {
 }
 
 h5 {
-    margin-top: 1.75em;
-    margin-bottom: 0.75em;
+    margin-top: 1em;
+    margin-bottom: 1em;
     font-size: 1.25em;
 }
 
@@ -56,6 +56,7 @@ ul {
     flex-direction: column;
     justify-content: flex-start;
     text-align: left;
+    margin-bottom: 0.25em;
 }
 
 li {
@@ -138,9 +139,9 @@ role to populate the page with new data.
 /* Main Menu */
 
 #jobTitle {
-    margin-top: 0.75em;
+    margin-top: 0.5em;
     font-size: 2em;
-    margin-bottom: 0.75em;
+    margin-bottom: 0.25em;
 
 }
 
@@ -249,7 +250,7 @@ to highlight an option a user is considering it
 /* the key acheivements headline */
 
 .keyAchievements {
-    margin: 0.25em 0 0 5em;
+    margin: 0.25em 0 0 0.5em;
 }
 
 /* EDUCATION */
@@ -268,12 +269,14 @@ to highlight an option a user is considering it
 }
 
 
+
 /* PRINT LAYOUT */
 
 @media print {
     footer {
         display: none;
     }
+
 
     section {
         overflow: visible;
