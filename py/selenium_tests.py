@@ -94,27 +94,27 @@ class TestIndex(unittest.TestCase):
 
         # Test that colors button is hidden
         self.assertFalse(driver.find_element_by_css_selector(
-            '# colors',).is_displayed())
+            '#colors',).is_displayed())
         # test that demosButton is is_displayed
         self.assertTrue(driver.find_element_by_css_selector(
-            '# DemosButton').is_displayed())
+            '#demosButton').is_displayed())
 
     def testIndex_DropdownStartsHidden(self):
         loadPage('index')
 
         # Test that dropdown starts hidden
         self.assertFalse(
-            driver.find_element_by_css_selector('# Demos').is_displayed())
+            driver.find_element_by_css_selector('#demos').is_displayed())
 
     def testIndex_HoverAndDropdownIsShown(self):
         loadPage('index')
-        demosButton = driver.find_element_by_css_selector('# DemosButton')
+        demosButton = driver.find_element_by_css_selector('#demosButton')
         # action: move mouse over Javascript Demos
         mouseToAndClick(demosButton)
 
         # Test that dropdown is shown now
         self.assertTrue(
-            driver.find_element_by_css_selector('# Demos').is_displayed())
+            driver.find_element_by_css_selector('#demos').is_displayed())
 
 
 '''
@@ -162,9 +162,9 @@ class TestResume(unittest.TestCase):
         loadPage('resume')
         jobTitle = driver.find_element_by_css_selector('#jobTitle')
 
-        # Test that # container is displayed
+        # Test that #container is displayed
         self.assertTrue(
-            driver.find_element_by_css_selector('# container').is_displayed())
+            driver.find_element_by_css_selector('#container').is_displayed())
         # Test that the jobTitle selector is displayed
         self.assertTrue(jobTitle.is_displayed())
 
@@ -172,14 +172,14 @@ class TestResume(unittest.TestCase):
         loadPage('resume')
         jobDesc = driver.find_element_by_css_selector('#jobDesc')
         jobTitle = driver.find_element_by_css_selector('#jobTitle')
-        CEButton = driver.find_element_by_css_selector('# cE')
+        CEButton = driver.find_element_by_css_selector('#CE')
 
         # just in case the mouse initializes on top of the jobDesc element,
         # move the mouse away
         ActionChains(driver).move_to_element(jobTitle)
         # Test that dropdown buttons are hidden
         self.assertFalse(
-            driver.find_element_by_css_selector('# Dropdown').is_displayed())
+            driver.find_element_by_css_selector('#dropdown').is_displayed())
         self.assertFalse((CEButton).is_displayed())
 
         # move the mouse away
@@ -189,7 +189,7 @@ class TestResume(unittest.TestCase):
         loadPage('resume')
         jobDesc = driver.find_element_by_css_selector('#jobDesc')
         jobTitle = driver.find_element_by_css_selector('#jobTitle')
-        CEButton = driver.find_element_by_css_selector('# cE')
+        CEButton = driver.find_element_by_css_selector('#CE')
 
         # Test that if the selector is hovered,
         # the dropdown buttons are displayed
@@ -199,14 +199,14 @@ class TestResume(unittest.TestCase):
         ActionChains(driver).move_to_element(CEButton).perform()
 
         self.assertTrue(
-            driver.find_element_by_css_selector('# Dropdown').is_displayed())
+            driver.find_element_by_css_selector('#dropdown').is_displayed())
         self.assertTrue((CEButton).is_displayed())
 
     def testResume_DropdownButtonsFunctionality(self):
         loadPage('resume')
         jobDesc = driver.find_element_by_css_selector('#jobDesc')
         jobTitle = driver.find_element_by_css_selector('#jobTitle')
-        CEButton = driver.find_element_by_css_selector('# cE')
+        CEButton = driver.find_element_by_css_selector('#CE')
 
         # when first loaded, the page will show the most recent profile.
         # in this case, the DSE profile
@@ -256,7 +256,7 @@ class TestCalculator(unittest.TestCase):
         loadPage('calc')
         clearScreen()
 
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
         self.assertEqual(display.text, "00.00")
 
     # TEST PAGE BUTTONS (clicked with mouse)
@@ -264,7 +264,7 @@ class TestCalculator(unittest.TestCase):
         loadPage('calc')
         clearScreen()
 
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
         # the fourth button displayed in the top left corner should be the 7
         button7 = driver.find_elements_by_css_selector('button')[4]
         # click the 7 button
@@ -275,7 +275,7 @@ class TestCalculator(unittest.TestCase):
     def testCalculator_buttons_2plus2(self):
         loadPage('calc')
         clearScreen()
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
         # get buttons for 2, +, and enter
         button2 = driver.find_elements_by_css_selector('button')[13]
         buttonPlus = driver.find_elements_by_css_selector('button')[19]
@@ -292,7 +292,7 @@ class TestCalculator(unittest.TestCase):
     def testCalculator_buttons_2x2(self):
         loadPage('calc')
         clearScreen()
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
         # get buttons for 2, *, and enter
         button2 = driver.find_elements_by_css_selector('button')[13]
         buttonTimes = driver.find_elements_by_css_selector('button')[11]
@@ -309,7 +309,7 @@ class TestCalculator(unittest.TestCase):
     def testCalculator_buttons_7x7(self):
         loadPage('calc')
         clearScreen()
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
         # get buttons for 7, *, and enter
         button7 = driver.find_elements_by_css_selector('button')[4]
         buttonTimes = driver.find_elements_by_css_selector('button')[11]
@@ -326,7 +326,7 @@ class TestCalculator(unittest.TestCase):
     def testCalculator_buttons_5x5x5(self):
         loadPage('calc')
         clearScreen()
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
         # get buttons for 5, *, and enter
         button5 = driver.find_elements_by_css_selector('button')[9]
         buttonTimes = driver.find_elements_by_css_selector('button')[11]
@@ -344,7 +344,7 @@ class TestCalculator(unittest.TestCase):
     def testCalculator_buttons_3plus3plus3(self):
         loadPage('calc')
         clearScreen()
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
         # get buttons for 3, +, and =
         button3 = driver.find_elements_by_css_selector('button')[14]
         buttonPlus = driver.find_elements_by_css_selector('button')[19]
@@ -363,7 +363,7 @@ class TestCalculator(unittest.TestCase):
     def testCalculator_buttons_5plus7plus(self):
         loadPage('calc')
         clearScreen()
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
         button5 = driver.find_elements_by_css_selector('button')[9]
         button7 = driver.find_elements_by_css_selector('button')[4]
         buttonPlus = driver.find_elements_by_css_selector('button')[19]
@@ -378,7 +378,7 @@ class TestCalculator(unittest.TestCase):
     def testCalculator_buttons_5plus7C(self):
         loadPage('calc')
         clearScreen()
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
         button5 = driver.find_elements_by_css_selector('button')[9]
         buttonPlus = driver.find_elements_by_css_selector('button')[19]
         button7 = driver.find_elements_by_css_selector('button')[4]
@@ -394,7 +394,7 @@ class TestCalculator(unittest.TestCase):
     def testCalculator_buttons_numberAfterEquals(self):
         loadPage('calc')
         clearScreen()
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
         button2 = driver.find_elements_by_css_selector('button')[13]
         button5 = driver.find_elements_by_css_selector('button')[9]
         button7 = driver.find_elements_by_css_selector('button')[4]
@@ -414,7 +414,7 @@ class TestCalculator(unittest.TestCase):
     def testCalculator_keys_2plus2(self):
         loadPage('calc')
         clearScreen()
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
 
         # press 2, then +, then 2
         ActionChains(driver).send_keys('2').send_keys('+').send_keys(
@@ -426,7 +426,7 @@ class TestCalculator(unittest.TestCase):
         loadPage('calc')
         clearScreen()
 
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
         # press 2, then +, then 2
         ActionChains(driver).send_keys('2').send_keys('x').send_keys(
             '2').send_keys(Keys.ENTER).perform()
@@ -436,7 +436,7 @@ class TestCalculator(unittest.TestCase):
     def testCalculator_keys_7x7(self):
         loadPage('calc')
         clearScreen()
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
         # press 7, then x, then 7
 
         ActionChains(driver).send_keys('7').send_keys('x').send_keys(
@@ -447,7 +447,7 @@ class TestCalculator(unittest.TestCase):
     def testCalculator_keys_5x5x5(self):
         loadPage('calc')
         clearScreen()
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
 
         ActionChains(driver).send_keys(
             '5').send_keys('x').send_keys('5').send_keys(
@@ -461,7 +461,7 @@ class TestCalculator(unittest.TestCase):
     def testCalculator_keys_3plus3plus3(self):
         loadPage('calc')
         clearScreen()
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
 
         ActionChains(driver).send_keys(
             '3').send_keys('+').send_keys('3').send_keys(
@@ -473,7 +473,7 @@ class TestCalculator(unittest.TestCase):
     def testCalculator_keys_5plus7plus(self):
         loadPage('calc')
         clearScreen()
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
 
         ActionChains(driver).send_keys(
             '5').send_keys('+').send_keys('7').send_keys('+').perform()
@@ -483,7 +483,7 @@ class TestCalculator(unittest.TestCase):
     def testCalculator_keys_5plus7C(self):
         loadPage('calc')
         clearScreen()
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
 
         ActionChains(driver).send_keys(
             '5').send_keys('+').send_keys('7').send_keys('c').perform()
@@ -493,7 +493,7 @@ class TestCalculator(unittest.TestCase):
     def testCalculator_keys_numberAfterEnter(self):
         loadPage('calc')
         clearScreen()
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
 
         ActionChains(driver).send_keys(
             '5').send_keys('+').send_keys('7').send_keys(
@@ -508,7 +508,7 @@ class TestCalculator(unittest.TestCase):
         loadPage('calc')
         clearScreen()
 
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
         ActionChains(driver).send_keys(
             '3').send_keys('.').send_keys('1').send_keys(
             '4').perform()
@@ -518,7 +518,7 @@ class TestCalculator(unittest.TestCase):
     def testCalculator_keys_5div7plus2000(self):
         loadPage('calc')
         clearScreen()
-        display = driver.find_element_by_css_selector('# Display')
+        display = driver.find_element_by_css_selector('#display')
 
         ActionChains(driver).send_keys(
             '5').send_keys('/').send_keys('ESCAPE').send_keys('7').send_keys(
