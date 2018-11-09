@@ -574,7 +574,6 @@ function loadNewJob(jobcode) {
 
 
     if (data[jobcode]['education'].length) {
-        educationTitle.style.display = "inline";
 
         // add new content
         for (let i = 0; i < data[jobcode]['education'].length; i++) {
