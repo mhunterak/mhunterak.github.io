@@ -1,4 +1,5 @@
 import datetime
+import time
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -73,6 +74,10 @@ def loadPage(page):
     driver.get(ENVIRONMENTS[ENVIRONMENT]+page+'.html')
 
 
+def loadPageTruncated(page):
+    driver.get(ENVIRONMENTS[ENVIRONMENT]+page)
+
+
 def mouseToAndClick(element):
     ActionChains(driver).move_to_element(element).click(element).perform()
 
@@ -117,38 +122,32 @@ class TestIndex(unittest.TestCase):
             driver.find_element_by_css_selector('#demos').is_displayed())
 
 
-'''
 class TestWeather(unittest.TestCase):
     def testWeather_Title(self):
-        loadPage('weather')
+        loadPageTruncated('weather.html?city=Portland')
         # Test that the title is accurate
         self.assertEqual(('Weather' in driver.title), True)
 
     def testWeather_Input(self):
-        loadPage('weather')
-
+        loadPageTruncated('weather.html?city=Portland')
+        locationTitle = driver.find_element_by_css_selector('span')
+        # press esc key to remove the alert window
+        ActionChains(driver).send_keys(
+            'ESCAPE')
+        # wait for page to load
+        time.sleep(3)
+        # assert 'Portland' starts in the locationTitle
+        self.assertEqual(('Portland' in locationTitle.text), True)
         # Test that the input works
         # input 'Seattle' in text field, and press enter
         driver.find_element(
             by='id',
             value='newCity'
             ).send_keys("Seattle", Keys.ENTER)
-        self.assertEqual(1,1)
-
-    def testAPI(self):
-        try:
-            element = WebDriverWait(driver, 10).until(
-                driver.text_to_be_present_in_element_value(
-                    driver.find_element(
-                        by='id',
-                        value='newCity'
-                        ),
-                    "Seattle"
-                    )
-                )
-        finally:
-            driver.quit()
-'''
+        # wait for page to load
+        time.sleep(5)
+        # assert 'Seattle' ends in the locationTitle
+        self.assertEqual(('Seattle' in locationTitle.text), True)
 
 
 class TestResume(unittest.TestCase):
@@ -210,7 +209,7 @@ class TestResume(unittest.TestCase):
 
         # when first loaded, the page will show the most recent profile.
         # in this case, the DSE profile
-        self.assertTrue("Developer Support Engineer Profile" in jobTitle.text)
+        self.assertTrue("Python Developer" in jobTitle.text)
 
         # when you move to the job title, the buttons appear,
         # then you click the CE button
@@ -544,7 +543,7 @@ def buildAndRunTests(height, width):
 
     suite = unittest.TestLoader().loadTestsFromTestCase(TestIndex)
     # weather tests not working, probably because of location permissions
-    # suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestWeather))
+    suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestWeather))
     suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestResume))
     suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestCalculator))
 
