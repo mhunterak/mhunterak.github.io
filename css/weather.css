@@ -57,7 +57,7 @@ footer p {
 .dayForecast img {
 
 
-
+	border-radius: 1em;
 	box-sizing: border-box;
 	padding: 0.5em;
     vertical-align: bottom;
@@ -66,6 +66,7 @@ footer p {
 }
 
 p {
+	color: white;
 	background-color: rgba(0.8,0.8,0.8,0.6);
 	border-radius: 1em;
 	padding: 0.5em;
@@ -74,6 +75,7 @@ p {
 
 .lightText {
 	color: white;
+	text-shadow: 1px 1px 6px black;
 }
 
 .condition {
