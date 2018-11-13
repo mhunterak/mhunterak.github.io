@@ -87,6 +87,32 @@ function setTemps(i) {
               }
 }
 
+function pad(number) {
+  if (number.toString().length > 1) {
+    return number.toString()
+  } else {
+    return '0'+ number.toString()
+  }
+}
+
+function ampm(hour, minute) {
+  let ampmString = '';
+  let pm = false;
+  if (hour>11) {
+    ampmString += (hour - 11).toString();
+    pm = true;
+  } else {
+    ampmString += (hour + 1).toString();
+  }
+  ampmString += ':'
+  ampmString += pad(minute);
+  if (pm) {
+    ampmString += " pm (your time)"
+  } else {
+    ampmString += " am (your time)"
+  }
+  return ampmString;
+}
 
 var xhr0 = new XMLHttpRequest();
 var xhr1 = new XMLHttpRequest();
@@ -106,6 +132,15 @@ xhr0.onload = function() {
     document.getElementsByTagName("body")[0].style.backgroundColor = bg_switch[weatherStateAbbr];
     document.getElementById("body").style.backgroundImage = "url(http://www.metaweather.com/static/img/weather/" + weatherStateAbbr + ".svg)";
     document.getElementById("body").style.backgroundColor = bg_switch[weatherStateAbbr];
+
+
+    let sunrise = new Date(Date.parse(resp["sun_rise"]));
+    document.getElementById("sunrise").textContent = ampm(sunrise.getHours(), sunrise.getMinutes());
+    let sunset = new Date(Date.parse(resp["sun_set"]));
+    document.getElementById("sunset").innerHTML = ampm(sunset.getHours(), sunset.getMinutes()) + '<br/>' + 
+      (Math.round(((sunset-sunrise)/(1000*60*60))*100))/100 + " hours of daylight"
+    ;
+
     // change text color to white
     console.log("weatherStateAbbr:" + weatherStateAbbr)
     if (darkText.includes(weatherStateAbbr) === false) {
@@ -124,10 +159,11 @@ xhr0.onload = function() {
         weatherStateName = resp["consolidated_weather"][i]["weather_state_abbr"];
         if (i){
                 document.getElementById("img" + i).src = "http://www.metaweather.com/static/img/weather/" + weatherStateName + ".svg";
-                document.getElementById("img" + i).style.borderColor = bg_switch[weatherStateName];
+                document.getElementById("img" + i).style.backgroundColor = bg_switch[weatherStateName];
         }
         setTemps(i);
     }
+    setTimeout(getQueryData, 1000*60*60);
 };
 
 xhr1.onload = function() {
@@ -336,16 +372,18 @@ document.getElementById("newCityForm").addEventListener("submit", function(e) {
 */
 
 // TODO: get location query from a query string
-
-var queryData = location.search;
-if (queryData) {
-    queryData = queryData.substring(1, queryData.length).split("&");
-    cityData = queryData[0].split("=")[1];
-    getWeatherForCity(cityData)
-    console.log(queryData)
-} else if (window.location.origin == "http://mhunterak.github.io") {
-    alert("insecure services (like github.io) are not allowed access to location services, Please enter your Location in the form at the bottom. Currently loading weather for Portland.");
-    getWeatherForCity('Portland');
-} else {
-    getLocation();
+function getQueryData() {
+  let queryData = location.search;
+  if (queryData) {
+      queryData = queryData.substring(1, queryData.length).split("&");
+      cityData = queryData[0].split("=")[1];
+      getWeatherForCity(cityData)
+      console.log(queryData)
+  } else if (window.location.origin == "http://mhunterak.github.io") {
+      alert("insecure services (like github.io) are not allowed access to location services, Please enter your Location in the form at the bottom. Currently loading weather for Portland.");
+      getWeatherForCity('Portland');
+  } else {
+      getLocation();
+  }
 }
+getQueryData();
