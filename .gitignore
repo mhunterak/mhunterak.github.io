@@ -1,5 +1,4 @@
 
 *.docx
 *.pyc
-py/.coverage
 *.log
