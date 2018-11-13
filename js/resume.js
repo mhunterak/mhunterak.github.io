@@ -22,10 +22,10 @@ be moved an external service at a later date, but this acheives the main goal.
 /* expertise templates */
 
 const TPMExpertise = [
-    "Adept at listening to and analyzing clients’ needs, and communicating with team members to deliver the best solution",
+    "Adept at listening to and analyzing stakeholders' needs, and communicating with team members to deliver the best solution",
     "Consistently employs collaborative lean and agile methodologies to optimize workflows, provide top class customer service, and deliver breakthrough technologies to ensure optimal performance on complex projects and technical initiatives",
     "Skilled in communicating consistently with clients, discussing their specific design goals, presenting unique solutions, and modifying as necessary until achievement of full client approval and consensus",
-    "Outstanding interpersonal and communication soft skills leveraged to train users, troubleshoot system issues, and ensure total client satisfaction while directing multiple tasks effectively to ensure on target completion of all deliverables"
+    "Outstanding interpersonal and communication soft skills leveraged to train users, troubleshoot system issues, and ensure total stakeholder satisfaction while directing multiple tasks effectively to ensure on target completion of all deliverables"
 ]
 
 const UXRExpertise = [
@@ -81,7 +81,7 @@ const TPMProficiencies = [{
     },
     {
         "title": "Methodologies",
-        "content": "Agile, Lean, Microservice Architecture, SDLC",
+        "content": "Agile, Scrum, Lean, SDLC",
     },
 ]
 
@@ -142,17 +142,17 @@ const LPDProficiencies = [{
         "title": "Languages",
         "content": "Python (4y+), SQL (4y+), HTML (4y+), <span class='nowrap'>Javascript (4y+)</span>",
     },
-	{
-		"title": "Frameworks",
-	    "content": "Flask (Python, 3y+), Django (Python, 1y+), <span class='nowrap'>excited to learn new ones!</span> ",
-	},
+    {
+        "title": "Frameworks",
+        "content": "Flask (Python, 3y+), Django (Python, 1y+), <span class='nowrap'>excited to learn new ones!</span> ",
+    },
     {
         "title": "Tools",
         "content": "Git/Github, Trello/Asana (scrum boards), Slack"
     },
     {
-    	"title": "Skills",
-    	"content": "Juggling small tasks along with large projects, Communicating complex ideas accurately with technical and non-technical co-workers, Supporting tools used by internal teams, Creating and documenting procedures for common tasks and then automating them, Customer service and collaboration, Excellent written and verbal communication",
+        "title": "Skills",
+        "content": "Juggling small tasks along with large projects, Communicating complex ideas accurately with technical and non-technical co-workers, Supporting tools used by internal teams, Creating and documenting procedures for common tasks and then automating them, Customer service and collaboration, Excellent written and verbal communication",
     },
     {
         "title": "Hardware",
@@ -218,12 +218,12 @@ const TreehouseStickersExperience = {
     "role": "Technical Co-founder / Product Manager",
     "date": "(August/2012 – February/2018)",
     "description": `Codified business processes into a centralized cloud-native Python application, a full cycle customer order management system based on UX feedback from customers and employees. Spearheaded UI design from scratch, 
-    	building wireframes and functional prototypes. Conducted A/B beta user tests and implemented adjustments for optimal user experience. Built relationships with clients and production employees 
-    	while monitoring the solutions delivered to respective clients.`,
+        building wireframes and functional prototypes. Conducted A/B beta user tests and implemented adjustments for optimal user experience. Built relationships with clients and production employees 
+        while monitoring the solutions delivered to respective clients.`,
     "achievements": [
         "Led the SEO initiatives to maximize the return on investment by developing and maintaining the company web properties, achieving the #1 organic search result for “Custom Stickers Portland” in a competitive environment",
         "Delivered top-class user experience for new internal users by providing timely responses with information about product updates and feature request progress, addressing customer issues in a professional manner",
-        "Grew business operations from a $18,000 seed investment to six-figure annual revenue",
+        "Grew business operations from a 4-person, $18,000 seed investment to 8-person, six-figure annual revenue",
     ],
 }
 const IndependentEngagementExperience = {
@@ -231,7 +231,7 @@ const IndependentEngagementExperience = {
     "role": "Graphic, Video & Web Designer",
     "date": "(August/2009 – Present)",
     "description": `Worked in a remote environment and developed customized technical and media solutions for clients from multiple industries. Held concurrent responsibility for design tasks and interacting with clients, identifying their needs, 
-		and collecting relevant information about products, services and their users. Ensured compliance with approved standards to provide quality solutions.`,
+        and collecting relevant information about products, services and their users. Ensured compliance with approved standards to provide quality solutions.`,
     "achievements": [
         "Continued development on Treehouse Stickers platform as a contractor, providing training, maintenance and fulfilling feature requests for employees of the acquiring company",
         "Produced a video series for Niantic Labs on a a 3-week cross-country tour under field conditions, shooting, editing, and uploading each video in under 24 hours"
@@ -248,11 +248,11 @@ const FSDExperience = [{
     "achievements": TreehouseStickersExperience["achievements"],
 }]
 const LPDExperience = [{
-	"company": TreehouseStickersExperience["company"],
-	"role": "Technical Co-founder / Lead Python Developer",
+    "company": TreehouseStickersExperience["company"],
+    "role": "Technical Co-founder / Lead Python Developer",
     "date": TreehouseStickersExperience["date"],
     "description": `Codified business processes into a centralized cloud-native Python application, a full cycle customer order management system based on UX feedback from customers and employees.
-    	Collaborated with users and developers to implement adjustments for optimal user experience. Built relationships with clients and employees while monitoring the solutions delivered to respective clients.`,
+        Collaborated with users and developers to implement adjustments for optimal user experience. Built relationships with clients and employees while monitoring the solutions delivered to respective clients.`,
     "achievements": [
         TreehouseStickersExperience["achievements"][0],
         "Delivered top-class user experience for new internal users by providing timely responses with information about product updates and feature request timelines, addressing customer issues in a professional manner",
@@ -264,7 +264,7 @@ const LPDExperience = [{
     "role": "Graphic / Video / Web Designer",
     "date": IndependentEngagementExperience["date"],
     "description": `Worked in a remote environment and developed customized technical and media solutions for clients from multiple industries. Held concurrent responsibility for design tasks and interacting with clients, identifying their needs, 
-		and collecting relevant information about products, services and their users. Interfaced with offshore teams in a leadership capacity, and ensured compliance with approved standards.`,
+        and collecting relevant information about products, services and their users. Interfaced with offshore teams in a leadership capacity, and ensured compliance with approved standards.`,
     "achievements": IndependentEngagementExperience["achievements"],
 }]
 const GDExperience = [
@@ -303,7 +303,6 @@ const QAAEExperience = [
             ]
     }
     ]
-TPMExperience;
 
 const PDFSExperience = [
     {
@@ -317,6 +316,7 @@ const PDFSExperience = [
             ]
     }
     ]
+
 
 /* education templates */
 
@@ -336,6 +336,19 @@ const CEEducation = [teamTreehouse, ];
 const GDEducation = [brooksIP];
 const QAAEEducation = [teamTreehouse, ];
 const PDFSEducation = [teamTreehouse, ];
+const POExperience = [{
+    "company": TreehouseStickersExperience["company"],
+    "role": "Technical Co-founder / Product Manager",
+    "date": TreehouseStickersExperience["date"],
+    "description": `Codified business processes into a centralized cloud-native Python application, a full cycle e-commerce / customer order management system based on UX feedback from customers and employees. Conducted A/B beta user tests and implemented adjustments for optimal user experience. 
+        Collaborated with users and developers to implement new features and adjustments for optimal user experience. 
+        Built relationships with clients and production employees while monitoring supply chain and production lines to ensure fluid product fulfillment in short, time-critical product cycles. `,
+    "achievements": [
+        "Delivered top-class user experience for new internal users by providing timely responses with information about product updates and feature request timelines, addressing customer issues in a professional manner",
+        TreehouseStickersExperience["achievements"][2],
+        ]
+}, IndependentEngagementExperience];
+
 
 /* END TEMPLATES */
 
@@ -431,6 +444,15 @@ const data = {
         "education": TPMEducation,
     },
     */
+    "PO": {
+        "title": "Product Manager / Owner",
+        "jobDesc": "Tech-savvy, dynamic, results-oriented professional with 9+ years experience enhancing client relationships and 4+ years developing innovative software solutions",
+        "proficiencies": TPMProficiencies,
+        "expertise": TPMExpertise,
+        "experience": POExperience,
+        "education": TPMEducation,
+    },
+
 }
 
 
@@ -470,15 +492,15 @@ function addOptions(selected = "") {
     let flexBox = document.createElement('div');
     flexBox.id = "flexBox";
     for (let i=0; i<Object.keys(data).length; i++) {
-    	let newProfile = data[Object.keys(data)[i]]
-    	let newLink = document.createElement("a");
-    	newLink.id = Object.keys(data)[i];
-    	newLink.title = newProfile["title"];
-    	newLink.textContent = newLink.id;
-    	newLink.onclick = function() {
-    		loadNewJob(newLink.id);
-    	}
-    	flexBox.appendChild(newLink);
+        let newProfile = data[Object.keys(data)[i]]
+        let newLink = document.createElement("a");
+        newLink.id = Object.keys(data)[i];
+        newLink.title = newProfile["title"];
+        newLink.textContent = newLink.id;
+        newLink.onclick = function() {
+            loadNewJob(newLink.id);
+        }
+        flexBox.appendChild(newLink);
     }
     options.appendChild(flexBox);
     jobTitle.appendChild(options);
@@ -505,7 +527,7 @@ function loadNewJob(jobcode) {
     setHeadTitle(data[jobcode]["title"]);
 
 
-    //	update proficienies
+    //  update proficienies
     //delete old content
     while (proficiencies.firstChild) {
         proficiencies.removeChild(proficiencies.firstChild);
@@ -523,7 +545,7 @@ function loadNewJob(jobcode) {
         proficiencies.appendChild(newProficiency);
     }
 
-    // 	update expertise
+    //  update expertise
     //delete old content
     while (expertise.firstChild) {
         expertise.removeChild(expertise.firstChild);
@@ -535,7 +557,7 @@ function loadNewJob(jobcode) {
         expertise.appendChild(newExpertise);
     }
 
-    //	update experience
+    //  update experience
     //delete old content
     while (experience.firstChild) {
         experience.removeChild(experience.firstChild);
@@ -566,7 +588,7 @@ function loadNewJob(jobcode) {
         experience.appendChild(achievements);
     }
 
-    //	update education, if it exists
+    //  update education, if it exists
     // delete old content
     while (education.firstChild) {
         education.removeChild(education.firstChild);
@@ -574,6 +596,7 @@ function loadNewJob(jobcode) {
 
 
     if (data[jobcode]['education'].length) {
+        educationTitle.style.display = "inline";
 
         // add new content
         for (let i = 0; i < data[jobcode]['education'].length; i++) {
@@ -603,14 +626,14 @@ function saveRoleToQueryString(jobcode) {
 function getRoleFromQueryString() {
     var queryData = location.search;
     if (queryData) {
-    	try {
-	        queryData = queryData.substring(1, queryData.length).split("&");
-	        roleData = queryData[0].split("=")[1];
-	        loadNewJob(roleData);
-	        return true;
-	    } catch(err) {
-	    	return false
-	    }
+        try {
+            queryData = queryData.substring(1, queryData.length).split("&");
+            roleData = queryData[0].split("=")[1];
+            loadNewJob(roleData);
+            return true;
+        } catch(err) {
+            return false
+        }
     }
     return false;
 }
