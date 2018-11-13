@@ -1,0 +1,285 @@
+body {
+    font-family: 'Source Serif Pro', serif;
+
+    font-weight: 400;
+    margin: 2vw;
+    text-align: center;
+    float: none;
+}
+
+img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+h1,
+h4,
+h5 {
+    font-weight: 700;
+}
+
+h1 {
+    margin: 0;
+}
+
+h3 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+h3 a {
+	margin: auto;
+}
+
+h4 {
+    font-size: 1.4em;
+    margin-bottom: 0;
+}
+
+h5 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: 1.25em;
+}
+
+h6 {
+    font-size: 1em;
+    text-align: left;
+    margin-top: 0.35em;
+    margin-bottom: 0;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    margin-bottom: 0.25em;
+}
+
+li {
+    margin-top: 0.35em;
+}
+
+p {
+    text-align: left;
+}
+
+footer p {
+	text-align: center;
+}
+
+.nowrap span,
+section {
+}
+
+.nowrap {
+	display: inline-block;
+}
+
+/* #container is the main content container */
+
+#container {
+    max-width: 800px;
+    margin: 0.5em auto;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+}
+#dropdown a {
+	line-height: 2em;
+}
+
+/* HEADLINE */
+
+.row {
+    display: flex;
+    flex-shrink: 1;
+}
+
+.row img {
+    align-self: flex-start;
+    object-fit: contain;
+    max-width: 50%;
+    height: auto;
+    width: auto;
+}
+
+.row div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.top div {
+    display: flex;
+    justify-content: center;
+}
+
+/* jobDesc is the main tagline, under name and links */
+
+#jobDesc {
+    font-size: 0.85em;
+    font-style: italic;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* JOB TITLE */
+
+/* Main JS Controller 
+
+This pops up when the job title is hovered over. User can select a different
+role to populate the page with new data.
+
+*/
+
+/* Main Menu */
+
+#jobTitle {
+    margin-top: 0.5em;
+    font-size: 2em;
+    margin-bottom: 0.25em;
+
+}
+
+#dropdown {
+    background-color: white;
+    border: 3px solid black;
+    display: none;
+    justify-content: center;
+    margin: auto;
+    padding: 1em 0.5em;
+    position: absolute;
+    z-index: 2;
+	line-height: 2em;
+    text-align: center;
+}
+
+/* show menu when the job title is hovered over */
+
+.selector {
+    position: relative;
+}
+
+.selector:hover #dropdown {
+    display: block;
+}
+
+/* Controller buttons */
+#dropdown {
+    position: absolute;
+}
+
+#flexBox {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#flexBox a {
+	background-color: white;
+    border: 1px solid black;
+    margin: 0.2em;
+    margin-bottom: 0.5em;
+    padding: 0 1em;
+
+}
+
+
+/* Highlight buttons on hover, 
+to highlight an option a user is considering it
+*/
+
+#dropdown a:hover {
+    background-color: rgba(0.2, 0.2, 0.2, 0.8);
+    color: white;
+}
+
+/* Selected button */
+
+#dropdown .selected {
+    background-color: lightblue;
+}
+
+/* TECHNICAL PROFICIENCIES */
+
+/* Technical Proficiencies is arranged into rows, then columns */
+
+#proficiencies {
+    margin-top: 1.25em;
+}
+
+#proficiencies .row {
+    align-items: baseline;
+}
+
+/* this only applies to proficiencies title */
+
+.row h6 {
+    display: inline-block;
+    margin: 0;
+    width: 15%;
+    text-align: right;
+}
+
+/* this only applies to proficiencies list */
+
+.row p {
+    display: inline;
+    margin: 0 auto;
+    width: 85%;
+    margin-left: 1em;
+    text-align: left;
+}
+
+/* AREAS OF EXPERTISE */
+
+/* nothing yet */
+
+/* PROFESSIONAL EXPERIENCE */
+
+/* the job experience paragraph description */
+
+.experienceDesc {
+    margin-left: 2.5em;
+}
+
+/* the key acheivements headline */
+
+.keyAchievements {
+    margin: 0.25em 0 0 0.5em;
+}
+
+/* EDUCATION */
+
+#education {
+    display: flex;
+    flex-direction: column;
+}
+
+#education p {
+    margin-left: 2.5em;
+}
+
+.education p {
+    margin-left: 2.5em;
+}
+
+
+
+/* PRINT LAYOUT */
+
+@media print {
+    footer {
+        display: none;
+    }
+
+
+    section {
+        overflow: visible;
+        page-break-inside: avoid;
+    }
+}
