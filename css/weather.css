@@ -10,6 +10,17 @@ body {
 
 }
 
+footer {
+	text-align: center;
+}
+h3 p{
+	font-size: 1.5em;
+}
+
+footer p {
+	color: white;
+}
+
 .container {
 	margin: 1em auto;
 	font-size: 2em;
@@ -46,7 +57,7 @@ body {
 .dayForecast img {
 
 
-
+	border-radius: 1em;
 	box-sizing: border-box;
 	padding: 0.5em;
     vertical-align: bottom;
@@ -54,15 +65,17 @@ body {
 	width: 100%;
 }
 
-.dayForecast p {
-	background-color: rgba(0.8,0.8,0.8,0.4);
+p {
+	color: white;
+	background-color: rgba(0.8,0.8,0.8,0.6);
 	border-radius: 1em;
-	padding: 0.25em;
+	padding: 0.5em;
 	display: inline-block;
 }
 
 .lightText {
 	color: white;
+	text-shadow: 1px 1px 6px black;
 }
 
 .condition {

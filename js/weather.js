@@ -5,7 +5,20 @@ function CelsiusToFahrenheit(temp) {
     temp += 32
     return Math.round(temp).toString();
 }
-
+// temperature colors
+const colorSwitch = {
+    'temp0': '#ccd5e5',
+    'temp10': '#b1c2e0',
+    'temp20': '#809bcc',
+    'temp30': '#a3b1cc',
+    'temp40': '#506282',
+    'temp50': '#2761ce',
+    'temp60': '#59f9ff',
+    'temp70': '#f3ff59',
+    'temp80': '#ce9416',
+    'temp90': '#ce6616',
+    'temp100': '#ed4912',
+}
 
 // dictionary for getting the backgound color from the weather condition
 const bg_switch = {
@@ -18,7 +31,7 @@ const bg_switch = {
     "lr": "lightblue",
     "s": "blue",
     "hc": "grey",
-    "lc": "lightgrey",
+    "lc": "lightskyblue",
 }
 
 // list of weather conditions with light colors that need dark text
@@ -54,6 +67,52 @@ function getWeatherForCity(query) {
     xhr1.send();
 }
 
+function setTemps(i) {
+  document.getElementById("high" + i).textContent = CelsiusToFahrenheit(resp["consolidated_weather"][i]["max_temp"]);
+  let hiTemp = CelsiusToFahrenheit(resp["consolidated_weather"][i]["max_temp"])
+  if (hiTemp.toString().split("").length > 2) {
+            document.getElementById("high" + i).style.color = colorSwitch['temp100'];
+        } else if (hiTemp.toString().split("").length > 1) {
+            document.getElementById("high" + i).style.color = colorSwitch['temp' +
+                hiTemp.toString().split("")[0] + "0"];
+              }
+  let loTemp = CelsiusToFahrenheit(resp["consolidated_weather"][i]["min_temp"])
+
+  document.getElementById("low" + i).textContent = CelsiusToFahrenheit(resp["consolidated_weather"][i]["min_temp"]);
+  if (loTemp.toString().split("").length > 2) {
+            document.getElementById("low" + i).style.color = colorSwitch['temp100'];
+        } else if (loTemp.toString().split("").length > 1) {
+            document.getElementById("low" + i).style.color = colorSwitch['temp' +
+                loTemp.toString().split("")[0] + "0"];
+              }
+}
+
+function pad(number) {
+  if (number.toString().length > 1) {
+    return number.toString()
+  } else {
+    return '0'+ number.toString()
+  }
+}
+
+function ampm(hour, minute) {
+  let ampmString = '';
+  let pm = false;
+  if (hour>11) {
+    ampmString += (hour - 11).toString();
+    pm = true;
+  } else {
+    ampmString += (hour + 1).toString();
+  }
+  ampmString += ':'
+  ampmString += pad(minute);
+  if (pm) {
+    ampmString += " pm (your time)"
+  } else {
+    ampmString += " am (your time)"
+  }
+  return ampmString;
+}
 
 var xhr0 = new XMLHttpRequest();
 var xhr1 = new XMLHttpRequest();
@@ -61,18 +120,27 @@ var xhr1 = new XMLHttpRequest();
 xhr0.onload = function() {
     resp = JSON.parse(xhr0.response);
     let fullWeatherStateName = resp["consolidated_weather"][1]["weather_state_name"];
-    document.getElementById("currentWeather").textContent = fullWeatherStateName;
+    document.getElementById("condition0").textContent = fullWeatherStateName;
 
 
     let date = new Date(resp["consolidated_weather"][1]["applicable_date"])
     let dateArray = date.toDateString().split(" ");
-    let dateStr = dateArray[0] + " " + dateArray[1] + " " + dateArray[2];
+    let dateStr = " "+dateArray[0];
     document.getElementById("today").textContent = dateStr;
 
     let weatherStateAbbr = resp["consolidated_weather"][1]["weather_state_abbr"];
     document.getElementsByTagName("body")[0].style.backgroundColor = bg_switch[weatherStateAbbr];
     document.getElementById("body").style.backgroundImage = "url(http://www.metaweather.com/static/img/weather/" + weatherStateAbbr + ".svg)";
     document.getElementById("body").style.backgroundColor = bg_switch[weatherStateAbbr];
+
+
+    let sunrise = new Date(Date.parse(resp["sun_rise"]));
+    document.getElementById("sunrise").textContent = ampm(sunrise.getHours(), sunrise.getMinutes());
+    let sunset = new Date(Date.parse(resp["sun_set"]));
+    document.getElementById("sunset").innerHTML = ampm(sunset.getHours(), sunset.getMinutes()) + '<br/>' + 
+      (Math.round(((sunset-sunrise)/(1000*60*60))*100))/100 + " hours of daylight"
+    ;
+
     // change text color to white
     console.log("weatherStateAbbr:" + weatherStateAbbr)
     if (darkText.includes(weatherStateAbbr) === false) {
@@ -82,22 +150,20 @@ xhr0.onload = function() {
     }
 
 
-
-
-    document.getElementById("highTemp").textContent = CelsiusToFahrenheit(resp["consolidated_weather"][0]["max_temp"]);
-    document.getElementById("lowTemp").textContent = CelsiusToFahrenheit(resp["consolidated_weather"][0]["min_temp"]);
-    for (let i = 1; i < resp["consolidated_weather"].length; i++) {
+    for (let i = 0; i < resp["consolidated_weather"].length; i++) {
         let date = new Date(resp["consolidated_weather"][i]["applicable_date"])
         let dateArray = date.toDateString().split(" ");
         let dateStr = dateArray[1] + " " + dateArray[2];
         document.getElementById("date" + i).textContent = dateStr;
         document.getElementById("condition" + i).textContent = resp["consolidated_weather"][i]["weather_state_name"];
         weatherStateName = resp["consolidated_weather"][i]["weather_state_abbr"];
-        document.getElementById("img" + i).src = "http://www.metaweather.com/static/img/weather/" + weatherStateName + ".svg";
-        document.getElementById("img" + i).style.borderColor = bg_switch[weatherStateName];
-        document.getElementById("high" + i).textContent = CelsiusToFahrenheit(resp["consolidated_weather"][i]["max_temp"]);
-        document.getElementById("low" + i).textContent = CelsiusToFahrenheit(resp["consolidated_weather"][i]["min_temp"]);
+        if (i){
+                document.getElementById("img" + i).src = "http://www.metaweather.com/static/img/weather/" + weatherStateName + ".svg";
+                document.getElementById("img" + i).style.backgroundColor = bg_switch[weatherStateName];
+        }
+        setTemps(i);
     }
+    setTimeout(getQueryData, 1000*60*60);
 };
 
 xhr1.onload = function() {
@@ -306,16 +372,18 @@ document.getElementById("newCityForm").addEventListener("submit", function(e) {
 */
 
 // TODO: get location query from a query string
-
-var queryData = location.search;
-if (queryData) {
-    queryData = queryData.substring(1, queryData.length).split("&");
-    cityData = queryData[0].split("=")[1];
-    getWeatherForCity(cityData)
-    console.log(queryData)
-} else if (window.location.origin == "http://mhunterak.github.io") {
-    alert("insecure services (like github.io) are not allowed access to location services, Please enter your Location in the form at the bottom. Currently loading weather for Portland.");
-    getWeatherForCity('Portland');
-} else {
-    getLocation();
+function getQueryData() {
+  let queryData = location.search;
+  if (queryData) {
+      queryData = queryData.substring(1, queryData.length).split("&");
+      cityData = queryData[0].split("=")[1];
+      getWeatherForCity(cityData)
+      console.log(queryData)
+  } else if (window.location.origin == "http://mhunterak.github.io") {
+      alert("insecure services (like github.io) are not allowed access to location services, Please enter your Location in the form at the bottom. Currently loading weather for Portland.");
+      getWeatherForCity('Portland');
+  } else {
+      getLocation();
+  }
 }
+getQueryData();
