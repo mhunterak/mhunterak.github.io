@@ -209,7 +209,7 @@ class TestResume(unittest.TestCase):
 
         # when first loaded, the page will show the most recent profile.
         # in this case, the DSE profile
-        self.assertTrue("Python Developer" in jobTitle.text)
+        self.assertTrue("Product Manager" in jobTitle.text)
 
         # when you move to the job title, the buttons appear,
         # then you click the CE button
