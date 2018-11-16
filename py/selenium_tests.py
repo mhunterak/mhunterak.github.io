@@ -128,6 +128,12 @@ class TestWeather(unittest.TestCase):
         # Test that the title is accurate
         self.assertEqual(('Weather' in driver.title), True)
 
+    def testWeather_city(self):
+        loadPageTruncated('weather.html?city=Portland')
+        locationTitle = driver.find_element_by_css_selector('#locationTitle')
+        # Test that the city is displayed
+        self.assertEqual(('Portland' in locationTitle.text), True)
+
     def testWeather_Input(self):
         loadPageTruncated('weather.html?city=Portland')
         locationTitle = driver.find_element_by_css_selector('span')
