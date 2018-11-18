@@ -69,7 +69,7 @@ const PDFSExpertise = [
 
 const TPMProficiencies = [{
         "title": "Languages",
-        "content": "Python (4y+), SQL (4y+), HTML (4y+), CSS (4y+), <span class='nowrap'>Javascript (4y+)</span>",
+        "content": "Full Stack Python (Flask, 4y+), Javascript/jQuery (4y+), SQL (3y+)"
     },
     {
         "title": "Tools",
@@ -77,7 +77,7 @@ const TPMProficiencies = [{
     },
     {
         "title": "Hardware",
-        "content": "Mac/Windows/Linux Server Administration, <span class='nowrap'>Containerized Cloud Platforms (AWS, GCP, Heroku)</span>",
+        "content": "Mac/Windows/Linux Server Administration, <span class='nowrap'>Containerized Cloud Platforms (AWS RDS, Heroku)</span>",
     },
     {
         "title": "Methodologies",
@@ -87,7 +87,7 @@ const TPMProficiencies = [{
 
 const UXRProficiencies = [{
         "title": "Languages",
-        "content": "Python (4y+), HTML (4y+), CSS (4y+), Javascript (4y+)",
+        "content": "Full Stack Python (Flask, 4y+), Javascript/jQuery (4y+), SQL (3y+)",
     },
     {
         "title": "Tools",
@@ -95,17 +95,17 @@ const UXRProficiencies = [{
     },
     {
         "title": "Methodologies",
-        "content": "Agile, Lean, Microservice Architecture, SDLC",
+        "content": "Agile, Lean, SDLC",
     },
 ]
 
 const CEProficiencies = [{
         "title": "Languages",
-        "content": "Python (4y), Javascript (4y+), Java (1y+)",
+        "content": "Full Stack Python (Flask, 4y+), Javascript/jQuery (4y+), SQL (3y+), Java (1y+)",
     },
     {
         "title": "Frameworks",
-        "content": "Flask (Python, 3y+), <span class='nowrap'>excited to learn new ones!</span> ",
+        "content": "Flask (Python, 3y+)",
     },
     {
         "title": "Tools",
@@ -125,13 +125,13 @@ const CEProficiencies = [{
     },
     {
         "title": "Methodologies",
-        "content": "Agile, Lean, Microservice Architecture, SDLC",
+        "content": "Agile, Lean, SDLC",
     },
 ]
 
 var FSDProficiencies = [{
     "title": "Languages",
-    "content": "Python (4y+), SQL (4y+), HTML (4y+), CSS (4y+), Javascript (4y+), Java (1y+)",
+    "content": "Full Stack Python (Flask, 4y+), Javascript/jQuery (4y+), SQLite / MySQL (3y+), Java (1y+)",
 },
 {   "title": "Methodologies",
     "content": "Agile, Lean, SDLC, TDD, Continuous Integration / Delivery / Deployment",
@@ -140,11 +140,11 @@ var FSDProficiencies = [{
 
 const LPDProficiencies = [{
         "title": "Languages",
-        "content": "Python (4y+), SQL (4y+), HTML (4y+), <span class='nowrap'>Javascript (4y+)</span>",
+        "content": "Full Stack Python (Flask, 4y+), Javascript/jQuery (4y+), SQLite / MySQL (3y+)"
     },
     {
         "title": "Frameworks",
-        "content": "Flask (Python, 3y+), Django (Python, 1y+), <span class='nowrap'>excited to learn new ones!</span> ",
+        "content": "Flask (Python, 3y+), Django (Python, 1y+)",
     },
     {
         "title": "Tools",
@@ -156,11 +156,11 @@ const LPDProficiencies = [{
     },
     {
         "title": "Hardware",
-        "content": "Mac/Windows/Linux Server Administration, <span class='nowrap'>Containerized Cloud Platforms (AWS, GCP, Heroku)</span>",
+        "content": "Mac/Windows/Linux Server Administration, <span class='nowrap'>Containerized Cloud Platforms (AWS RDS, Heroku)</span>",
     },
     {
         "title": "Methodologies",
-        "content": "Agile, Lean, Microservice Architecture, SDLC, TDD, CI/CD/CD",
+        "content": "Agile, Lean, SDLC, TDD, CI/CD/CD",
     },
 ]
 const GDProficiencies = [{
@@ -192,11 +192,11 @@ const QAAEProficiencies = [
 const PDFSProficiencies = [
     {
         "title": "Languages",
-        "content": "Python (4y+), SQL (4y+), HTML (10y+), CSS (8y+), Javascript (4y+), Java (1y+)",
+        "content": "Full Stack Python (Flask, 4y+), Javascript/jQuery (4y+), SQLite / MySQL (3y+), Java (1y+)",
     },
     {
         "title": "Frameworks",
-        "content": "Flask (Python, 3y+), <span class='nowrap'>excited to learn new ones!</span> ",
+        "content": "Flask (Python, 3y+)",
     },    {   "title": "Methodologies",
         "content": "Agile, Lean, SDLC, TDD, Continuous Integration / Delivery / Deployment",
     },
@@ -206,7 +206,7 @@ const PDFSProficiencies = [
     },
     {
         "title": "Hardware",
-        "content": "Linux Server Administration, <span class='nowrap'>Containerized Cloud Platforms (AWS, GCP, Heroku)</span>",
+        "content": "Linux Server Administration, <span class='nowrap'>Containerized Cloud Platforms (AWS RDS, Heroku)</span>",
     },
 
     ]
@@ -223,7 +223,7 @@ const TreehouseStickersExperience = {
     "achievements": [
         "Led the SEO initiatives to maximize the return on investment by developing and maintaining the company web properties, achieving the #1 organic search result for “Custom Stickers Portland” in a competitive environment",
         "Delivered top-class user experience for new internal users by providing timely responses with information about product updates and feature request progress, addressing customer issues in a professional manner",
-        "Grew business operations from a 4-person, $18,000 seed investment to 8-person, six-figure annual revenue",
+        "Grew business operations from a 4-person, $18,000 seed investment to 8-person, six-figure annual revenue and negotiated a successful exit via acquisition",
     ],
 }
 const IndependentEngagementExperience = {
