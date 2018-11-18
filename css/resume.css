@@ -1,9 +1,7 @@
 body {
     font-family: 'Source Serif Pro', serif;
-
     font-weight: 400;
     margin: 2vw;
-    text-align: center;
     float: none;
 }
 
@@ -19,10 +17,12 @@ h5 {
 }
 
 h1 {
+    font-size: 2em;
     margin: 0;
 }
 
 h3 {
+    font-size: 1.6em;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -30,11 +30,10 @@ h3 {
 }
 
 h3 a {
-	margin: auto;
 }
 
 h4 {
-    font-size: 1.4em;
+    font-size: 1.2em;
     margin-bottom: 0.5em;
 }
 
@@ -72,10 +71,6 @@ p {
 
 footer p {
 	text-align: center;
-}
-
-.nowrap span,
-section {
 }
 
 .nowrap {
@@ -118,7 +113,6 @@ section {
 
 .top div {
     display: flex;
-    justify-content: center;
 }
 
 /* jobDesc is the main tagline, under name and links */
@@ -126,8 +120,8 @@ section {
 #jobDesc {
     font-size: 0.85em;
     font-style: italic;
-    text-align: center;
-    margin: 0 auto;
+    margin: 0;
+    width: 100%;
 }
 
 /* JOB TITLE */
@@ -164,6 +158,7 @@ role to populate the page with new data.
 /* show menu when the job title is hovered over */
 
 .selector {
+    text-align: center;
     position: relative;
 }
 
@@ -234,7 +229,6 @@ to highlight an option a user is considering it
 .row p {
     display: inline;
     margin: 0 auto;
-    width: 85%;
     margin-left: 1em;
     text-align: left;
 }

@@ -52,11 +52,11 @@ img {
 
 
 ul {
-	border: 1px solid grey;
 	border-radius: 0.25em;
 	display: inline-block;
 	list-style-position: inside;
 	padding: 0.25em;
+	width: 100%;
 }
 
 li {
@@ -138,6 +138,6 @@ li:first-child {
 li:last-child {
 }
 
-li:nth-child(2n) {
+li:nth-child(2n+1) {
 	background-color: rgba(0,0,0,0.10);
 }
