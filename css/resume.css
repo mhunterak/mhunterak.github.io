@@ -5,6 +5,7 @@ body {
     float: none;
 }
 
+
 img {
     max-height: 100%;
     max-width: 100%;
@@ -110,9 +111,38 @@ footer p {
     flex-direction: column;
 }
 
+.row {
+    display: flex;
+    justify-content: center;
+}
+.row h6 {
+    display: inline-flex;
+    justify-content: flex-end;
+    width: 25%;
+}
+.row p {
+    display: inline;
+    width: 60%;,
+}
 
 .top div {
     display: flex;
+}
+
+.noindent {
+    margin-left: 0;
+}
+
+#name {
+    display: block;
+    float: left;
+}
+
+#links {
+    float: right;
+}
+
+.Headline {
 }
 
 /* jobDesc is the main tagline, under name and links */
@@ -248,7 +278,8 @@ to highlight an option a user is considering it
 /* the key acheivements headline */
 
 .keyAchievements {
-    margin: 0.25em 0 0 0.5em;
+    margin-left: 0.25em;
+    margin-bottom: 0.5em;
 }
 
 /* EDUCATION */
