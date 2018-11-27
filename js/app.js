@@ -16,23 +16,7 @@ const cgolButton =document.getElementById("cgol");
 const survivor =document.getElementById("survivor");
 const weather =document.getElementById("weather");
 
-const demosButton = document.getElementById("demosButton");
-const demos = document.getElementById("demos");
-demos.hidden = true;
-
-
 const wait = ms => new Promise((r, j)=>setTimeout(r, ms))
-
-demosButton.addEventListener("mouseover",()=>{
-	if (demos.hidden) {
-			demosButton.textContent = "JAVASCRIPT DEMOS ▼"
-			demos.hidden = false;
-		}})
-inline.addEventListener("mouseover", ()=> {
-	if (demos.hidden) {} else {
-			demosButton.textContent = "JAVASCRIPT DEMOS ▶"
-			demos.hidden = true;
-		}})
 
 function addLinkListener(buttonObject, link) {
 	buttonObject.addEventListener("click", () => {

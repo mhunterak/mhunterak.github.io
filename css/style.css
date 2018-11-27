@@ -3,21 +3,20 @@ a {
 }
 
 body {
+	color: white;
 	height: 100%;
 	width: 100%;
 	margin: auto;
 	text-align: center; 
-	font-family: 'Lato', sans-serif;
-	background-color: lightblue;
+	font-family: 'Source Sans Pro', sans-serif;
+	background-color: black;
 }
 p {
-	text-align: center;
 	padding: 0.25em;
 }
-
 h1 {
-}
-h2 {
+	font-size: 4em;
+	margin: 0.5em 0 auto;
 }
 
 button {
@@ -38,6 +37,7 @@ button:hover {
 
 }
 
+
 img {
 	background-color: white;
  	float: left;
@@ -55,8 +55,20 @@ ul {
 	border-radius: 0.25em;
 	display: inline-block;
 	list-style-position: inside;
-	padding: 0.25em;
+	margin-top: 0.25em;
+	padding: 0;
 	width: 100%;
+}
+
+a {
+	color: white;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+a:hover {
+	color: blue;
+
 }
 
 li {
@@ -73,22 +85,60 @@ p {
 #container {
 	border-radius: 0.25em;
 	width: 80%;
-	background-color: white;
+	background-color: black;
 	margin: 0.25em auto;
+	margin-top: 4em;
 	padding:  0.25em 1em 1em;
 
 
 }
+#demos {
+	display: none;
+}
+
 
 #demosButton {
-	border-radius: 0.5em;
-	padding: 0.5em;
+	background-color: darkgrey;
 	border: 1px solid white;
-	transition: border-color 2s;
+	border: 3px solid black;
+	border-radius: 0.5em;
+	color: black;
+	margin: 0.5em 2em auto;
+	padding: 0.5em;
+	text-align: center;
+	transition: all 2s;
+
 }
+
+#arrowDown {
+	display: none;
+} 
+
+#arrowRight {
+	display: block;
+} 
+
+#nav:hover #demos {
+	display: block;
+} 
+
+#nav:hover #arrowDown {
+	display: block;
+} 
+#nav:hover #arrowRight {
+	display: none;
+} 
 
 #demosButton.redBorder {
 	border-color: red;
+}
+
+#nav {
+	background-color: rgba(0,0,0,0);
+	padding-bottom: 1em; 
+	position: fixed;
+	top: 0;
+	width: 100%;
 }
 
 .highlight {
@@ -104,6 +154,11 @@ p {
 	width: 100%;
 	overflow: hidden;
 
+}
+
+.links {
+	background-color: rgba(255,255,255,0.15);
+	margin: 1em auto;
 }
 
 .twocol {
@@ -133,11 +188,15 @@ p {
 /* selectors */
 
 li:first-child {
+	background-color: rgba(255,255,255,0.25);
 }
 
 li:last-child {
 }
 
-li:nth-child(2n+1) {
-	background-color: rgba(0,0,0,0.10);
+li:nth-child(2n+3) {
+	background-color: rgba(255,255,255,0.20);
+}
+li:nth-child(2n) {
+	background-color: rgba(255,255,255,0.10);
 }
