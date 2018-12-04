@@ -1,31 +1,28 @@
-<!-- https://www.metaweather.com/api/location/2475687/ -->
-
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Weather</title>
-	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="stylesheet" href="css/weather.css" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<head>
+    <title>Weather</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/weather.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-
 <body id="body">
-	<div class="container" id="container">
-		<!-- Here is the main section that displays the title. 
+    <div class="container" id="container">
+        <!-- Here is the main section that displays the title. 
 			It doesn't change much. -->
-		<h1>
+        <h1>
 			Weather in <span id="locationTitle">Your Location</span>
 		</h1>
-		<h2>
+        <h2>
 			<span id="today">Today</span> <span id="date0"></span>:
 			<span id='condition0'>
 				...
 			</span>
 		</h2>
-		<h3>
+        <h3>
 			sunrise: <span id="sunrise">...</span><br/>
 			<p>High: <span class="high"  id='high0'>...
 				</span>°<br/>
@@ -35,53 +32,50 @@
 			sunset: <span id="sunset">...</span>
 				
 		</h3>
-
-		<!-- the 5-day forecast -->
-		<div class="fiveDayForecast flexContainer">
-			<div class="dayForecast">
-				<div id="date1">Today</div>
-				<p><span class="high" id="high1">--</span>°<br/> <span class="low" id="low1">--</span>°</p>
-				<div class="condition" id="condition1">fetching...</div>
-				<img id="img1" src="img/spinner.gif">
+        <!-- the 5-day forecast -->
+        <div class="fiveDayForecast flexContainer">
+            <div class="dayForecast">
+                <div id="date1">Today</div>
+                <p><span class="high" id="high1">--</span>°<br /> <span class="low" id="low1">--</span>°</p>
+                <div class="condition" id="condition1">fetching...</div>
+                <img id="img1" src="img/spinner.gif">
 			</div>
-			<div class="dayForecast">
-				<div id="date2">Tomorrow</div>
-				<p><span class="high" id="high2">--</span>°<br/> <span class="low" id="low2">--</span>°</p>
-				<div class="condition" id="condition2">fetching...</div>
-				<img id="img2" src="img/spinner.gif">
+                <div class="dayForecast">
+                    <div id="date2">Tomorrow</div>
+                    <p><span class="high" id="high2">--</span>°<br /> <span class="low" id="low2">--</span>°</p>
+                    <div class="condition" id="condition2">fetching...</div>
+                    <img id="img2" src="img/spinner.gif">
 			</div>
-			<div class="dayForecast">
-				<div id="date3">Day 3</div>
-				<p><span class="high" id="high3">--</span>°<br/> <span class="low" id="low3">--</span>°</p>
-				<div class="condition" id="condition3">fetching...</div>
-				<img id="img3" src="img/spinner.gif">
+                    <div class="dayForecast">
+                        <div id="date3">Day 3</div>
+                        <p><span class="high" id="high3">--</span>°<br /> <span class="low" id="low3">--</span>°</p>
+                        <div class="condition" id="condition3">fetching...</div>
+                        <img id="img3" src="img/spinner.gif">
 			</div>
-			<div class="dayForecast">
-				<div id="date4">Day 4</div>
-				<p><span class="high" id="high4">--</span>°<br/> <span class="low" id="low4">--</span>°</p>
-				<div class="condition" id="condition4">fetching...</div>
-				<img id="img4" src="img/spinner.gif">
+                        <div class="dayForecast">
+                            <div id="date4">Day 4</div>
+                            <p><span class="high" id="high4">--</span>°<br /> <span class="low" id="low4">--</span>°</p>
+                            <div class="condition" id="condition4">fetching...</div>
+                            <img id="img4" src="img/spinner.gif">
 			</div>
-			<div class="dayForecast">
-				<div id="date5">Day 5</div>
-				<p><span class="high" id="high5">--</span>°<br/> <span class="low" id="low5">--</span>°</p>
-				<div class="condition" id="condition5">fetching...</div>
-				<img id="img5" src="img/spinner.gif">
+                            <div class="dayForecast">
+                                <div id="date5">Day 5</div>
+                                <p><span class="high" id="high5">--</span>°<br /> <span class="low" id="low5">--</span>°</p>
+                                <div class="condition" id="condition5">fetching...</div>
+                                <img id="img5" src="img/spinner.gif">
 			</div>
-		</div>
-		<div id="newCityDiv">
-			<form id="newCityForm">
-				<input id="newCity" 
-					   type="text" 
-					   name="newCity"
-					   placeholder="Search for new location" 
-					   >			
-			</form>
-		</div>
-	</div>
-	<hr/>
-	<footer>all temperatures are in degrees fahrenheit. <br/>
-		<p>©2018 Maxwell Hunter</p></footer>
-	<script type="text/javascript" src="js/weather.js"></script>
+                            </div>
+                            <div id="newCityDiv">
+                                <form id="newCityForm">
+                                    <input id="newCity" type="text" name="newCity" placeholder="Search for new location">
+                                </form>
+                            </div>
+                        </div>
+                        <hr />
+                        <footer>all temperatures are in degrees fahrenheit. <br />
+                            <p>©2018 Maxwell Hunter</p>
+                        </footer>
+                        <script type="text/javascript" src="js/weather.js"></script>
 </body>
+
 </html>
