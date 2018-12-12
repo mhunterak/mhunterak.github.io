@@ -65,6 +65,14 @@ const PDFSExpertise = [
     "Skilled in communicating consistently with beta users, discussing their specific workflow goals, presenting unique solutions, and modifying on a continuous basis to deliver the best possible user experience",
     ];
 
+const DEExpertise = [
+    "Consistently employing collaborative agile methodologies to optimize workflows and deliver breakthrough technologies to ensure optimal performance on complex projects and technical initiatives",
+    "Skilled in process improvement, architecture, standards/practices, and operations",
+    "Skilled in communicating consistently with technical and non-technical employees and beta users, discussing their specific workflow goals, presenting unique solutions, and modifying on a continuous basis to deliver the best possible user experience",
+    "Development and deployment in a highly available SaaS product environment",
+    ];
+
+
 /* proficiencies templates */
 
 const TPMProficiencies = [{
@@ -211,6 +219,21 @@ const PDFSProficiencies = [
 
     ]
 
+var DEProficiencies = [{
+    "title": "Languages",
+    "content": "Full Stack Python (Flask, 4y+), SQL (4y+), Java (2y+)",
+},
+{
+    "title": "Hardware",
+    "content": "Mac/Windows/Linux Server Administration (8y+), Containerized Cloud Platforms (GCP, AWS RDS, Heroku) (5y+)",
+},
+{
+    "title": "Methodologies",
+    "content": "Agile, Lean, Scrum, SDLC, TDD, Continuous Integration / Delivery / Deployment",
+},
+
+]
+
 
 /* experience templates */
 const TreehouseStickersExperience = {
@@ -316,6 +339,15 @@ const PDFSExperience = [
             ]
     }
     ]
+
+const DEExperience = [{
+    "company": TreehouseStickersExperience["company"],
+    "role": "Technical Co-founder / Data Engineer",
+    "date": TreehouseStickersExperience["date"],
+    "description": "Codified database architecture for our cloud-native Python application, a full cycle customer relationship management system. Gained extensive experience with APIs, both using 3rd party APIs and building my own for using with frontend frameworks. Built in business analytics to define, capture, and use real-time event data for business insights and new product features. Communicated with technical employees while monitoring the solutions delivered to clients.",
+    "achievements": TreehouseStickersExperience["achievements"],
+}]
+
 
 
 /* education templates */
@@ -452,7 +484,14 @@ const data = {
         "experience": POExperience,
         "education": TPMEducation,
     },
-
+    "DE": {
+        "title": "Data Engineer",
+        "jobDesc": "Tech-savvy, autodidactic, results-oriented professional with 5+ years experience developing databases & data warehouses for innovative software tools",
+        "proficiencies": DEProficiencies,
+        "expertise": DEExpertise,
+        "experience": DEExperience,
+        "education": [teamTreehouse],
+    }
 }
 
 
