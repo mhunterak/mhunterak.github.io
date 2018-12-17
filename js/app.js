@@ -30,13 +30,34 @@ addLinkListener(survivor, "survivor.html");
 addLinkListener(weather, "weather.html");
 
 var prom = wait(flashInterval(), 5000);
+var prom = wait(spin(), 5000);
 
 function flashInterval() {
 	setInterval(function() {
-    	demosButton.classList.toggle('redBorder');
+		demosButton.classList.toggle('redBorder');
 	}, 2000);
 }
 
 
+// I am available for (id=spinner)
+var spinner = document.getElementById('spinner');
+spinnerCounter = 0;
+spinnerContentList = [
+	'pro-bono work',
+	'covert operations',
+	'full time employment',
+	'Weddings and Bar Mitzvahs',
+	'touring bass guitar player gigs',
+	'mercenary bug hunting contracts',
+]
 
-
+function spin() {
+	setInterval(function() {
+		if (spinnerCounter < spinnerContentList.length) {
+			spinner.textContent = spinnerContentList[spinnerCounter];
+			spinnerCounter += 1;
+		} else {
+			spinnerCounter = 0;
+		}
+	}, 5000);
+}
