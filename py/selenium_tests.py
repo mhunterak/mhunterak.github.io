@@ -18,14 +18,14 @@ print
 # set global production modes
 ENVIRONMENTS = {
         'Debug': (
-            'file:///Users/Treehouse/Documents/Github/mhunterak.github.io/'),
+            'file:///Users/maxwell/Documents/Github/mhunterak.github.io/'),
         # 'Alpha': 'none',
         # 'Beta': 'none',
         'Production': 'http://mhunterak.github.io/',
     }
 BROWSERS = {
     'Chrome': webdriver.Chrome(),
-    'Firefox': webdriver.Firefox()
+    # 'Firefox': webdriver.Firefox()
     }
 # list of tuples (width, height)
 SCREEN_SIZES = [
