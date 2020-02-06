@@ -93,6 +93,24 @@ function numberOfLiveNeighbors(id, gameArray) {
 						} else {
 							livingNeighbors += 1;
 						}
+					} else {
+						if (gameArray[y][gameWidth - 1] > 0) {
+							if (varX != x || varY != y) {
+								livingNeighbors += 1;
+							}
+						}
+					}
+				} else {
+					if (gameArray[0][x] > 0) {
+						if (varX != x || varY != y) {
+							livingNeighbors += 1;
+						}
+					}
+				}
+			} else {
+				if (gameArray[gameWidth - 1][x] > 0) {
+					if (varX != x || varY != y) {
+						livingNeighbors += 1;
 					}
 				} else if (x === gameWidth) {
 					if (gameArray[gameHeight - 1][0] > 0) {
@@ -239,3 +257,4 @@ stop.addEventListener('click', (e) => {
 demo1.addEventListener('click', () => {
 	resetBoard();
 });
+*/
