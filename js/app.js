@@ -47,7 +47,8 @@ spinnerContentList = [
 	//	'full time employment',
 	'Weddings and Bar Mitzvahs',
 	'touring bass guitar player gigs',
-	'mercenary bug hunting contracts'
+	'Dance Party DJ gigs',
+	'Tarot and Astrology readings'
 ];
 
 function spin() {
